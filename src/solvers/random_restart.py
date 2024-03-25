@@ -16,17 +16,9 @@ Problem = TypeVar('Problem', bound=ProblemProtocol)
 
 
 def random_restart(problem:Problem, budget: int) -> Solution:
-    best = None
-    best_fitness = None
-    for _ in range(budget):
-        s :Solution = problem.empty_solution()
-        s :Solution = random_construction(s)
-        s_fitness = s.fitness()
-        if best is None:
-            best = s
-            best_fitness = s_fitness
-        elif best_fitness < s_fitness:
-            best = s
-            best_fitness = s_fitness
-
-    return best
+    init_population = set(random_construction(problem.empty_solution()) for _ in range(budget))     # init population
+    population = set((individual.fitness(), individual) for individual in init_population)      # evaluate population
+    best = max((x for x in population if x[1].is_feasible()), key=lambda x: x[0], default=None)
+    if best is not None:
+        return best[1]
+    return None

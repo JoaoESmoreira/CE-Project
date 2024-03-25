@@ -23,16 +23,15 @@ def cli(Problem):
         from generate_maps import write_maps
         write_maps()
 
-    print(args.budget)
     p = Problem.from_textio(args.input_file)
-    s = p.empty_solution()
-    if s is not None:
-        if args.algorithm == 'random':
-            s = random_construction(s)
-        elif args.algorithm == 'rr':
-            s = random_restart(p, args.budget)
-        elif args.algorithm == 'sea':
-            s = sea()
+    #if s is not None:
+    if args.algorithm == 'random':
+        s = p.empty_solution()
+        s = random_construction(s)
+    elif args.algorithm == 'rr':
+        s = random_restart(p, args.budget)
+    elif args.algorithm == 'sea':
+        s = sea(p, args.budget)
 
     if s is not None:
         print(s.output(), end="", file=args.output_file)

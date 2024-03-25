@@ -1,0 +1,9 @@
+
+__pycache__/
+__pypackages__/
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+env/

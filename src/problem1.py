@@ -1,10 +1,11 @@
 
 from __future__ import annotations
 
-from typing import TextIO, Optional, Any
+from typing import TextIO, Optional, Any, Union
 from collections.abc import Iterable, Hashable
 from dataclasses import dataclass
 import random
+
 
 Objective = Any
 
@@ -12,10 +13,8 @@ Objective = Any
 class Component:
     i: int
 
-    @property
-    def cid(self) -> Hashable:
-        raise NotImplementedError
 
+Colection = Union[set[Component], list[Component], tuple[Component]]
 
 class Solution:
     def __init__(self, problem: Problem,
@@ -46,7 +45,13 @@ class Solution:
         Note: changes to the copy must not affect the original
         solution. However, this does not need to be a deepcopy.
         """
-        raise NotImplementedError
+        return Solution(problem=self.problem,
+                        used=self.used.copy(),
+                        unused=self.unused.copy(),
+                        total_moves=self.total_moves,
+                        source=self.position,
+                        target=self.target
+                        )
 
     def is_feasible(self) -> bool:
         """
@@ -61,7 +66,8 @@ class Solution:
         Return the fitness value for this solution if defined, otherwise
         should return None
         """
-        return -len(self.used)
+
+        return -len(self.used) +  self.target[0]*2
         # if self.is_feasible():
         # return None
 
@@ -88,9 +94,6 @@ class Solution:
     def add_move(self, component: Component) -> None:
         """
         Add a component to the solution.
-
-        Note: this invalidates any previously generated components and
-        local moves.
         """
         i = component.i
         if i == 0:
@@ -103,6 +106,21 @@ class Solution:
             self.position = (self.position[0]-1, self.position[1])
         self.used.append(i)
         self.path.add(self.position)
+
+    def get_genotype(self) -> Optional[set[Component]]:
+        """
+        Return the components of this solution if defined, otherwise
+        should return None
+        """
+        return self.used
+
+    def crossover(self, parent: Optional[Colection]) -> None:
+        pass
+        #print("crossover", parent)
+
+    def mutate(self) -> None:
+        pass
+        #print("mutation", self.used)
 
 class Problem:
     def __init__(self, n: int,
