@@ -1,10 +1,11 @@
 
 from __future__ import annotations
 
-from typing import TextIO, Optional, Any
+from typing import TextIO, Optional, Any, Union
 from collections.abc import Iterable, Hashable
 from dataclasses import dataclass
 import random
+
 
 Objective = Any
 
@@ -12,10 +13,8 @@ Objective = Any
 class Component:
     i: int
 
-    @property
-    def cid(self) -> Hashable:
-        raise NotImplementedError
 
+Colection = Union[set[Component], list[Component], tuple[Component]]
 
 class Solution:
     def output(self) -> str:
@@ -56,9 +55,25 @@ class Solution:
     def add_move(self, component: Component) -> None:
         """
         Add a component to the solution.
+        """
+        raise NotImplementedError
 
-        Note: this invalidates any previously generated components and
-        local moves.
+    def get_genotype(self) -> Optional[set[Component]]:
+        """
+        Return the components of this solution if defined, otherwise
+        should return None
+        """
+        raise NotImplementedError
+
+    def crossover(self, parent: Optional[Colection]) -> None:
+        """
+        Share the information of another solution to this solution
+        """
+        raise NotImplementedError
+
+    def mutate(self) -> None:
+        """
+        Apply a local move to this solution.
         """
         raise NotImplementedError
 
