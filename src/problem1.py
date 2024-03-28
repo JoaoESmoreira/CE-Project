@@ -53,12 +53,27 @@ class Solution:
                         target=self.target,
                         path=self.path.copy()
                         )
+    def _mapping(self) -> None:
+        last_position = (0, 0)
+        self.path = []
+        for component in self.used:
+            if component == 0:
+                last_position = (last_position[0], last_position[1]-1)
+            elif component == 1:
+                last_position = (last_position[0]+1, last_position[1])
+            elif component == 2:
+                last_position = (last_position[0], last_position[1]+1)
+            elif component == 3:
+                last_position = (last_position[0]-1, last_position[1])
+            self.path.append(last_position)
+            self.position = last_position
 
     def is_feasible(self) -> bool:
         """
         Return whether the solution is feasible or not
         """
-        print(self.path)
+        if len(self.path) == 0:
+            self._mapping()
         if self.position == self.target and not self.problem.get_lake(self.path):
             return True
         return None
@@ -68,7 +83,10 @@ class Solution:
         Return the fitness value for this solution if defined, otherwise
         should return None
         """
-        return -len(self.used) +  self.target[0]*2
+        feasible = -3
+        if self.is_feasible():
+            feasible = 2
+        return -len(self.used) + self.target[0]*2 + feasible * (len(self.unused))
         # if self.is_feasible():
         # return None
 
@@ -116,12 +134,18 @@ class Solution:
         return self.used
 
     def crossover(self, parent: Optional[Colection]) -> None:
-        pass
-        #print("crossover", parent)
+        self.path = []
+        cut_point = random.randint(0, min(len(self.used), len(parent)))
+        if random.randint(0, 1) > 0:
+            self.used = self.used[:cut_point] + parent[cut_point:]
+        else:
+            self.used = parent[:cut_point] + self.used[cut_point:]
 
     def mutate(self) -> None:
-        pass
-        #print("mutation", self.used)
+        self.path = []
+        for i in range(len(self.used)):
+            if random.randint(0, 1) == 1:
+                self.used[i] = random.randint(0, 3)
 
 class Problem:
     def __init__(self, n: int,
@@ -132,6 +156,10 @@ class Problem:
         self.target = (n-1, n-1)
 
     def get_lake(self, path: list[tuple[int, int]]) -> None:
+        for step in path:
+            for i in step:
+                if i < 0 or i == self.n:
+                    return True
         for step in path:
             if self.mmap[step[0]][step[1]] == 'H':
                 return True

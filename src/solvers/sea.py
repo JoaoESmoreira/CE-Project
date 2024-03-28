@@ -37,6 +37,8 @@ def parent_selection(population) -> Solution:
     return max(pool, key=lambda x: x[0], default=None)[1]
 
 def select_survivors(population) -> list[Solution]:
+    #for elem in population[0:ELITISM_SIZE]:
+    #    print(elem[1].fitness())
     return [indiv[1] for indiv in population[0:ELITISM_SIZE]]
 
 def sea(problem:Problem, budget: int) -> Optional[Solution]:
@@ -45,7 +47,7 @@ def sea(problem:Problem, budget: int) -> Optional[Solution]:
 
     for _ in range(budget):
         population.sort(key=lambda x: x[0], reverse=True)
-        offspring = [] # select_survivors(population)
+        offspring = select_survivors(population)
         while len(offspring) < POPULATION_SIZE:
             if random.random() < PROB_CROSSOVER:
                 # select parerents

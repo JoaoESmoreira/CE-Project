@@ -15,7 +15,7 @@ def cli(Problem):
     parser.add_argument('--generate-data', type=bool, default=False)
     parser.add_argument('--budget', type=int, default=100)
     parser.add_argument('--algorithm',
-                        choices=['random', 'rr', 'sea'],
+                        choices=['random', 'rr', 'sea', 'sss'],
                         default='none')
     args = parser.parse_args()
 
@@ -30,6 +30,15 @@ def cli(Problem):
         s = random_construction(s)
     elif args.algorithm == 'rr':
         s = random_restart(p, args.budget)
+    elif args.algorithm == 'sss':
+        for _ in range(200):
+            s = sea(p, args.budget)
+            if s is not None:
+                print(s.output(), end="", file=args.output_file)
+                if s.is_feasible():
+                    print(f"Solution is feasible. Fitness: {s.fitness():.3f}")
+                else:
+                    print(f"Solution not feasible. Fitness: {s.fitness():.3f}")
     elif args.algorithm == 'sea':
         s = sea(p, args.budget)
 
