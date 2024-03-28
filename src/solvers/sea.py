@@ -45,7 +45,7 @@ def sea(problem:Problem, budget: int) -> Optional[Solution]:
 
     for _ in range(budget):
         population.sort(key=lambda x: x[0], reverse=True)
-        offspring = select_survivors(population)
+        offspring = [] # select_survivors(population)
         while len(offspring) < POPULATION_SIZE:
             if random.random() < PROB_CROSSOVER:
                 # select parerents
@@ -62,7 +62,5 @@ def sea(problem:Problem, budget: int) -> Optional[Solution]:
             offspring.append(new_individual)
         population = list((individual.fitness(), individual) for individual in offspring)      # evaluate population
         
-    best = max((x for x in population if x[1].is_feasible()), key=lambda x: x[0], default=None)
-    if best is not None:
-        return best[1]
-    return None
+    best = max(population, key=lambda x: x[0], default=None)[1]
+    return best

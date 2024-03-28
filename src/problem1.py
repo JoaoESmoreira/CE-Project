@@ -6,7 +6,6 @@ from collections.abc import Iterable, Hashable
 from dataclasses import dataclass
 import random
 
-
 Objective = Any
 
 @dataclass
@@ -22,7 +21,8 @@ class Solution:
                     unused: set[Component],
                     total_moves: int,
                     source: tuple[int, int],
-                    target: tuple[int, int]
+                    target: tuple[int, int],
+                    path: list[Component]
                     ) -> None:
         self.problem = problem
         self.used = used
@@ -30,7 +30,7 @@ class Solution:
         self.total_moves = total_moves
         self.position = source
         self.target = target
-        self.path = set()
+        self.path = path
 
     def output(self) -> str:
         """
@@ -50,13 +50,15 @@ class Solution:
                         unused=self.unused.copy(),
                         total_moves=self.total_moves,
                         source=self.position,
-                        target=self.target
+                        target=self.target,
+                        path=self.path.copy()
                         )
 
     def is_feasible(self) -> bool:
         """
         Return whether the solution is feasible or not
         """
+        print(self.path)
         if self.position == self.target and not self.problem.get_lake(self.path):
             return True
         return None
@@ -66,7 +68,6 @@ class Solution:
         Return the fitness value for this solution if defined, otherwise
         should return None
         """
-
         return -len(self.used) +  self.target[0]*2
         # if self.is_feasible():
         # return None
@@ -105,7 +106,7 @@ class Solution:
         elif i == 3:
             self.position = (self.position[0]-1, self.position[1])
         self.used.append(i)
-        self.path.add(self.position)
+        self.path.append(self.position)
 
     def get_genotype(self) -> Optional[set[Component]]:
         """
@@ -130,7 +131,7 @@ class Problem:
         self.sourse = (0, 0)
         self.target = (n-1, n-1)
 
-    def get_lake(self, path: set[tuple[int, int]]) -> None:
+    def get_lake(self, path: list[tuple[int, int]]) -> None:
         for step in path:
             if self.mmap[step[0]][step[1]] == 'H':
                 return True
@@ -156,7 +157,8 @@ class Problem:
                         unused=set(range(4)),
                         total_moves=random.randint(1, self.n**2),
                         source=self.sourse,
-                        target=self.target
+                        target=self.target,
+                        path=[]
                         )
 
 
