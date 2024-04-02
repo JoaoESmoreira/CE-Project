@@ -29,7 +29,7 @@ PROB_CROSSOVER = 0.9
 PROB_MUTATION = 0.05
 POPULATION_SIZE = 100
 ELITISM_SIZE = 5
-TOURNAMENT_SIZE = 5
+TOURNAMENT_SIZE = 10
 
 
 def parent_selection(population) -> Solution:

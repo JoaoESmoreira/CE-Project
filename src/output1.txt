@@ -1,402 +1,402 @@
-1 2 2 3 2 1 2 2 3 2 1 2 1 1 1 1 1 3 0 2 1 1
-Solution not feasible. Fitness: -11.000
-1 3 1 1 3 1 2 0 3 3 1 2 1 1 1 2 2 2 2 2 1 2 3 1 1 1
-Solution is feasible. Fitness: 11.000
-2 1 2 0 0 1 3 1 1 2 2 2 1 0 1 2 1 1 2 3 2 2 2 1
-Solution is feasible. Fitness: 15.000
-1 1 1 2 0 3 3 2 0 1 1 3 1 2 2 1 1 2 1 2 2 1 2 0 2 2
-Solution is feasible. Fitness: 11.000
-2 0 2 1 1 1 3 1 1 0 1 1 2 1 2 2 2 2 2 2
-Solution is feasible. Fitness: 23.000
-1 1 3 1 1 3 1 3 1 3 3 1 1 1 1 1 3 3 1 3 1 1 2 2 0 0 2 0 2 1 0 2 2 2 2 3 1 2 0 0 2 2 2 2
-Solution is feasible. Fitness: -25.000
-1 2 3 1 1 1 2 2 2 1 3 0 2 1 2 2 3 1 2 1 1 0 2 1
-Solution is feasible. Fitness: 15.000
-1 1 1 1 3 2 1 2 0 2 0 2 1 2 1 3 1 3 1 2 1 3 2 2 1 2
-Solution is feasible. Fitness: 11.000
-2 2 2 2 2 2 2 1 1 0 1 2 1 1 1 3 0 2 1 1
-Solution not feasible. Fitness: -9.000
-1 2 2 3 0 0 1 2 3 1 0 2 0 1 1 1 3 1 1 2 3 2 2 2 2 1 2 0 1 3 0 0 1 0 0 2 2 1 0 2 2 3 2 2 1 3 1 2
-Solution not feasible. Fitness: -37.000
-1 3 1 3 1 2 0 3 1 2 0 1 2 1 2 2 1 1 0 2 1 2 1 2 2 2 0 3 3 1 2 1
-Solution is feasible. Fitness: -1.000
-2 1 1 3 1 1 1 2 2 1 0 3 2 3 0 1 0 3 1 2 2 2 2 2 2 1 1 1
-Solution is feasible. Fitness: 7.000
-1 1 3 1 1 2 2 1 1 2 1 2 1 2 2 2
-Solution is feasible. Fitness: 31.000
-1 3 1 3 2 2 1 2 3 2 2 1 3 1 1 2 1 2 1 0 0 1 3 3 2 3 1 1 1 1 2 1
-Solution not feasible. Fitness: -21.000
-1 1 2 0 1 2 3 0 1 2 2 1 2 2 2 0 2 0 2 2 1 1 3 3 2 0 1 1 2 1
-Solution is feasible. Fitness: 3.000
-2 1 0 1 2 1 2 1 1 2 1 0 2 1 3 2 2 2 2 1
-Solution is feasible. Fitness: 23.000
-1 3 1 3 1 2 1 1 2 2 3 2 1 2 2 1 1 1 1 2
-Solution is feasible. Fitness: 23.000
-2 2 2 2 2 2 0 0 1 3 2 1 0 2 2 2 1 1 1 3 3 1 1 1 0 3 0 1 1 2 2 1
-Solution not feasible. Fitness: -21.000
-1 1 1 2 1 3 2 2 1 1 0 3 1 3 3 1 2 2 2 2 1 1 2 1 0 2
-Solution is feasible. Fitness: 11.000
-2 1 1 1 0 2 2 2 0 0 3 1 2 2 3 2 2 1 3 1 1 3 3 0 1 1 2 2 1 2 1 1
-Solution is feasible. Fitness: -1.000
-2 1 0 2 0 2 2 1 3 2 1 2 2 1 3 3 2 2 1 0 2 3 1 0 1 1 0 2 2 1 1 0 1 2
-Solution not feasible. Fitness: -23.000
-1 1 3 2 1 1 2 2 1 1 1 3 1 0 3 2 0 2 0 2 1 0 0 2 3 1 2 2 2 1 2 2
-Solution is feasible. Fitness: -1.000
-1 1 2 3 2 2 0 2 1 2 1 1 1 2 2 3 1 1 3 1 1 2
-Solution not feasible. Fitness: -11.000
-1 1 1 2 2 1 0 2 3 2 1 1 3 0 3 2 1 1 1 1 0 3 0 2 2 1 2 2 2 2
-Solution is feasible. Fitness: 3.000
-2 2 1 3 2 1 2 3 2 0 1 1 2 1 1 2 0 1 1 1 2 3 0 1 2 2
-Solution not feasible. Fitness: -15.000
-1 1 1 1 2 2 3 2 1 1 1 1 0 3 2 2 2 1 2 3 2 1
-Solution is feasible. Fitness: 19.000
-1 2 1 1 3 1 2 2 1 0 2 2 2 2 1 1 1 2
-Solution is feasible. Fitness: 27.000
-1 3 1 2 0 1 1 3 1 1 3 2 1 2 2 0 1 2 1 2 1 2 2 3 0 1 2 2
-Solution is feasible. Fitness: 7.000
-1 2 3 1 0 2 2 3 2 1 0 2 2 1 1 1 0 2 3 0 0 3 1 1 3 2 1 1 0 3 2 1 3 2 1 2 0 2 0 2 2 2 1 3 1 1
-Solution not feasible. Fitness: -35.000
-2 1 0 1 1 3 1 2 2 2 1 3 1 1 1 1 3 1 0 0 0 2 2 2 2 3 2 2 2 1
-Solution is feasible. Fitness: 3.000
-2 1 3 1 0 1 3 3 1 2 0 1 1 2 2 0 1 2 1 1 2 1 2 2 2 2
-Solution is feasible. Fitness: 11.000
-2 2 1 0 0 3 2 2 2 0 2 2 2 1 1 2 1 2 1 0 2 1 0 0 2 0 2 2 1 1
-Solution not feasible. Fitness: -19.000
-1 1 3 2 2 3 0 2 1 3 2 2 2 2 2 0 1 0 2 2 3 1 0 0 2 1 0 2 3 1 1 1 2 1 1 1
-Solution not feasible. Fitness: -25.000
-1 1 1 2 2 1 0 2 1 3 3 2 3 2 1 3 1 1 3 1 2 2 2 0 2 1 1 1
-Solution is feasible. Fitness: 7.000
-2 1 0 1 1 1 2 3 1 3 0 2 1 0 1 1 1 2 0 2 3 2 1 0 2 3 2 0 2 2 2 1 2 2
-Solution is feasible. Fitness: -5.000
-2 1 3 1 0 1 2 1 2 1 3 1 3 1 1 2 1 2 2 2 2 1
-Solution is feasible. Fitness: 19.000
-1 1 3 1 3 1 3 3 2 1 1 1 2 1 0 0 2 2 2 1 1 2 2 2 1 2
-Solution is feasible. Fitness: 11.000
-2 2 1 3 2 0 0 1 3 2 1 2 0 1 1 1 2 3 1 3 2 3 2 2 1 1 1 1 1 3 0 1 2 0 2 0 2 3 1 3 2 1
-Solution not feasible. Fitness: -31.000
-1 2 1 0 1 2 1 2 2 0 2 2 2 2 2 1 1 1 0 3 2 1
-Solution is feasible. Fitness: 19.000
-2 2 2 2 1 3 0 2 1 1 2 2 2 1 0 1 0 3 1 1 0 3 1 2 1 1 2 2
-Solution not feasible. Fitness: -17.000
-2 1 3 0 1 1 1 2 0 2 2 1 2 2 0 2 3 2 2 1 1 1 2 1
-Solution is feasible. Fitness: 15.000
-1 3 1 1 1 1 3 2 0 2 1 3 3 1 0 2 3 2 0 0 3 1 1 3 1 2 3 1 0 1 1 1 2 3 0 1 1 3 1 2 2 0 0 2 2 0 3 1 2 2 2 2 0 2 2 2
-Solution not feasible. Fitness: -45.000
-1 1 1 1 2 2 2 3 1 2 3 2 1 0 0 3 1 2 0 1 1 1 3 0 2 0 1 2 3 1 0 3 2 3 1 2 1 2 2 2
-Solution is feasible. Fitness: -17.000
-1 3 1 3 2 2 1 3 2 2 2 1 1 2 1 2 1 0 1 1 3 3 1 2 1 1
-Solution not feasible. Fitness: -15.000
-1 2 1 1 2 2 2 2 3 1 1 3 0 1 3 2 1 2 3 1 2 1 1 1
-Solution is feasible. Fitness: 15.000
-1 2 3 2 2 2 0 2 2 1 3 2 2 1 0 0 2 1 0 0 1 2 0 2 1 1 2 1 1 2
-Solution not feasible. Fitness: -19.000
-1 2 1 1 1 2 2 0 3 1 3 2 1 3 2 1 2 2 1 1 1 2 3 0 2 3 0 1 1 3 1 2
-Solution is feasible. Fitness: -1.000
-2 0 1 2 2 0 2 2 0 3 2 1 1 3 2 3 1 0 2 3 0 2 2 1 2 3 1 2 1 1 0 1 1 2 1 1
-Solution not feasible. Fitness: -25.000
-2 2 1 2 0 1 2 1 3 1 1 2 1 3 3 0 0 2 1 2 1 2 2 1 0 2 1 2
-Solution not feasible. Fitness: -17.000
-2 0 1 1 1 2 3 1 2 2 2 2 1 3 0 1 3 1 2 2 1 1 3 2 1 1
-Solution is feasible. Fitness: 11.000
-1 3 2 0 2 1 0 1 1 2 2 1 1 2 1 1 2 2 2 2
-Solution is feasible. Fitness: 23.000
-2 2 1 1 3 2 3 2 2 1 1 2 1 1 3 1 2 0 1 2 1 1
-Solution not feasible. Fitness: -11.000
-1 1 1 2 2 2 3 2 0 1 2 0 2 3 2 1 1 2 2 0 1 1 3 1 1 2
-Solution is feasible. Fitness: 11.000
-1 1 1 2 1 2 2 2 2 0 0 2 0 2 3 2 1 2 1 1 1 2 0 2 0 2
-Solution is feasible. Fitness: 11.000
-2 0 2 1 1 1 2 2 3 2 1 0 1 0 2 1 1 1 2 2 2 2
-Solution is feasible. Fitness: 19.000
-2 2 1 1 2 1 2 1 3 0 2 1 3 1 2 1 1 1 2 2
-Solution not feasible. Fitness: -9.000
-1 1 3 1 1 1 3 1 3 2 2 2 2 1 2 3 2 1 1 2 1 3 1 0 3 3 1 2 3 1 1 1
-Solution is feasible. Fitness: -1.000
-2 2 1 2 1 1 0 2 0 3 1 2 1 0 0 2 2 2 2 3 1 1 1 2 1 2
-Solution not feasible. Fitness: -15.000
-2 0 2 2 1 2 1 2 2 0 2 2 1 3 1 0 1 1 2 1 2 1
-Solution not feasible. Fitness: -11.000
-1 2 1 3 1 1 2 1 1 2 0 3 1 1 2 3 1 3 3 1 1 2 2 2 2 1
-Solution is feasible. Fitness: 11.000
-1 1 2 1 1 0 2 3 2 0 1 2 2 3 2 3 1 0 2 2 0 0 2 2 0 2 2 1 1 2 1 1
-Solution is feasible. Fitness: -1.000
-2 2 1 1 2 1 3 0 0 2 3 2 1 0 2 1 2 2 2 2 3 1 0 1 2 1 0 2 1 1
-Solution not feasible. Fitness: -19.000
-2 2 2 2 0 2 1 2 1 2 1 2 1 1 1 0 2 1
-Solution not feasible. Fitness: -7.000
-1 1 1 1 3 3 1 2 2 1 1 1 3 1 2 1 2 0 2 3 2 2 2 3 1 1
-Solution is feasible. Fitness: 11.000
-2 0 1 1 2 1 2 2 3 1 2 1 3 3 2 0 1 2 1 2 1 3 1 2 1 1
-Solution is feasible. Fitness: 11.000
-1 1 2 1 0 1 2 2 2 3 1 3 2 3 3 1 1 3 0 1 1 0 2 3 1 2 2 2 1 2 1 3 1 0 1 2
-Solution is feasible. Fitness: -9.000
-1 1 1 1 2 3 0 2 1 0 2 0 1 1 2 2 1 0 3 2 2 2 2 1 2 2
-Solution is feasible. Fitness: 11.000
-1 1 1 1 1 3 1 3 3 1 1 3 2 0 3 2 2 2 1 2 3 0 0 1 2 0 2 1 1 3 1 3 3 2 2 2 2 0 1 1 1 2
-Solution is feasible. Fitness: -21.000
-2 0 2 0 1 3 2 0 2 2 1 1 1 2 2 2 1 1 3 1 0 1 3 1 1 2 2 3 3 1 2 0 2 3 1 1
-Solution not feasible. Fitness: -25.000
-1 1 1 2 1 0 2 0 1 1 2 2 0 1 2 2 0 2 2 2 3 1 2 2
-Solution is feasible. Fitness: 15.000
-1 2 1 1 2 1 1 2 1 0 1 2 0 2 3 2 0 0 1 2 2 0 2 3 1 2 2 2
-Solution is feasible. Fitness: 7.000
-1 1 1 2 2 1 2 0 2 3 1 1 3 0 2 2 3 3 2 0 1 1 3 3 2 1 1 2 2 1 1 1
-Solution is feasible. Fitness: -1.000
-2 0 1 1 3 1 3 1 3 1 2 1 1 2 2 1 1 2 2 1 2 2
-Solution is feasible. Fitness: 19.000
-2 2 1 2 2 3 1 2 3 2 0 1 3 1 1 1 2 1 3 1 1 3 1 0 2 2 1 1
-Solution not feasible. Fitness: -17.000
-2 2 1 2 1 2 3 1 1 1 2 2 1 2 3 0 2 1 1 0 3 1 2 0 1 2
-Solution not feasible. Fitness: -15.000
-2 2 1 0 3 2 2 0 2 1 2 1 2 2 3 2 3 1 0 0 3 2 1 3 2 1 1 1 0 2 1 0 0 0 1 1 1 2 3 1 2 2
-Solution not feasible. Fitness: -31.000
-1 3 2 0 1 2 2 0 2 0 1 0 2 1 2 1 1 1 2 0 2 2 2 0 2 2 1 2
-Solution is feasible. Fitness: 7.000
-2 1 1 1 2 2 1 2 0 2 2 2 1 1 0 2 3 1 0 2 1 2
-Solution is feasible. Fitness: 19.000
-1 2 2 0 0 1 1 2 1 2 2 0 2 1 1 3 3 1 3 1 0 2 0 2 1 1 2 2 2 2
-Solution is feasible. Fitness: 3.000
-2 1 1 3 2 0 1 3 1 1 2 1 0 3 1 2 2 2 2 2 1 2 1 0 1 2 3 1
-Solution is feasible. Fitness: 7.000
-2 2 2 0 1 1 1 2 2 1 2 0 1 2 3 1 1 0 2 1 2 2
-Solution not feasible. Fitness: -11.000
-2 1 0 3 1 3 2 2 1 0 1 3 1 0 1 1 1 2 1 1 3 2 2 3 2 2 2 0 0 1 1 2 3 2 1 3 0 1 2 2
-Solution not feasible. Fitness: -29.000
-1 2 1 1 2 2 1 1 1 2 1 2 2 2
-Solution is feasible. Fitness: 35.000
-2 2 1 3 2 1 0 1 0 1 1 1 1 3 2 2 2 3 1 2 0 3 2 1 1 1 2 2
-Solution not feasible. Fitness: -17.000
-1 2 1 1 1 2 1 1 0 1 2 0 0 2 2 2 3 2 2 1 2 2
-Solution is feasible. Fitness: 19.000
-1 1 2 1 2 1 2 1 1 2 2 1 0 3 1 2 2 2
-Solution is feasible. Fitness: 27.000
-2 1 2 1 1 1 1 1 0 1 0 2 2 2 0 2 3 1 2 2 2 2
-Solution not feasible. Fitness: -11.000
-1 3 2 1 2 3 0 1 1 3 0 3 1 3 2 0 1 3 1 1 1 3 1 2 1 1 2 3 1 1 2 2 1 2 2 2
-Solution not feasible. Fitness: -25.000
-2 2 0 1 3 1 2 2 0 2 1 3 1 2 1 2 1 1 2 1 3 2 1 1
-Solution not feasible. Fitness: -13.000
-2 0 1 2 3 2 2 1 2 2 1 2 1 1 2 0 2 0 1 3 2 1 1 1
-Solution not feasible. Fitness: -13.000
-1 1 1 3 2 0 2 0 2 1 2 1 1 2 3 1 3 2 2 2 2 1 1 1 3 1 0 2
-Solution is feasible. Fitness: 7.000
-1 1 3 3 2 1 0 1 2 1 3 0 2 1 1 2 1 3 1 1 2 3 3 1 0 1 2 3 1 2 2 1 2 0 2 2
-Solution is feasible. Fitness: -9.000
-2 2 1 3 2 2 0 1 2 1 2 1 2 0 1 0 2 1 2 3 0 2 0 2 3 3 2 3 1 1 1 1 1 1
-Solution not feasible. Fitness: -23.000
-2 0 2 0 1 2 2 0 0 1 2 1 2 2 2 2 1 3 1 2 1 3 1 2 1 1
-Solution is feasible. Fitness: 11.000
-2 0 2 2 1 3 2 0 2 2 0 0 2 0 2 2 1 2 0 3 1 1 2 1 2 3 2 1 1 0 0 1 2 1 1 2
-Solution not feasible. Fitness: -25.000
-1 3 1 2 2 1 0 0 1 3 2 2 1 2 1 1 1 1 2 3 3 0 3 1 0 1 0 2 2 1 2 2 3 1 2 2
-Solution not feasible. Fitness: -25.000
-1 3 2 0 2 0 1 2 1 3 1 1 1 3 1 2 3 1 1 1 2 2 1 2 0 3 2 2 1 2
-Solution is feasible. Fitness: 3.000
-1 2 1 3 1 0 1 3 2 0 1 2 0 2 2 2 2 2 0 2 1 0 2 3 3 1 2 1 1 3 2 1 1 3 1 3 1 1
-Solution is feasible. Fitness: -13.000
-1 1 2 3 1 1 1 3 2 0 1 2 3 0 0 1 2 2 2 3 1 0 1 3 1 2 1 1 2 2 2 0 2 2
-Solution is feasible. Fitness: -5.000
-1 1 1 1 1 1 2 1 2 2 2 0 2 2 2 3 2 1
-Solution is feasible. Fitness: 27.000
-2 1 3 0 2 2 1 1 1 1 1 0 2 1 2 2 2 3 0 2 2 1 3 2 1 0 1 2
-Solution not feasible. Fitness: -17.000
-2 2 2 1 2 3 2 1 1 2 1 2 1 1 1 0 2 0 2 3 3 1 3 1 1 0 1 3 1 2
-Solution not feasible. Fitness: -19.000
-1 2 1 3 2 0 1 1 0 1 3 2 2 1 2 2 2 2 2 1 1 1
-Solution is feasible. Fitness: 19.000
-2 0 1 1 1 1 2 2 1 2 1 1 2 2 3 1 2 0 3 2 2 1
-Solution is feasible. Fitness: 19.000
-2 2 2 2 0 0 1 1 1 1 2 1 2 2 2 1 1 2
-Solution not feasible. Fitness: -7.000
-2 2 0 0 1 2 2 2 3 2 2 2 2 1 1 1 1 0 0 3 0 1 2 1 2 2 1 1
-Solution not feasible. Fitness: -17.000
-1 1 1 2 2 1 1 1 2 1 3 2 2 1 2 0 0 2 3 0 2 1 2 2
-Solution is feasible. Fitness: 15.000
-1 1 2 3 2 0 1 1 1 3 1 2 3 0 2 1 1 1 1 2 2 0 3 2 2 1 2 3 0 1 2 2
-Solution is feasible. Fitness: -1.000
-1 2 1 0 3 1 3 1 1 1 1 3 2 2 1 2 1 2 1 3 2 2 2 0 2 1
-Solution is feasible. Fitness: 11.000
-1 2 3 0 1 3 2 0 1 2 0 2 1 1 2 1 1 3 2 2 3 1 3 2 3 1 2 1 2 1 1 1
-Solution is feasible. Fitness: -1.000
-2 0 1 2 3 1 1 1 2 1 0 2 3 1 2 3 2 2 1 2 2 1 1 1
-Solution is feasible. Fitness: 15.000
-2 1 1 2 1 2 1 1 2 1 1 2 3 2 3 0 3 0 1 2 3 1 1 2 3 2 0 1 2 1
-Solution not feasible. Fitness: -19.000
-1 2 0 1 1 1 1 1 2 1 2 2 3 2 1 2 3 2 1 3 3 2 1 3 1 1
-Solution is feasible. Fitness: 11.000
-1 2 1 1 2 1 3 1 2 2 0 1 0 3 1 2 3 1 1 0 2 1 0 2 2 3 1 2 2 0 3 2 2 0 2 1
-Solution is feasible. Fitness: -9.000
-2 0 1 3 1 1 2 0 1 2 2 2 3 1 1 1 1 3 1 1 3 3 1 2 2 2 1 3 3 2 1 3 1 0 1 2
-Solution is feasible. Fitness: -9.000
-1 1 2 1 2 2 1 0 2 3 1 0 1 3 2 0 2 1 0 1 2 2 2 1 2 3 0 2 3 1 1 2
-Solution is feasible. Fitness: -1.000
-2 2 1 3 2 1 2 1 1 2 3 1 2 1 1 1 2 0 1 2
-Solution not feasible. Fitness: -9.000
-2 1 2 2 0 0 3 1 3 1 1 0 1 2 0 3 1 3 3 1 1 2 3 0 3 2 2 2 1 1 1 1 1 0 1 3 2 0 3 2 2 0 1 2 2 1 2 2
-Solution not feasible. Fitness: -37.000
-1 3 1 2 0 1 1 2 0 2 1 2 1 1 2 2 2 1 2 2
-Solution is feasible. Fitness: 23.000
-2 0 2 1 1 0 1 2 2 1 1 2 3 2 2 2 1 1 1 3 2 0 1 2
-Solution is feasible. Fitness: 15.000
-1 2 2 3 2 1 1 0 3 2 3 1 0 3 2 1 2 3 1 1 1 2 1 1 1 1 2 2
-Solution not feasible. Fitness: -17.000
-2 1 3 0 1 2 3 0 2 2 0 0 2 0 1 1 1 1 2 1 2 2 2 1 1 3 2 0 2 2 2 1
-Solution not feasible. Fitness: -21.000
-2 0 2 1 3 2 2 2 2 2 1 2 0 1 1 1 3 0 1 2 2 0 3 3 1 1 3 2 0 1 1 3 3 1 2 3 1 1 1 1
-Solution not feasible. Fitness: -29.000
-1 1 1 1 3 2 1 3 0 1 1 1 2 2 2 1 0 2 2 2 2 0 2 2
-Solution is feasible. Fitness: 15.000
-1 1 2 1 0 2 0 2 2 2 2 2 2 1 3 1 0 2 1 1 1 2
-Solution is feasible. Fitness: 19.000
-2 2 1 1 0 3 1 1 1 0 3 2 0 2 0 1 2 1 2 1 1 2 2 2 2 2
-Solution not feasible. Fitness: -15.000
-1 2 1 1 1 3 2 1 3 2 1 1 0 3 2 1 1 0 3 1 1 0 2 2 0 2 2 2 0 2 2 2
-Solution is feasible. Fitness: -1.000
-2 1 1 0 1 2 2 0 1 0 2 0 2 0 1 3 1 1 2 2 2 1 2 2 2 2
-Solution is feasible. Fitness: 11.000
-2 1 0 3 2 1 1 1 3 0 1 2 1 0 2 2 1 2 0 2 1 1 2 2 2 3 1 2
-Solution is feasible. Fitness: 7.000
-1 1 2 1 2 1 1 2 1 2 2 0 1 0 2 2 2 0 2 2
-Solution is feasible. Fitness: 23.000
-2 0 1 1 2 1 2 2 0 2 1 1 1 1 0 2 2 2 0 3 1 0 0 2 2 2 3 0 2 2 1 3 1 0 2 3 1 2
-Solution is feasible. Fitness: -13.000
-1 2 1 1 1 2 3 2 2 2 2 0 1 2 3 0 1 2 3 0 2 1 1 1 2 0 3 2 1 1
-Solution is feasible. Fitness: 3.000
-1 1 1 2 2 2 1 2 3 2 1 3 2 1 1 3 1 3 1 1 2 1
-Solution is feasible. Fitness: 19.000
-1 1 3 1 1 2 2 3 3 1 1 2 1 3 2 1 2 2 1 0 1 0 3 3 2 2 1 3 0 1 2 2 0 2 1 1
-Solution not feasible. Fitness: -25.000
-2 1 2 2 2 1 2 1 3 1 3 0 0 1 2 2 1 1 2 1 1 2
-Solution not feasible. Fitness: -11.000
-1 2 2 0 2 0 1 2 0 1 2 1 3 1 2 2 1 3 1 0 1 2 0 0 2 0 2 1 2 3 2 2 3 0 1 2 1 2
-Solution not feasible. Fitness: -27.000
-2 2 0 1 1 1 2 1 1 3 2 0 3 1 0 2 0 2 2 3 1 2 2 3 1 1 0 0 1 0 1 0 2 2 2 2 2 2
-Solution not feasible. Fitness: -27.000
-2 1 0 1 3 1 2 3 1 1 2 1 0 2 1 1 1 2 2 0 3 2 1 2 2 3 1 2
-Solution is feasible. Fitness: 7.000
-1 2 0 1 3 1 2 0 1 2 0 2 1 3 2 2 2 2 0 2 2 1 1 2 1 0 2 1
-Solution is feasible. Fitness: 7.000
-1 2 1 1 1 2 2 0 3 1 1 3 3 1 3 2 1 3 0 1 2 1 1 1 2 2 2 2
-Solution is feasible. Fitness: 7.000
-2 1 0 1 1 2 1 3 2 1 0 2 2 1 1 2 2 2 2 0 0 0 1 0 0 3 0 2 2 1 2 2 2 2
-Solution is feasible. Fitness: -5.000
-2 0 1 1 3 1 1 1 2 2 1 1 1 2 2 2 2 3 1 0 3 2 0 1 0 2 2 2
-Solution is feasible. Fitness: 7.000
-1 2 1 1 1 3 2 1 3 1 1 1 2 0 1 3 2 3 1 3 1 1 2 2 2 2
-Solution is feasible. Fitness: 11.000
-1 3 1 1 1 3 2 1 2 2 3 1 1 3 0 2 3 2 0 1 1 2 2 2 3 1 1 1 2 0 1 2
-Solution is feasible. Fitness: -1.000
-2 1 1 1 3 1 2 2 2 2 1 2 1 1 1 3 2 1
-Solution is feasible. Fitness: 27.000
-1 2 1 1 3 1 2 1 3 2 1 2 2 2 0 2 1 1 3 1 3 1 1 2 3 1
-Solution is feasible. Fitness: 11.000
-1 1 1 2 1 3 3 3 0 2 1 3 1 1 1 3 1 3 2 1 3 2 1 3 1 1 1 2 2 2 2 1
-Solution is feasible. Fitness: -1.000
-2 0 2 0 1 2 2 0 2 0 0 3 2 2 2 2 2 1 0 3 2 2 2 1 3 0 2 1 1 0 1 1 3 1 2 1 1 1
-Solution not feasible. Fitness: -27.000
-1 1 2 1 1 3 2 0 1 2 0 2 2 3 1 3 2 2 2 0 1 3 2 1 1 2 0 2 1 1
-Solution is feasible. Fitness: 3.000
-1 3 2 0 2 2 2 2 2 1 2 1 2 1 1 3 0 1 1 0 3 0 3 0 0 2 0 2 0 1 1 2 1 2 1 2 2 2
-Solution not feasible. Fitness: -27.000
-2 1 2 1 1 2 0 0 2 3 1 2 1 1 1 1 2 3 1 2 0 2 3 2 0 0 0 2 2 2 2 1
-Solution not feasible. Fitness: -21.000
-2 0 2 0 1 2 1 1 2 2 2 2 0 2 1 2 1 2 0 3 1 1 1 2
-Solution is feasible. Fitness: 15.000
-1 1 2 1 2 1 2 2 0 1 1 3 1 2 0 2 2 2 2 3 0 2 1 1
-Solution is feasible. Fitness: 15.000
-1 1 1 2 2 1 2 1 1 1 3 3 1 1 3 0 2 2 2 2 3 1 2 1
-Solution is feasible. Fitness: 15.000
-2 2 1 1 2 2 2 0 2 1 1 2 3 0 0 3 1 3 2 3 2 0 2 1 2 1 0 2 0 2 3 1 1 1 0 0 2 1 2 1
-Solution not feasible. Fitness: -29.000
-1 2 1 0 1 3 3 2 0 2 0 1 1 1 1 3 2 2 1 1 2 0 2 2 0 2 1 2 3 2 2 0 2 1
-Solution is feasible. Fitness: -5.000
-1 2 0 2 0 2 3 1 1 1 2 2 3 1 0 1 1 1 2 2 1 2 3 2 2 1
-Solution is feasible. Fitness: 11.000
-1 1 2 2 0 3 3 0 1 2 0 3 2 1 2 3 0 0 2 0 2 2 1 2 2 1 1 2 2 2 0 3 1 1 0 1 2 3 1 2 1 0 2 1
-Solution not feasible. Fitness: -33.000
-2 1 1 0 2 2 0 3 3 2 1 1 0 2 1 2 2 3 1 3 1 2 2 1 1 2 3 3 1 1 1 1
-Solution not feasible. Fitness: -21.000
-1 2 1 0 2 1 2 2 3 2 1 2 1 2 1 3 1 1 1 0 2 3 1 3 1 2
-Solution is feasible. Fitness: 11.000
-1 2 0 2 1 0 1 2 1 2 2 1 0 1 0 2 3 2 1 1 3 2 0 1 3 1 2 0 2 2 2 2
-Solution is feasible. Fitness: -1.000
-2 0 2 1 1 1 1 3 1 2 2 2 3 1 3 2 2 1 2 0 3 0 1 0 2 0 2 3 2 1 0 2 1 2 1 1
-Solution is feasible. Fitness: -9.000
-1 2 2 3 2 2 0 2 0 1 1 2 1 3 2 1 0 2 3 1 1 1 2 1 1 2
-Solution not feasible. Fitness: -15.000
-1 1 2 2 0 1 1 2 1 2 2 1 1 2 3 3 1 1 2 2
-Solution not feasible. Fitness: -9.000
-2 1 0 2 1 2 1 1 3 1 2 2 1 0 0 2 3 2 1 2 0 2 2 3 1 1 1 2
-Solution not feasible. Fitness: -17.000
-2 1 0 2 3 0 1 2 1 1 2 1 2 1 1 2 2 2 2 3 1 1
-Solution is feasible. Fitness: 19.000
-2 0 1 1 1 1 1 1 2 2 3 1 2 2 1 3 2 2 1 3 2 3 1 1
-Solution is feasible. Fitness: 15.000
-2 0 2 0 2 0 1 2 3 2 0 1 2 2 3 2 1 2 1 2 1 1 1 1 1 2
-Solution not feasible. Fitness: -15.000
-2 2 1 3 2 2 0 1 0 0 2 1 3 1 2 1 1 1 2 2 2 3 1 2 0 2 1 1
-Solution not feasible. Fitness: -17.000
-1 1 3 2 1 1 2 2 1 1 0 1 1 2 0 2 3 1 2 2 2 2
-Solution is feasible. Fitness: 19.000
-1 2 1 1 1 0 2 2 3 1 1 1 2 2 1 2 2 0 2 2 3 1
-Solution is feasible. Fitness: 19.000
-1 1 1 2 1 3 1 0 2 2 3 1 2 1 0 1 1 2 2 2 0 3 2 2 2 1
-Solution is feasible. Fitness: 11.000
-1 3 1 2 2 0 1 1 1 3 2 2 2 0 1 2 3 0 1 2 2 2 1 1 3 1 1 2
-Solution is feasible. Fitness: 7.000
-1 1 3 3 2 1 3 0 1 1 1 3 2 2 2 2 0 1 1 0 1 3 2 2 1 2 3 1 2 1 2 1
-Solution not feasible. Fitness: -21.000
-2 2 2 2 2 1 2 2 1 1 1 1 1 1
-Solution not feasible. Fitness: -3.000
-1 1 1 2 2 1 1 3 1 2 1 2 1 0 2 3 1 2 0 2 2 2
-Solution is feasible. Fitness: 19.000
-2 1 2 1 3 3 1 2 2 1 1 1 0 1 2 2 1 2 1 0 2 2
-Solution not feasible. Fitness: -11.000
-2 2 1 1 0 2 1 2 1 2 2 3 1 0 3 3 1 0 2 1 3 1 1 0 2 1 2 1 2 3 1 2
-Solution not feasible. Fitness: -21.000
-2 0 1 2 3 0 2 2 2 0 1 1 3 1 2 1 1 1 2 3 1 2 1 2 2 1
-Solution not feasible. Fitness: -15.000
-2 0 1 3 2 1 0 1 2 0 1 2 2 2 0 1 1 1 2 2 1 3 1 2 2 2
-Solution is feasible. Fitness: 11.000
-1 3 1 3 2 2 1 0 1 3 0 1 1 2 2 2 1 1 3 3 2 3 1 1 1 2 2 2 1 1
-Solution not feasible. Fitness: -19.000
-1 1 2 0 1 1 2 2 2 1 3 3 2 0 1 1 1 1 3 1 3 2 1 2 2 0 3 2 0 2 0 1 2 2
-Solution is feasible. Fitness: -5.000
-1 3 1 3 2 1 1 1 3 1 2 1 2 2 2 2 1 1 0 2 3 1 3 2 0 1 2 1
-Solution is feasible. Fitness: 7.000
-1 3 1 3 1 2 0 2 1 3 0 1 1 2 2 2 2 2 0 0 2 2 0 3 1 1 2 2 2 1 0 2 1 1
-Solution is feasible. Fitness: -5.000
-2 1 1 3 1 1 0 1 2 2 0 3 1 0 2 2 2 1 1 2 2 2 1 2
-Solution is feasible. Fitness: 15.000
-1 2 1 1 1 3 2 2 1 1 0 2 1 3 1 2 2 2 2 1
-Solution is feasible. Fitness: 23.000
-1 2 1 2 3 2 0 2 2 1 0 0 1 3 2 3 1 2 3 2 1 1 2 1 2 3 1 3 1 1 0 0 3 1 1 1 2 2
-Solution not feasible. Fitness: -27.000
-1 2 1 3 1 1 1 0 2 2 2 3 2 3 1 2 2 0 2 1 3 1 2 1 0 1 0 2 2 1
-Solution is feasible. Fitness: 3.000
-2 0 2 0 1 1 1 1 2 2 3 1 1 1 0 2 1 3 0 1 2 2 2 2 3 2 2 1
-Solution is feasible. Fitness: 7.000
-2 1 3 0 1 2 1 0 2 1 0 2 0 1 2 3 1 2 1 2 1 2 2 1 2 2
-Solution is feasible. Fitness: 11.000
-1 2 3 0 1 1 2 3 1 1 1 2 1 1 1 2 0 2 2 2 2 0 3 2 0 2 0 2 2 1
-Solution is feasible. Fitness: 3.000
-2 1 1 1 1 2 2 2 0 1 1 0 0 2 2 0 2 2 1 2 2 2
-Solution is feasible. Fitness: 19.000
-1 2 1 1 1 3 0 1 2 2 1 1 1 3 2 1 2 2 2 3 1 2
-Solution is feasible. Fitness: 19.000
-1 2 0 3 1 1 1 2 3 0 2 3 0 3 2 0 1 1 2 1 1 2 1 1 3 1 3 2 2 2 1 3 2 2 1 0 1 2
-Solution not feasible. Fitness: -27.000
-1 3 1 1 1 2 2 2 1 2 2 3 1 2 2 1 1 1
-Solution is feasible. Fitness: 27.000
-1 3 1 2 1 1 0 2 0 1 3 2 1 2 1 1 2 2 2 1 2 2
-Solution is feasible. Fitness: 19.000
-1 2 3 2 2 0 0 1 0 2 2 1 2 2 1 2 0 1 1 2 0 2 2 2 1 0 2 0 2 1
-Solution not feasible. Fitness: -19.000
-2 0 1 1 1 1 1 1 2 1 2 2 0 3 0 2 2 2 1 2 2 3 2 1
-Solution is feasible. Fitness: 15.000
-1 1 1 2 1 2 3 1 3 2 2 0 0 2 0 2 0 1 2 1 1 0 1 0 2 2 2 2 2 3 1 2
-Solution is feasible. Fitness: -1.000
-1 2 3 1 1 1 1 2 1 2 1 2 0 2 0 2 1 2 3 1 2 0 2 2
-Solution is feasible. Fitness: 15.000
-1 2 3 1 1 1 1 2 1 2 1 2 0 2 0 2 1 2 3 1 2 0 2 2
-Solution is feasible. Fitness: 15.000
+1 3 2 1 3 1 0 1 2 2 1 1 1 1 3 2 1 2 2 2 3 1 0 1 2 3 1 2
+Solution not feasible. Fitness: -50.000
+2 0 2 0 2 1 1 1 2 0 0 3 3 3 2 1 1 1 1 0 2 0 1 1 3 1 2 0 1 2 2 2 2 0 2 3 2 2 0 2 3 1 1 2
+Solution is feasible. Fitness: 49.000
+1 3 1 1 3 3 1 1 3 2 3 1 0 1 2 1 2 1 2 2 1 3 2 2 2 1 1 1
+Solution not feasible. Fitness: -50.000
+2 0 2 1 1 0 2 3 2 0 1 1 1 2 1 3 1 1 2 2 1 2 2
+Solution not feasible. Fitness: -50.000
+1 3 1 3 2 1 1 1 2 1 1 1 1 3 2 0 2 3 1 1 2 0 3 1 2 0 0 2 2 2 0 2 0 2 3 1 2 2
+Solution is feasible. Fitness: 49.000
+2 1 2 1 1 2 0 2 2 0 2 2 1 0 2 2 1 1 3 1 2 0 2 1
+Solution not feasible. Fitness: -50.000
+1 1 1 1 1 1 3 1 2 1 2 0 2 3 1 2 0 2 2 2 0 0 2 2 3 1 2 0 0 0 3 1 0 2 2 0 2 2 0 2
+Solution not feasible. Fitness: -51.000
+2 1 0 1 3 3 1 2 1 3 1 1 1 3 0 2 2 2 3 2 2 0 1 2 1 1 2 2 1 1
+Solution not feasible. Fitness: -50.000
+1 1 3 2 3 1 0 1 1 1 1 3 1 1 1 3 1 3 2 2 3 1 3 3 1 3 2 2 1 2 2 1 2 1
+Solution not feasible. Fitness: -51.000
+1 1 2 1 2 2 1 2 2 0 2 0 2 1 2 1 1 2
+Solution not feasible. Fitness: -50.000
+1 1 1 1 1 1 1 3 2 2 2 1 2 3 2 1 2 2 3 1
+Solution is feasible. Fitness: 49.000
+1 1 1 2 1 2 3 2 2 0 2 2 1 0 0 3 1 3 0 1 1 2 3 1 3 2 1 2 1 2 1 2 [0]
+Solution not feasible. Fitness: -51.000
+1 3 1 1 2 1 2 1 1 1 1 2 3 2 1 2 2 2
+Solution is feasible. Fitness: 49.000
+1 3 1 1 2 0 1 1 2 2 1 2 2 1 0 2 0 1 3 1 2 3 2 3 1 0 1 3 2 1 2 3 3 1 2 1
+Solution not feasible. Fitness: -51.000
+1 1 2 3 0 3 1 1 1 2 0 1 2 0 1 3 2 2 1 1 2 1 2 3 2 0 2 3 1 2 1 2
+Solution not feasible. Fitness: -50.000
+1 2 2 2 1 2 1 3 1 2 0 0 2 3 2 1 0 1 3 1 2 1 2 1 2 1
+Solution not feasible. Fitness: -51.000
+2 0 2 1 1 1 2 1 2 3 0 1 1 2 0 2 2 0 1 1 0 3 2 2 0 2 0 3 0 2 2 0 3 1 1 1 2 2 2 2
+Solution not feasible. Fitness: -51.000
+1 3 1 2 0 1 1 3 1 1 1 2 1 2 0 2 2 2 1 2 2 3 1 2 3 0 2 1 2 0
+Solution not feasible. Fitness: -51.000
+1 2 1 0 2 1 2 2 2 1 0 1 1 2 1 0 3 2 2 2 1 3 2 1
+Solution is feasible. Fitness: 49.000
+2 1 2 0 3 1 1 2 2 2 1 1 2 2 2 0 1 1 1 2
+Solution not feasible. Fitness: -50.000
+1 1 1 2 1 2 2 3 1 2 3 1 3 3 1 0 2 0 2 1 3 2 1 2 1 1 2
+Solution not feasible. Fitness: -50.000
+1 1 2 1 1 2 1 1 1 2 2 2 2 0 2 2
+Solution is feasible. Fitness: 49.000
+1 3 2 1 1 1 2 1 2 1 0 1 1 3 2 3 3 0 2 0 0 1 2 1 2 0 0 2 2 0 2 0 0 2 3 3 1 2 3 0 0 1 0 1 2 2 2 0 2 2 1 2 2 2
+Solution not feasible. Fitness: -51.000
+1 1 1 1 2 2 0 2 0 2 2 0 2 2 0 0 1 1 0 2 3 1 1 3 2 2 2 2 1 3 1 2
+Solution is feasible. Fitness: 49.000
+2 0 1 1 1 2 3 0 2 1 2 0 0 2 0 1 2 3 2 2 3 1 1 2 1 0 1 1 3 1 2 2 2 2
+Solution not feasible. Fitness: -50.000
+1 1 2 1 2 2 2 0 0 1 2 3 2 1 2 3 2 1 1 1 0 1 2 2
+Solution is feasible. Fitness: 49.000
+1 2 0 1 3 2 1 1 2 1 1 0 2 3 1 2 0 1 3 2 3 2 3 0 1 2 1 1 2 2 2 1 [0]
+Solution not feasible. Fitness: -51.000
+1 3 1 3 1 1 3 2 1 1 2 0 2 2 2 1 3 3 1 2 1 1 2 1 1 3 2 3 1 1
+Solution not feasible. Fitness: -50.000
+1 2 2 2 1 1 3 1 2 0 0 2 0 1 1 2 1 0 2 2 2 0 0 2 1 2 2 3 1 0 2 2
+Solution not feasible. Fitness: -50.000
+1 3 2 1 2 2 2 1 2 1 3 1 1 0 2 3 1 2 2 1 1
+Solution not feasible. Fitness: -51.000
+1 2 3 1 1 1 1 3 1 2 1 2 1 0 3 1 1 3 0 3 2 3 2 0 2 0 2 2 2 2 3 1 3 1 2 1 2 0 1 1
+Solution not feasible. Fitness: -51.000
+1 1 1 1 2 1 3 0 3 2 2 1 1 2 1 2 2 0 2 1 0 2 0 2 2 2
+Solution not feasible. Fitness: -50.000
+1 1 2 1 2 1 2 1 1 1 2 2 2 1 3 2 0
+Solution not feasible. Fitness: -51.000
+2 0 1 2 1 1 1 0 1 2 1 2 2 3 1 1 3 2 3 1 1 2 3 1 2 2
+Solution not feasible. Fitness: -51.000
+2 1 1 1 1 1 2 2 1 2 2 2 1 2
+Solution not feasible. Fitness: -50.000
+2 0 2 1 1 3 1 0 2 1 1 1 1 1 0 2 2 2 0 2 2 0 2 2 2 2
+Solution not feasible. Fitness: -50.000
+2 0 2 0 1 3 1 3 1 3 1 2 0 3 1 2 1 1 1 1 2 2 1 1 3 1 0 2 2 0 2 2
+Solution not feasible. Fitness: -52.000
+1 1 3 3 1 2 2 0 0 1 2 2 2 2 2 1 2 1 2 1 1 1
+Solution not feasible. Fitness: -50.000
+1 2 2 0 1 1 2 2 2 2 2 1 1 1 2
+Solution not feasible. Fitness: -50.000
+1 3 1 2 0 2 1 1 0 1 2 2 1 1 2 2 2 0 2 1 0 3 1 3 2 1 2 3 2 1
+Solution is feasible. Fitness: 49.000
+1 1 1 3 2 1 1 2 2 1 1 2 2 1 3 2 2 0 2 3 1 1
+Solution is feasible. Fitness: 49.000
+1 1 2 0 2 2 2 2 0 1 2 1 2 0 3 0 0 1 3 1 2 1 1 1 2 2 2
+Solution not feasible. Fitness: -51.000
+2 1 0 2 1 1 0 3 2 0 1 1 1 3 2 3 1 1 0 1 2 2 1 2 3 2 1 2 3 1 0 2 2 2
+Solution not feasible. Fitness: -50.000
+2 1 1 1 0 3 2 3 3 0 1 2 0 1 3 2 1 2 1 2 0 1 2 1 2 3 2 2 1 2 1 1
+Solution not feasible. Fitness: -51.000
+2 1 3 1 0 2 0 1 3 1 2 0 1 2 1 1 0 1 1 2 2 0 2 3 3 3 2 1 1 2 2 1 2 0 2 3 2 3 0 3 0 1 2 1 1 2
+Solution not feasible. Fitness: -51.000
+2 1 1 0 1 2 1 3 2 1 2 1 1 1 3 3 2 0 1 3 1 2 1 2 3 0 2 0 2 1 2 2
+Solution not feasible. Fitness: -50.000
+1 3 1 3 1 1 1 1 2 3 2 2 1 2 2 2 2 1 1 1
+Solution is feasible. Fitness: 49.000
+1 1 1 2 2 2 1 2 2 0 3 2 3 1 0 0 1 2 2 2 1 3 0 2 2 0 1 3 1 2 1 1
+Solution is feasible. Fitness: 49.000
+1 1 3 2 1 1 2 2 2 2 1 2 3 1 1 1 2 0 1 2
+Solution is feasible. Fitness: 49.000
+1 1 3 2 2 0 1 1 2 1 2 1 1 2 2 1 2 2
+Solution is feasible. Fitness: 49.000
+2 1 1 1 2 1 3 2 2 1 3 2 1 0 2 2 1 1 1 0 2 2
+Solution is feasible. Fitness: 49.000
+1 1 1 3 3 3 1 3 2 0 1 2 0 1 1 3 3 1 2 0 2 2 2 0 2 2 0 1 2 2 2 0 2 1 1 2 0 1 2 1
+Solution not feasible. Fitness: -51.000
+2 1 3 1 3 1 3 0 2 0 2 2 0 0 1 2 1 1 1 2 2 3 2 1 3 1 2 2 1 1 2 1
+Solution not feasible. Fitness: -50.000
+2 1 1 1 2 1 2 1 3 2 2 2 1 1 2 1
+Solution is feasible. Fitness: 49.000
+1 1 1 2 2 2 1 3 1 2 2 2 0 2 1 1 2 0
+Solution not feasible. Fitness: -51.000
+2 0 2 1 2 0 1 0 2 1 2 2 2 0 1 1 2 1 2 1 2 3 2 1
+Solution not feasible. Fitness: -50.000
+2 0 2 0 2 1 2 3 0 1 1 0 3 1 2 1 0 1 3 2 3 1 3 2 1 0 0 1 3 1 2 1 1 1 2 3 0 0 2 0 1 3 2 2 2 1 0 3 2 1 2 2 2 3 1 2
+Solution not feasible. Fitness: -52.000
+1 3 1 1 2 1 1 2 2 2 1 1 2 1 2 2
+Solution not feasible. Fitness: -50.000
+1 2 1 1 1 3 2 2 0 1 3 1 3 0 2 0 2 1 1 1 2 2 2 1 2 2 0
+Solution not feasible. Fitness: -50.000
+1 2 1 2 1 2 2 1 3 2 1 2 1 3 1 1 3 1 1 3 0 2 1 0 2 2
+Solution not feasible. Fitness: -50.000
+2 0 1 1 2 1 3 0 1 2 2 2 0 2 2 2 0 2 2 0 1 3 1 2 1 1 1
+Solution not feasible. Fitness: -50.000
+1 1 2 1 2 1 3 1 2 2 2 2 1 3 2 1 1 2 0 1
+Solution not feasible. Fitness: -50.000
+1 1 1 3 1 1 1 3 2 2 3 1 1 1 2 1 2 2 3 0 1 0 2 2 2 0 3 2 2 1
+Solution is feasible. Fitness: 49.000
+1 3 1 1 3 1 3 3 1 3 2 1 1 3 1 0 2 1 2 1 2 1 1 2 1 2 2
+Solution not feasible. Fitness: -50.000
+1 2 3 0 2 0 1 2 1 1 2 0 1 0 1 1 3 3 1 3 2 2 0 1 1 1 2 3 1 0 3 0 3 1 3 3 2 0 1 1 2 1 2 2 2 2 0 2 2 2
+Solution not feasible. Fitness: -50.000
+1 2 1 0 1 3 1 2 1 2 0 3 1 2 2 1 1 1 2 3 1 3 1 0 2 2 2 2
+Solution is feasible. Fitness: 49.000
+1 2 1 2 2 1 2 0 1 3 2 3 2 0 1 1 0 1 3 3 2 2 1 0 3 2 1 0 0 1 1 0 2 0 3 3 2 3 2 3 2 1 1 0 2 2 1 2 1 1
+Solution not feasible. Fitness: -50.000
+1 2 1 0 1 3 1 3 2 1 3 2 2 2 1 3 2 1 1 0 2 0 2 0 2 1 1 2 1 2
+Solution not feasible. Fitness: -51.000
+1 2 0 [0] 1 2 1 2 1 1 3 2 2 3 3 1 2 1 0 0 2 2 2 1 2 1 1
+Solution is feasible. Fitness: 49.000
+1 1 1 1 1 1 2 1 0 2 2 0 3 2 2 2 2 2 1
+Solution not feasible. Fitness: -50.000
+1 1 1 3 2 1 1 2 3 1 1 3 2 1 1 2 0 0 2 1 2 3 1 3 2 1 0 2 2 3 2 1
+Solution is feasible. Fitness: 49.000
+1 1 3 1 2 3 0 1 1 2 2 2 2 2 2 1 2 0 0 3 1 1 2 3 1 3 2 1 3 1 0 1 2 1
+Solution not feasible. Fitness: -50.000
+1 2 1 1 3 1 3 1 3 2 1 2 2 2 1 2 3 0 0 1 0 1 2 0 0 2 1 1 2 2 2 2
+Solution not feasible. Fitness: -51.000
+1 1 1 2 1 2 3 1 2 1 1 1 3 0 1 2 2 2 2 2 0 2 3
+Solution not feasible. Fitness: -50.000
+1 2 1 1 1 3 2 2 0 2 3 1 2 0 2 2 0 2 0 1 2 3 1 2 0 3 0 2 2 0 0 2 0 3 1 2 1 2 1 2 1 1
+Solution is feasible. Fitness: 49.000
+2 0 2 0 2 1 0 1 1 1 2 2 1 2 2 1 1 0 2 2 2 2
+Solution not feasible. Fitness: -50.000
+2 1 0 1 1 3 2 0 1 3 3 3 1 2 1 1 2 2 0 2 1 0 1 1 2 2 2 2 2
+Solution not feasible. Fitness: -50.000
+1 1 2 0 1 2 1 2 1 2 3 0 1 2 1 1 2 3 0 3 1 1 2 2 3 2 2 0 1 2 3
+Solution not feasible. Fitness: -50.000
+1 3 1 3 2 1 3 1 0 2 0 1 3 1 3 1 1 2 2 0 2 2 2 1 3 1 3 2 2 2 1 0 1 2 1 0 2 0 1 2
+Solution not feasible. Fitness: -50.000
+1 3 1 2 3 0 1 1 2 1 2 2 3 1 1 1 0 2 0 1 3 2 0 0 1 1 2 2 2 2 2 2
+Solution not feasible. Fitness: -50.000
+2 2 1 1 1 2 2 0 2 0 1 0 2 1 3 1 3 0 1 2 0 2 3 3 2 2 1 2 2 1 0 3 0 3 1 2 3 1 2 1 1 1
+Solution not feasible. Fitness: -51.000
+1 0 2 1 2 1 2 2 2 2 1 1 1 1 2 2 3 1
+Solution not feasible. Fitness: -51.000
+2 1 1 1 2 2 1 3 1 0 2 1 3 2 0 2 3 0 2 0 3 1 1 2 0 1 1 2 2 2 1 3
+Solution not feasible. Fitness: -51.000
+1 2 0 1 1 1 3 1 1 1 1 3 3 3 1 3 1 3 3 1 3 1 2 1 2 1 1 2 0 3 0 1 2 2 3 2 1 2 2 2
+Solution not feasible. Fitness: -50.000
+1 1 3 3 2 1 3 1 2 0 0 2 2 1 1 0 3 2 2 2 1 3 1 1 1 3 2 2 2 0 0 2 1 2 1 0 0 0 2 2 1 0 2
+Solution not feasible. Fitness: -53.000
+1 3 1 2 3 1 0 1 3 2 3 0 1 1 1 3 1 3 1 2 0 2 2 1 0 1 2 3 3 2 1 2 0 1 0 2 1 2 2 2 1 0 0 0 2 3 1 2 2 2 2 0
+Solution not feasible. Fitness: -51.000
+1 1 3 3 1 1 3 1 2 1 1 2 2 1 1 3 1 2 2 2 3 2 1 1 2 0 3 1 3 1
+Solution not feasible. Fitness: -50.000
+2 1 3 1 1 0 1 2 2 1 2 2 2 3 1 1 1 2 1 3 2 1
+Solution not feasible. Fitness: -50.000
+2 0 1 2 3 2 2 0 0 0 1 2 2 0 0 3 2 1 0 2 3 0 2 0 1 1 1 1 2 0 3 2 3 3 0 3 1 2 1 1 3 2 1 2 1 3 2 2 1 0 1 1 2 1 2 2
+Solution not feasible. Fitness: -53.000
+1 2 0 1 1 3 2 1 0 2 0 2 0 2 0 2 0 2 2 2 0 1 3 1 2 3 1 1 1 2 2 2 2 0 3 2 1 3 1
+Solution not feasible. Fitness: -50.000
+1 1 3 2 1 0 1 2 2 1 2 2 0 3 1 1 1 3 0 3 2 1 1 3 0 2 2 1 1 2 2 2
+Solution not feasible. Fitness: -50.000
+1 1 1 1 1 1 3 3 3 1 3 1 1 2 2 3 1 2 1 2 1 3 2 2 2 1
+Solution not feasible. Fitness: -50.000
+1 3 2 1 3 1 0 1 3 1 3 1 3 2 1 1 1 1 1 2 1 3 1 2 3 2 2 0 2 2 0 2 3 1 2 3 1 1
+Solution not feasible. Fitness: -50.000
+2 0 2 1 0 3 2 0 1 2 1 0 1 2 2 1 0 0 2 2 1 1 1 2 2 3 2 1 1 3 2 2
+Solution not feasible. Fitness: -50.000
+2 1 1 1 2 2 2 2 1 3 1 0 1 1 2 1 2
+Solution not feasible. Fitness: -51.000
+1 3 1 3 2 1 1 1 0 3 3 1 2 1 1 2 2 2 2 1 2 2 0 2 1 0 1 0 2 0 0 3 2 2 1 2
+Solution not feasible. Fitness: -50.000
+2 2 1 0 2 2 1 2 2 1 2 1 0 0 3 2 2 1 1 2 0 3 1 3 2 1 0 2 0 1 2 3 1 1
+Solution not feasible. Fitness: -51.000
+1 1 3 1 2 1 1 2 3 1 2 2 2 2 1 1 3 3 3 1 1 1 1
+Solution not feasible. Fitness: -50.000
+2 0 2 1 0 1 1 1 1 3 2 2 3 2 1 2 2 2 1 1 1 2
+Solution is feasible. Fitness: 49.000
+2 0 2 0 1 1 2 1 1 3 1 3 0 1 1 3 2 2 0 0 1 1 2 2 1 3 2 0 1 0 0 2 2 2 3 2 3 1 1 3 3 1 3 0 3 1 1 2 1 2 2 3 1 2
+Solution not feasible. Fitness: -52.000
+2 0 1 1 1 2 1 1 2 2 1 2 2 2 3 1 1 3 3 1 2 1
+Solution not feasible. Fitness: -50.000
+1 1 1 1 2 0 1 1 2 2 1 2 2 2 2 2
+Solution is feasible. Fitness: 49.000
+1 1 1 3 2 1 1 2 2 1 1 1 2 2 2
+Solution not feasible. Fitness: -50.000
+1 2 2 2 1 1 2 2 2 1 2 1 1
+Solution not feasible. Fitness: -51.000
+2 1 0 1 2 1 2 1 1 3 2 1 2 3 0 1 0 3 0 2 3 2 2 1 0 0 3 1 3 1 2 1 1 2 0 2 2 2 2 1
+Solution not feasible. Fitness: -50.000
+1 1 1 2 2 2 2 1 2 2 0 2 1 1 1 2
+Solution is feasible. Fitness: 49.000
+2 0 1 3 1 1 1 2 2 1 1 2 1 2 1 2 2 3 1 2
+Solution is feasible. Fitness: 49.000
+2 1 0 3 2 1 1 1 1 1 0 1 2 1 2 2 0 3 2 1 3 1 2 3 2 2 3 2 1 1
+Solution not feasible. Fitness: -50.000
+1 1 1 1 2 1 2 1 0 1 2 3 2 0 0 2 2 0 1 3 3 2 1 2 1 2 3 2 1 3 0 2 0 1
+Solution not feasible. Fitness: -52.000
+1 1 1 1 1 1 2 2 2 1 2 2 2 3 1 2
+Solution is feasible. Fitness: 49.000
+1 1 2 0 3 2 1 1 1 1 1 2 1 2 2 3 1 3 2 2 2 1
+Solution not feasible. Fitness: -50.000
+1 1 2 0 2 0 2 1 2 2 0 1 3 2 1 1 1 3 1 1 2 0 3 3 1 2 2 2 3 1 2 2 1 0
+Solution not feasible. Fitness: -51.000
+1 3 1 2 1 1 2 2 1 1 1 2 1 2 3 2 1 3 1 3 2
+Solution not feasible. Fitness: -50.000
+2 1 1 0 3 3 2 0 2 0 2 1 0 1 3 2 0 3 2 1 3 1 1 0 2 2 2 1 2 0 1 1 1 2 2 1 3 1 2 3 2 1
+Solution not feasible. Fitness: -50.000
+1 1 1 3 2 0 2 1 1 2 2 2 2 2 2 0 1 2 0 1 1
+Solution not feasible. Fitness: -50.000
+1 2 1 0 2 1 2 0 2 1 1 1 1 3 2 2 1 3 2 1 3 2 1 2
+Solution is feasible. Fitness: 49.000
+2 1 1 1 2 2 2 2 2 1 1 2 3 1 3 1 0 2 1 1
+Solution is feasible. Fitness: 49.000
+1 2 1 1 3 1 3 0 1 1 3 2 1 3 1 0 3 1 2 1 2 1 2 1 2 2 2 2 0 2
+Solution not feasible. Fitness: -50.000
+2 1 1 1 2 0 1 2 2 0 2 0 3 0 1 2 3 2 2 0 1 0 3 1 3 1 2 2 2 1 2 1 2
+Solution not feasible. Fitness: -51.000
+1 3 2 0 2 1 1 1 1 2 3 2 1 2 3 1 2 2 0 2 0 2 1 1 1 2 0 3 2 1
+Solution is feasible. Fitness: 49.000
+1 1 1 1 1 1 2 2 1 2 0 3 2 2 2 2 2
+Solution not feasible. Fitness: -50.000
+2 0 1 1 1 1 2 2 2 3 1 3 2 1 2 3 1 2 1 2 1 3 1 1
+Solution is feasible. Fitness: 49.000
+1 2 1 1 1 2 2 0 2 0 2 2 2 2 2 1 0 1 1 2
+Solution is feasible. Fitness: 49.000
+2 1 0 1 1 1 2 1 1 1 3 0 2 1 2 2 2 0 2 2 2 3 2 0 3 2 1 1
+Solution not feasible. Fitness: -50.000
+1 2 1 1 2 2 3 2 2 0 1 2 1 2 1 1 1 2 3 1 3 1 [3]
+Solution is feasible. Fitness: 49.000
+2 0 1 2 1 1 2 1 1 1 0 2 3 1 3 2 0 1 0 0 1 2 2 2 1 3 3 2 2 2 2 1 0
+Solution not feasible. Fitness: -51.000
+1 2 1 1 2 1 1 1 1 3 0 2 1 2 3 0 1 2 2 0 2 3 1 2 0 3 1 0 2 2 2 2
+Solution is feasible. Fitness: 49.000
+2 1 0 1 2 1 1 1 3 3 1 3 1 2 3 2 1 0 2 2 2 2 0 0 2 2 3 1 1 2 0 2 1 1 0 2
+Solution not feasible. Fitness: -50.000
+1 2 1 2 2 1 2 0 1 2 2 2 2 1 1 1
+Solution not feasible. Fitness: -50.000
+1 1 [2] 1 3 2 1 1 2 2 1 3 0 2 0 1 1 3 3 0 2 1 2 3 1 1 1 0 2 2 2 3 2 0 2 2 1
+Solution is feasible. Fitness: 49.000
+1 3 1 3 2 2 0 1 3 1 2 0 0 2 1 1 1 3 2 1 1 2 1 2 0 2 0 0 1 0 2 2 2 2 3 1 3 2 3 3 2 1 1 1
+Solution not feasible. Fitness: -50.000
+2 1 1 1 1 2 2 0 0 3 2 0 2 2 2 2 1 0 2 2 0 1 1 2 2 1
+Solution not feasible. Fitness: -50.000
+2 1 1 0 1 3 3 1 1 3 1 2 1 2 2 1 1 2 2 2 0 1 2 2
+Solution is feasible. Fitness: 49.000
+1 [3] 1 2 1 2 1 2 3 1 2 3 1 2 2 1 1 1 2
+Solution is feasible. Fitness: 49.000
+2 2 2 1 1 1 0 0 2 2 2 3 1 0 2 3 2 1 0 0 3 1 0 0 3 1 3 1 2 1 1 2 1 2 2 2 2 1
+Solution not feasible. Fitness: -51.000
+1 3 2 1 1 3 0 2 0 1 3 1 1 3 1 1 3 1 1 1 3 1 3 1 2 2 1 2 2 2 0 2 2 2 0
+Solution not feasible. Fitness: -50.000
+1 2 3 1 1 2 2 1 3 2 1 1 2 3 1 3 2 1 2 0 0 3 3 0 2 0 2 1 0 1 2 2 1 2 0 2
+Solution not feasible. Fitness: -52.000
+2 1 1 1 3 1 1 0 1 1 1 2 2 2 2 0 3 2 1 0 0 2 2 2 2 2
+Solution is feasible. Fitness: 49.000
+1 1 3 2 3 0 2 0 2 1 0 1 1 2 3 3 2 1 1 1 2 3 0 1 3 2 1 1 1 2 2 1 2 3 3 3 2 1 0 3 2 1 1 0 0 3 2 3 1 1 2 1
+Solution not feasible. Fitness: -51.000
+1 3 1 1 1 3 1 2 2 0 2 1 2 1 1 1 3 1 2 2 3 2 3 1 2 0 3 2 2 0 1 2 0 1
+Solution not feasible. Fitness: -51.000
+1 1 1 1 3 2 0 3 1 1 1 1 3 3 2 3 0 2 0 1 2 2 3 2 2 3 1 0 2 2 1 2 2 1 1 0 2 0 1 0 3 0 1 2 2 2 1 3
+Solution not feasible. Fitness: -50.000
+1 1 1 2 2 2 3 2 1 1 2 0 2 1 2 1 2 1
+Solution not feasible. Fitness: -50.000
+1 2 1 0 1 1 3 1 2 0 2 2 2 2 2 0 0 2 3 0 2 1 1 0 0 2 0 3 2 2 2 2 1 1 1 2
+Solution not feasible. Fitness: -50.000
+1 1 3 1 2 1 2 2 0 1 2 3 1 2 2 1 2 1 0 1 3 0 1 0 0 2 2 3 0 2 2 2 3 2 1 3 1 0 1 3 1 2
+Solution not feasible. Fitness: -50.000
+1 3 2 1 1 0 3 1 1 3 2 1 1 0 2 3 0 1 2 0 1 3 3 3 1 2 1 0 1 1 1 3 1 2 3 2 1 2 2 2 3 1 0 2 3 2 3 1 2 1
+Solution is feasible. Fitness: 49.000
+1 3 1 1 1 1 2 0 1 1 2 2 1 2 3 1 3 1 2 2 0 0 2 2 2 3 0 1 2 2 0 2
+Solution is feasible. Fitness: 49.000
+1 2 2 2 2 1 2 0 1 2 1 2 3 0 1 1 1 2 2 3 1 1
+Solution not feasible. Fitness: -51.000
+1 1 1 2 3 1 1 2 2 2 0 3 2 2 0 0 3 1 2 3 0 1 2 0 1 2 3 0 2 2 1 2 2 1
+Solution not feasible. Fitness: -51.000
+1 3 1 1 1 1 3 1 1 3 2 0 2 2 3 2 1 0 1 2 0 1 1 2 0 2 2 2 2
+Solution not feasible. Fitness: -50.000
+1 1 1 2 2 1 2 0 1 1 2 1 2 0 2 2 2 2
+Solution is feasible. Fitness: 49.000
+1 3 1 2 0 1 2 0 1 2 0 1 2 0 2 2 1 1 0 1 2 3 2 2 0 2 1 2 2 0 2 2
+Solution is feasible. Fitness: 49.000
+1 2 3 0 1 3 2 1 0 3 1 1 2 1 2 2 1 2 2 2 3 0 2 1 2 1 0 2 1 1
+Solution is feasible. Fitness: 49.000
+1 2 2 1 1 2 1 2 3 1 0 2 2 2 1 3 0 3 0 2 2 1 2 1 1 1
+Solution not feasible. Fitness: -50.000
+1 2 1 1 0 1 1 3 3 2 3 1 0 1 1 1 1 3 3 3 2 2 1 3 2 1 1 1 2 2 3 0 2 1
+Solution not feasible. Fitness: -51.000
+1 1 1 2 2 2 0 3 1 2 2 1 3 1 2 2 0 3 2 1 3 1 1 1 1 0 3 1 3 1 2 2
+Solution not feasible. Fitness: -50.000
+1 1 1 2 2 1 2 1 1 3 1 1 3 2 2 1 3 2 2 1
+Solution is feasible. Fitness: 49.000
+2 1 2 1 2 1 0 1 0 2 2 2 2 1 1 2 1 0 2 2
+Solution not feasible. Fitness: -51.000
+1 1 2 1 1 0 2 3 0 1 3 3 1 3 3 2 1 1 3 3 2 2 3 0 1 0 2 1 1 1 2 1 1 1 3 2 1 2 0 3 2 2 0 2 2 0 0 2 1 2
+Solution not feasible. Fitness: -52.000
+2 0 1 1 3 1 1 3 2 0 1 1 3 2 3 0 2 1 2 1 3 1 2 1 1 3 1 2 2 2 1 3
+Solution not feasible. Fitness: -51.000
+1 2 0 2 0 1 3 1 2 2 2 1 1 2 2 2 2 1 1 3 1 1
+Solution not feasible. Fitness: -50.000
+2 1 1 1 0 2 1 2 1 2 0 1 2 2 2 2 2 1
+Solution is feasible. Fitness: 49.000
+1 1 3 2 2 0 1 1 2 1 1 2 3 1 2 2 2 1 2 1
+Solution not feasible. Fitness: -51.000
+1 1 1 2 2 0 2 1 2 1 3 1 0 1 1 2 2 3 0 2 1 2 3 2 2 0 1 2
+Solution is feasible. Fitness: 49.000
+1 1 2 0 3 2 1 1 2 2 1 2 3 2 0 2 1 2 2 1 1 1 0 3 2
+Solution not feasible. Fitness: -50.000
+2 1 3 1 0 2 0 2 1 1 2 2 1 0 2 1 1 2 0 2 2 2 1
+Solution not feasible. Fitness: -50.000
+2 0 2 1 0 1 1 2 1 3 2 2 1 2 0 2 0 1 1 3 1 0 3 3 0 0 3 3 2 3 0 2 1 1 3 1 2 1 2 1 2 1 3 1 1 2 2 2
+Solution not feasible. Fitness: -51.000
+2 1 0 3 1 1 2 0 2 1 0 3 1 2 2 1 1 1 0 0 2 0 1 2 2 2 2 2 3 1 0 2 2 2
+Solution is feasible. Fitness: 49.000
+1 1 3 3 1 3 1 1 1 1 1 1 2 1 2 3 3 2 1 2 3 1 2 2 1 3 1 3 2 1
+Solution not feasible. Fitness: -50.000
+1 1 1 2 2 2 1 2 2 2 1 2
+Solution not feasible. Fitness: -51.000
+1 2 1 1 2 2 3 1 2 3 1 2 2 1 1 2 0 0 2 1 0 2 3 2 3 1 1 1
+Solution not feasible. Fitness: -50.000
+2 1 0 2 0 2 0 1 1 2 1 2 0 2 1 3 0 3 2 1 1 1 3 1 1 3 2 2 2 2 2 3
+Solution not feasible. Fitness: -51.000
+1 2 2 1 1 2 1 1 1 2 2 2 1 2
+Solution not feasible. Fitness: -50.000
+1 2 1 0 3 2 1 3 0 2 0 1 1 1 3 2 2 1 1 3 0 3 3 0 2 1 0 3 1 2 0 2 3 1 1 3 3 3 3 0 1 3 1 2 0 1 1 1 1 3 1 2 1 1 2 2 2 2 2 2
+Solution not feasible. Fitness: -50.000
+2 2 0 1 2 3 0 1 1 0 3 3 2 1 1 3 2 1 2 2 0 2 2 1 1 3 2 1 2 1 1 1
+Solution not feasible. Fitness: -52.000
+1 3 2 1 1 0 1 2 0 3 2 3 3 0 1 1 1 1 2 0 1 3 3 1 1 1 1 2 2 2 2 0 2 3 0 2 1 3 0 2 1 2 2 0 0 2 2 2
+Solution is feasible. Fitness: 49.000
+1 2 2 1 1 1 2 1 1 1 3 2 1 3 1 3 1 0 2 3 0 2 1 2 3 2 0 2 3 2 3 1 0 2 1 1
+Solution not feasible. Fitness: -50.000
+2 0 1 2 1 1 3 0 1 1 1 1 2 2 0 2 0 2 2 2 2 2 2 0 2 1
+Solution is feasible. Fitness: 49.000
+2 1 3 1 0 1 2 0 1 3 1 3 1 2 1 3 1 1 2 1 2 3 1 2 2 2 2 1
+Solution not feasible. Fitness: -50.000
+2 1 3 1 3 1 1 3 2 1 0 0 2 1 2 2 2 2 1 3 2 1 1 3 3 0 1 2 1 2 3 1 3 0 1 1 0 2 1 3 2 1
+Solution not feasible. Fitness: -50.000
+1 1 1 1 2 3 2 0 3 3 1 1 1 2 2 1 1 3 1 2 1 2 2 2
+Solution is feasible. Fitness: 49.000
+1 3 1 3 2 0 1 3 1 1 1 1 1 1 1 2 3 1 0 2 0 2 3 2 2 0 0 2 1 2 3 1 2 2 0 2 2 2
+Solution is feasible. Fitness: 49.000
+2 1 0 1 2 1 3 0 1 3 1 1 1 2 1 0 1 2 3 2 1 3 3 3 1 3 1 3 0 3 2 1 1 1 1 3 1 3 2 3 1 2 2 1 2
+Solution not feasible. Fitness: -51.000
+2 1 0 2 0 1 1 1 1 3 1 1 2 2 2 2 2 1 2
+Solution not feasible. Fitness: -50.000
+2 1 1 3 1 0 1 1 1 1 1 3 1 3 3 2 0 1 1 2 2 0 2 0 0 2 0 2 2 2 3 2 3 2 1 1 0 3 2 0 0 2 1 2 2 3 1 2
+Solution not feasible. Fitness: -52.000
+1 2 1 1 1 0 2 2 2 1 0 2 1 2 0 2 2 1 2 2
+Solution is feasible. Fitness: 49.000
+1 1 1 1 3 3 3 1 2 0 2 0 1 2 0 3 2 1 1 2 0 2 2 1 3 2 0 1 0 1 3 1 2 2 3 3 0 1 1 2 2 0 2 2 3 1 0 1 2 2
+Solution not feasible. Fitness: -50.000
+1 1 1 1 1 1 2 0 2 1 3 1 0 3 3 1 1 2 2 0 2 3 1 3 0 1 0 3 3 1 2 1 2 2 0 3 0 0 2 3 1 0 2 2 2 1 3 1 3 2 0 1 2 2 3 0 2 2
+Solution not feasible. Fitness: -52.000
+1 1 3 2 1 1 2 2 2 0 1 1 1 0 1 3 1 3 1 2 3 1 0 2 3 1 0 3 3 3 1 2 0 1 2 2 1 0 2 3 2 1 2 0 0 0 2 0 2 2 2 0 0 2 2 3 1
+Solution not feasible. Fitness: -50.000
+2 1 2 1 1 1 2 2 2 2 2 1 0 1 1 0 2 0 2 2
+Solution not feasible. Fitness: -50.000
+1 2 1 3 1 1 0 3 1 2 0 2 2 0 0 2 2 2 1 2 1 2 2 1 1 2
+Solution not feasible. Fitness: -51.000
+1 3 2 1 3 0 2 1 1 1 2 2 1 2 2 1 1 1 2
+Solution not feasible. Fitness: -51.000
+1 3 2 1 0 1 2 1 1 3 0 2 3 0 1 2 0 2 0 1 2 1 1 1 0 2 0 2 3 2 3 2 0 1 2 1 3 1 2 2 2 2
+Solution not feasible. Fitness: -50.000
+2 1 1 1 1 3 0 3 1 3 2 1 2 1 1 2 3 1 1 2 1 0 2 2 2 2
+Solution is feasible. Fitness: 49.000
+2 0 1 3 2 1 3 1 2 1 1 2 1 3 1 2 2 2 2 0 0 0 2 2 2 1 1 0 1 2
+Solution not feasible. Fitness: -50.000
+[1] 1 2 2 0 1 0 3 2 3 1 1 3 1 1 2 2 2 1 2 1 1 1 3 2 1 2 0 2
+Solution not feasible. Fitness: -50.000
+1 1 2 0 2 2 1 1 0 2 1 2 0 3 2 1 1 1 2 2 2 0 2 2
+Solution not feasible. Fitness: -50.000
+2 0 1 2 2 1 2 2 1 1 2 2 0 0 2 1 1 1 0 0 3 2 1 3 1 0 0 0 0 2 0 3 1 2 0 3 2 2 1 0 3 0 1 2 2 2 0 2 2 3 2 1 0 2 2 2
+Solution not feasible. Fitness: -51.000
+2 1 1 3 1 1 0 3 3 1 1 3 3 2 1 1 2 2 1 3 3 1 1 3 2 2 1 2 1 1 2 1
+Solution is feasible. Fitness: 49.000
+1 2 3 1 1 1 2 2 1 0 1 3 0 0 3 1 2 3 1 3 2 1 2 2 0 2 0 2 1 1 2 2 1 2
+Solution not feasible. Fitness: -50.000
+1 1 1 2 1 2 2 2 2 2 1 1 2 1
+Solution is feasible. Fitness: 49.000
+1 1 1 2 1 2 2 2 2 2 1 1 2 1
+Solution is feasible. Fitness: 49.000

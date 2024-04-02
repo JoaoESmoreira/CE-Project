@@ -83,19 +83,21 @@ class Solution:
         Return the fitness value for this solution if defined, otherwise
         should return None
         """
-        feasible = -self.target[0]**2
+        feasible = -3
         if self.is_feasible():
-            feasible = self.target[0]**2
-
-        return -(abs(self.position[0]-self.target[0]) + abs(self.position[1]-self.target[1]) + self.problem.penalties(self.path) ) + feasible
+            feasible = 2
+        return -len(self.used) + self.target[0]*2 + feasible * (len(self.used))
+        # if self.is_feasible():
+        # return None
 
     def random_moves(self) -> Iterable[Component]:
         """
         Return an iterable (generator, iterator, or iterable object)
         over all components that can be added to the solution
         """
+        self.total_moves -= 1
         #if self.total_moves > 0 and self.position != self.target:
-        if self.position != self.target and self.total_moves > 0:
+        if self.position != self.target:
             unused = self.unused.copy()
             if self.position[0] == 0:
                 unused.remove(3)
@@ -123,7 +125,6 @@ class Solution:
             self.position = (self.position[0]-1, self.position[1])
         self.used.append(i)
         self.path.append(self.position)
-        self.total_moves -= 1
 
     def get_genotype(self) -> Optional[set[Component]]:
         """
@@ -132,7 +133,7 @@ class Solution:
         """
         return self.used
 
-    def _crossover1(self, parent: Optional[Colection]) -> None:
+    def crossover(self, parent: Optional[Colection]) -> None:
         self.path = []
         cut_point = random.randint(0, min(len(self.used), len(parent)))
         if random.randint(0, 1) > 0:
@@ -140,27 +141,11 @@ class Solution:
         else:
             self.used = parent[:cut_point] + self.used[cut_point:]
 
-    def crossover(self, parent: Optional[Colection]) -> None:
-        self.path = []
-        if len(self.used) >= 3 and len(parent) >= 3:
-            crossover_points = sorted(random.sample(range(1, min(len(self.used), len(parent))), 2))
-            self.used = self.used[:crossover_points[0]] + parent[crossover_points[0]:crossover_points[1]] + self.used[crossover_points[1]:]
-
     def mutate(self) -> None:
         self.path = []
-        # mutate compontens
         for i in range(len(self.used)):
             if random.randint(0, 1) == 1:
                 self.used[i] = random.randint(0, 3)
-        # remove componentes
-        if random.random() < 0.2 and len(self.used) > 0:
-            self.used.pop(random.randint(0, len(self.used)-1))
-        # add components
-        if random.random() < 0.2:
-            if random.randint(0, 1) == 1:
-                self.used.insert(random.randint(0, len(self.unused)), random.choices(list(self.unused)))
-            else:
-                self.used.append(random.choices(list(self.unused)))
 
 class Problem:
     def __init__(self, n: int,
@@ -169,17 +154,6 @@ class Problem:
         self.mmap = mmap
         self.sourse = (0, 0)
         self.target = (n-1, n-1)
-
-    def penalties(self, path: list[tuple[int, int]]) -> int:
-        count = 0
-        for step in path:
-            for i in step:
-                if i < 0 or i == self.n:
-                    count += 1
-        for step in path:
-            if 0 <= step[0] < self.n and 0 <= step[1] < self.n and self.mmap[step[0]][step[1]] == 'H':
-                count += 1
-        return count
 
     def get_lake(self, path: list[tuple[int, int]]) -> None:
         for step in path:
