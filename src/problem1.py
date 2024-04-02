@@ -85,8 +85,8 @@ class Solution:
         """
         feasible = -3
         if self.is_feasible():
-            feasible = 2
-        return -len(self.used) + self.target[0]*2 + feasible * (len(self.unused))
+            feasible = self.target[0]**2 - len(self.used)
+        return -len(self.used) + self.target[0]*2 + feasible #* (len(self.used))
         # if self.is_feasible():
         # return None
 
@@ -133,13 +133,18 @@ class Solution:
         """
         return self.used
 
-    def crossover(self, parent: Optional[Colection]) -> None:
+    def _crossover1(self, parent: Optional[Colection]) -> None:
         self.path = []
         cut_point = random.randint(0, min(len(self.used), len(parent)))
         if random.randint(0, 1) > 0:
             self.used = self.used[:cut_point] + parent[cut_point:]
         else:
             self.used = parent[:cut_point] + self.used[cut_point:]
+
+    def crossover(self, parent: Optional[Colection]) -> None:
+        self.path = []
+        crossover_points = sorted(random.sample(range(1, min(len(self.used), len(parent))), 2))
+        self.used = self.used[:crossover_points[0]] + parent[crossover_points[0]:crossover_points[1]] + self.used[crossover_points[1]:]
 
     def mutate(self) -> None:
         self.path = []
