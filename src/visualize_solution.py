@@ -14,7 +14,11 @@ MAX_ITERATIONS_12_by_12 = 500
 if __name__ == "__main__":
     fenotype = [1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2]
     fenotype = [1, 1, 1, 1, 2, 2, 1, 1, 2, 1, 2, 2, 2, 2]
-    my_map = map_8_by_8
+    fenotype = [2, 2, 2, 1, 1, 1, 0, 2, 1, 1, 0, 3, 2, 0, 1, 3, 1, 2, 3, 1, 1, 1, 1, 1, 3, 1]
+    fenotype = [1, 2, 2, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 1, 0, 2, 0, 2, 2]
+    fenotype = [2, 1, 2, 1, 2, 1, 1, 2, 0, 2, 3, 1, 1, 2, 2, 0, 2, 2, 2, 1, 1, 2, 2, 1, 1, 1, 2, 1]
+    fenotype = [2, 2, 2, 1, 2, 1, 1, 2, 2, 1, 2, 2, 1, 1, 1, 1, 2, 2, 1, 1, 2, 1]
+    my_map = map_12_by_12
 
     RENDER_MODE = 'human'
     env = gym.make('FrozenLake-v1', desc=my_map, is_slippery=False, render_mode=RENDER_MODE)

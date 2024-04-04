@@ -4,7 +4,7 @@ import random
 
 mmap = []
 n = None
-with open("./data/MAP_8_BY_8/input01.txt", "r") as f:
+with open("./data/MAP_12_BY_12/input01.txt", "r") as f:
     n = int(f.readline())
     for _ in range(n):
         mmap.append(f.readline()[:-1])
@@ -12,9 +12,10 @@ num_actions = list(range(4))
 
 
 population_size = 100
-num_generations = 200
+num_generations = 1000
 elite_percentage = 0.2
 mutation_rate = 0.1
+individual_size = 500
 
 
 def mapping(individual) -> list[tuple[int, int]]:
@@ -32,6 +33,14 @@ def mapping(individual) -> list[tuple[int, int]]:
         path.append(last_position)
     return path
 
+def repeted_cells(path) -> int:
+    path = path.copy()
+    repeted = 0
+    for cell in path:
+        repeted += path.count(cell)
+        path = list(filter((cell).__ne__, path))
+    return repeted
+
 def evaluate_individual(individual) -> int:
     path = mapping(individual)
     count = 0
@@ -44,10 +53,12 @@ def evaluate_individual(individual) -> int:
             count += 1
 
     fitness = 0
-    if count == 0:
+    if count == 0 and len(path) > 0:
         fitness = len(individual)
-        fitness = path[-1][0] + path[-1][0]
+        fitness = (path[-1][0] + path[-1][1])*10 + len(individual)*3 - repeted_cells(path)*2
+        fitness = (path[-1][0] + path[-1][1])# + len(individual)
         if path[-1] == (n-1, n-1):
+            print("here")
             fitness *= 10
     else:
         fitness = -count
@@ -73,12 +84,13 @@ def mutate(individual, mutation_rate) -> list[int]:
     for i in range(len(individual)):
         if random.random() < mutation_rate:
             individual[i] = random.randint(0, 3)
-    if random.random() < mutation_rate:
+    if random.random() < mutation_rate and len(individual) < individual_size:
         individual.append(random.randint(0, 3))
+    if random.random() < mutation_rate and len(individual) > 0:
+        individual.pop(random.randint(0, len(individual)-1))
     return individual
 
-
-if __name__ == "__main__":
+def sea():
     population = initialize_population()
     for generation in range(num_generations):
         fitness_scores = [evaluate_individual(individual) for individual in population]
@@ -94,12 +106,16 @@ if __name__ == "__main__":
         while len(offspring) < population_size:
             parent1, parent2 = random.sample(parents, 2)
             child1, child2 = crossover(parent1, parent2)
-            child1 = mutate(child1, mutation_rate)
-            child2 = mutate(child2, mutation_rate)
+            if random.random() < mutation_rate:
+                child1 = mutate(child1, mutation_rate)
+            if random.random() < mutation_rate:
+                child2 = mutate(child2, mutation_rate)
             offspring.extend([child1, child2])
         population = offspring
-    
     # Evaluate the best individual
     best_individual_fitness = evaluate_individual(best_individual)
     print("Best Individual Actions:", best_individual)
     print("Best Individual Fitness:", best_individual_fitness)
+
+if __name__ == "__main__":
+    sea()

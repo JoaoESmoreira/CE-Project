@@ -28,7 +28,7 @@ Problem = TypeVar('Problem', bound=ProblemProtocol)
 PROB_CROSSOVER = 0.9
 PROB_MUTATION = 0.05
 POPULATION_SIZE = 100
-ELITISM_SIZE = POPULATION_SIZE * 0.2
+ELITISM_SIZE = int(POPULATION_SIZE * 0.2)
 TOURNAMENT_SIZE = 10
 
 
@@ -45,8 +45,9 @@ def sea(problem:Problem, budget: int) -> Optional[Solution]:
     init_population = list(random_construction(problem.empty_solution()) for _ in range(POPULATION_SIZE))     # init population
     population = list((individual.fitness(), individual) for individual in init_population)                   # evaluate population
 
-    for _ in range(budget):
+    for i in range(budget):
         population.sort(key=lambda x: x[0], reverse=True)
+        print("Generation:", i, " ", population[0][0], " ",population[0][1].output(), end="")
         offspring = select_survivors(population)
         while len(offspring) < POPULATION_SIZE:
             if random.random() < PROB_CROSSOVER:
