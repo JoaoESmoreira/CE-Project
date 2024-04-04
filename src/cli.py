@@ -22,6 +22,7 @@ def cli(Problem):
     if args.generate_data:
         from generate_maps import write_maps
         write_maps()
+        return
 
     p = Problem.from_textio(args.input_file)
     #if s is not None:

@@ -4,7 +4,7 @@ import random
 
 mmap = []
 n = None
-with open("./data/MAP_12_BY_12/input01.txt", "r") as f:
+with open("./data/MAP_12_BY_12/input09.txt", "r") as f:
     n = int(f.readline())
     for _ in range(n):
         mmap.append(f.readline()[:-1])
@@ -15,7 +15,7 @@ population_size = 100
 num_generations = 1000
 elite_percentage = 0.2
 mutation_rate = 0.1
-individual_size = 500
+individual_size = 200
 
 
 def mapping(individual) -> list[tuple[int, int]]:
@@ -54,12 +54,12 @@ def evaluate_individual(individual) -> int:
 
     fitness = 0
     if count == 0 and len(path) > 0:
-        fitness = len(individual)
-        fitness = (path[-1][0] + path[-1][1])*10 + len(individual)*3 - repeted_cells(path)*2
+        # fitness = len(individual)
+        # fitness = (path[-1][0] + path[-1][1])*10 + len(individual)*3 - repeted_cells(path)*2
         fitness = (path[-1][0] + path[-1][1])# + len(individual)
         if path[-1] == (n-1, n-1):
-            print("here")
-            fitness *= 10
+            # print("here")
+            fitness = abs(fitness) * 10 - len(individual)
     else:
         fitness = -count
     return fitness
@@ -99,7 +99,7 @@ def sea():
         best_individual = population[best_individual_index]
         best_fitness = fitness_scores[best_individual_index]
 
-        print(f"Generation {generation+1}, Best Fitness: {best_fitness}", best_individual)
+        # print(f"Generation {generation+1}, Best Fitness: {best_fitness}", best_individual)
 
         parents = select_parents(population, fitness_scores, elite_percentage)
         offspring = []
@@ -118,4 +118,5 @@ def sea():
     print("Best Individual Fitness:", best_individual_fitness)
 
 if __name__ == "__main__":
-    sea()
+    for _ in range(30):
+        sea()
