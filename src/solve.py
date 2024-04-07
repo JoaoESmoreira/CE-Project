@@ -4,18 +4,15 @@ import random
 
 mmap = []
 n = None
-with open("./data/MAP_4_BY_4/input09.txt", "r") as f:
-    n = int(f.readline())
-    for _ in range(n):
-        mmap.append(f.readline()[:-1])
 num_actions = list(range(4))
 
 
 population_size = 100
 num_generations = 1000
-elite_percentage = 0.2
+elite_percentage = 0.1
 mutation_rate = 0.1
-individual_size = 100
+individual_size = 200
+elite_size = int(elite_percentage * population_size)
 
 
 def mapping(individual) -> list[tuple[int, int]]:
@@ -49,15 +46,17 @@ def evaluate_individual(individual) -> int:
     path = mapping(individual)
     count = 0
     for step in path:
-        for i in step:
-            if i < 0 or i == n:
-                count += 1
-    for step in path:
-        if 0 <= step[0] < n and 0 <= step[1] < n and mmap[step[0]][step[1]] == 'H':
+        if mmap[step[0]][step[1]] == 'H':
             count += 1
     if len(path) == 0:
         return -count*n - n*2
-    return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path)
+    #return (path[-1][0] + path[-1][1])*n - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) + is_feasible(individual)*200 - len(individual)
+    #return (path[-1][0] + path[-1][1])*n - count*20 - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1)))*5 + is_feasible(individual)*200 - len(individual)
+    #return (path[-1][0] + path[-1][1])*n - count*20 + is_feasible(individual)*400
+    #return (path[-1][0]*2 + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path)
+    return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path)      # best fitness in general
+    #return (path[-1][0] + path[-1][1])*n - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) + is_feasible(individual)*200 - len(individual)
+    #return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path)
     #return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1)))
 
     fitness = 0
@@ -84,9 +83,8 @@ def is_feasible(individual) -> bool:
 def initialize_population() -> list[list[int]]:
     return [[random.randint(0, 3) for _ in range(random.randint(1, 100))] for _ in range(population_size)]
 
-def select_parents(population, fitness_scores, elite_percentage) -> list[list[int]]:
+def select_parents(population, fitness_scores) -> list[list[int]]:
     sorted_indices = sorted(range(len(fitness_scores)), key=lambda i: fitness_scores[i], reverse=True)
-    elite_size = int(elite_percentage * len(population))
     elite_indices = sorted_indices[:elite_size]
     return [population[idx] for idx in elite_indices]
 
@@ -101,18 +99,26 @@ def select_parents(population, fitness_scores, elite_percentage) -> list[list[in
 #    print(parents)
 #    return parents
 
-def tornement_selection(population, fitness_scores, elite_percentage) -> list[list[int]]:
+def tornement_selection(population, fitness_scores) -> list[list[int]]:
     pop_fit = [(population[i], fitness_scores[i]) for i in range(len(population))]
-    elite_size = int(elite_percentage * len(population))
     parents = random.sample(pop_fit, elite_size)
     parents.sort(key=lambda element: element[1], reverse=True)
-    parents = [parents[0][0], parents[1][0]]
-    return parents
+    return [parents[0][0], parents[1][0]]
 
 def crossover(parent1, parent2) -> tuple[list[int], list[int]]:
     crossover_point = random.randint(0, min(len(parent1), len(parent2)))
     child1 = parent1[:crossover_point] + parent2[crossover_point:]
     child2 = parent2[:crossover_point] + parent1[crossover_point:]
+    return child1, child2
+
+def tow_point_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
+    length = min(len(parent1), len(parent2))
+    point1 = random.randint(0, length)
+    point2 = random.randint(0, length)
+    if point1 > point2:
+        point1, point2 = point2, point1
+    child1 = parent1[:point1] + parent2[point1:point2] + parent1[point2:]
+    child2 = parent2[:point1] + parent1[point1:point2] + parent2[point2:]
     return child1, child2
 
 def mutate(individual, mutation_rate) -> list[int]:
@@ -121,63 +127,80 @@ def mutate(individual, mutation_rate) -> list[int]:
             individual[i] = random.randint(0, 3)
     #while random.random() < 0.5 and len(individual) < individual_size:
     #    individual.append(random.randint(0, 3))
+    if random.random() < mutation_rate and len(individual) > 0:
+        #individual.pop(random.randint(0, len(individual)-1))
+        individual = individual[:int(len(individual)//2)]
     if random.random() < 0.5 and len(individual) < individual_size:
         path = mapping(individual)
         if len(path) > 0:
-            for i in range(min(abs(path[-1][0] - n), abs(path[-1][1] - n))):
+            number_steps = min(abs(path[-1][0] - n), abs(path[-1][1] - n))
+            for i in range(random.randint(1, number_steps)):
                 individual.append(random.randint(0, 3))
         else:
             for i in range(n):
                 individual.append(random.randint(0, 3))
-    if random.random() < mutation_rate and len(individual) > 0:
-        individual.pop(random.randint(0, len(individual)-1))
     return individual
 
-# import matplotlib.pyplot as plt 
-# import numpy as np
-# def create_interactive_plot(title, xlabel, ylabel, lim_x, lim_y):
-#     plt.ion()
-#     # creating subplot and figure
-#     fig = plt.figure()
-#     ax = fig.add_subplot(111)
-#     ax.set_ylim(*lim_y)
-#     ax.set_xlim(*lim_x)
-#     line1, = ax.plot([], [])
-#     # setting labels
-#     plt.xlabel(xlabel)
-#     plt.ylabel(ylabel)
-#     plt.title(title)
-#     return line1, fig, ax
-# 
-# def update_graph(x, y, graph, fig, ax):
-#     graph.set_xdata(np.append(graph.get_xdata(), x))
-#     graph.set_ydata(np.append(graph.get_ydata(), y))
-#     ax.draw_artist(ax.patch)
-#     ax.draw_artist(graph)
-#     fig.canvas.draw()
-#     fig.canvas.flush_events()
+## import matplotlib.pyplot as plt 
+## import numpy as np
+## def create_interactive_plot(title, xlabel, ylabel, lim_x, lim_y):
+##     plt.ion()
+##     # creating subplot and figure
+##     fig = plt.figure()
+##     ax = fig.add_subplot(111)
+##     ax.set_ylim(*lim_y)
+##     ax.set_xlim(*lim_x)
+##     line1, = ax.plot([], [])
+##     # setting labels
+##     plt.xlabel(xlabel)
+##     plt.ylabel(ylabel)
+##     plt.title(title)
+##     return line1, fig, ax
+## 
+## def update_graph(x, y, graph, fig, ax):
+##     graph.set_xdata(np.append(graph.get_xdata(), x))
+##     graph.set_ydata(np.append(graph.get_ydata(), y))
+##     ax.draw_artist(ax.patch)
+##     ax.draw_artist(graph)
+##     fig.canvas.draw()
+##     fig.canvas.flush_events()
+
+from collections import defaultdict
+def find_identical_sublists(list_of_lists):
+    groups = defaultdict(list)
+
+    for idx, sublist in enumerate(list_of_lists):
+        sublist_tuple = tuple(sublist)
+        groups[sublist_tuple].append(idx)
+    identical_groups = {sublist_tuple: indexes for sublist_tuple, indexes in groups.items() if len(indexes) > 10}
+    return identical_groups
 
 def sea():
-    # f = create_interactive_plot('Evolving...', 'Iteration', 'Quality', (0, 1000), (-2, 200))
-
+    #f1 = create_interactive_plot('Best fitness...', 'Iteration', 'Quality', (0, 1000), (-100, 100))
+    #f2 = create_interactive_plot('Avg fitness...', 'Iteration', 'Quality', (0, 1000), (-100, 100))
     population = initialize_population()
     for generation in range(num_generations):
         fitness_scores = [evaluate_individual(individual) for individual in population]
-
         best_individual_index = fitness_scores.index(max(fitness_scores))
         best_individual = population[best_individual_index]
         best_fitness = fitness_scores[best_individual_index]
 
-        # print(f"Generation {generation+1}, Best Fitness: {best_fitness}", best_individual)
-        #print("Avg fitness: ", sum(fitness_scores) / len(fitness_scores))
-        # update_graph(generation, best_fitness, *f)
+        # identical_individuals = find_identical_sublists(population)
+        # for sublist, indexes in identical_individuals.items():
+        #     for i in indexes:
+        #         if random.random() < mutation_rate:
+        #             population[i] = mutate(population[i], mutation_rate)
 
-        parents = select_parents(population, fitness_scores, elite_percentage)
-        offspring = []
+        #update_graph(generation, best_fitness, *f1)
+        #update_graph(generation, sum(fitness_scores) / len(fitness_scores), *f2)
+
+        #parents = select_parents(population, fitness_scores, elite_percentage)
+        #offspring = random.sample(population, elite_size)
+        offspring = [[random.randint(0, 3) for _ in range(random.randint(1, 100))] for _ in range(10)]
         while len(offspring) < population_size:
-            parent1, parent2 = random.sample(parents, 2)
-            # parent1, parent2 = tornement_selection(population, fitness_scores, elite_percentage)
-            child1, child2 = crossover(parent1, parent2)
+            #parent1, parent2 = random.sample(parents, 2)
+            parent1, parent2 = tornement_selection(population, fitness_scores)
+            child1, child2 = tow_point_crossover(parent1, parent2)
             if random.random() < mutation_rate:
                 child1 = mutate(child1, mutation_rate)
             if random.random() < mutation_rate:
@@ -187,13 +210,64 @@ def sea():
     # Evaluate the best individual
     best_individual_fitness = evaluate_individual(best_individual)
     if is_feasible(best_individual):
-        print("Feasible Individual Actions:", best_individual)
-        print("Fitness:", best_individual_fitness)
+        print("--- Feasible Individual Actions: {fitness}".format(fitness=best_individual_fitness), best_individual)
+        return True
     else:
-        print("Not feasible Individual Actions:", best_individual)
-        print("Fitness:", best_individual_fitness)
+        print("Not Feasible Individual Actions: {fitness}".format(fitness=best_individual_fitness), best_individual)
+        return False
 
+def random_with_random_restart():
+    best_fitness = -100000
+    best_individual = None
+    for _ in range(num_generations):
+        population = initialize_population()
+        fitness_scores = [evaluate_individual(individual) for individual in population]
+
+        current_best_individual_index = fitness_scores.index(max(fitness_scores))
+        current_best_individual = population[current_best_individual_index]
+        current_best_fitness = fitness_scores[current_best_individual_index]
+
+        if best_fitness < current_best_fitness:
+            best_fitness = current_best_fitness
+            best_individual = current_best_individual
+
+    if is_feasible(best_individual):
+        print("--- Feasible Individual Actions: {fitness}".format(fitness=best_fitness), best_individual)
+        return True
+    else:
+        print("Not feasible Individual Actions: {fitness}".format(fitness=best_fitness), best_individual)
+        return False
+        
 if __name__ == "__main__":
-    sea()
-    for _ in range(20):
-        sea()
+    # PATH_MAP = "./data/MAP_12_BY_12/input02.txt"
+    # with open(PATH_MAP, "r") as f:
+    #     n = int(f.readline())
+    #     mmap = []
+    #     for _ in range(n):
+    #         mmap.append(f.readline()[:-1])
+    # sea()
+    count = 0
+    for i in range(30):
+        PATH_MAP = "./data/MAP_4_BY_4/input02.txt"
+        with open(PATH_MAP, "r") as f:
+            n = int(f.readline())
+            mmap = []
+            for _ in range(n):
+                mmap.append(f.readline()[:-1])
+        if sea():
+            count += 1
+    print(count)
+
+    # for i in range(10):
+    #     PATH_MAP = "./data/MAP_12_BY_12/input0{i}.txt".format(i=i)
+    #     print()
+    #     print(PATH_MAP)
+    #     print()
+    #     with open(PATH_MAP, "r") as f:
+    #         n = int(f.readline())
+    #         mmap = []
+    #         for _ in range(n):
+    #             mmap.append(f.readline()[:-1])
+    #     for _ in range(30):
+    #         sea()
+    
