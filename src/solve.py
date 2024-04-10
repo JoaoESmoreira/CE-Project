@@ -11,6 +11,7 @@ population_size = 100
 num_generations = 1000
 elite_percentage = 0.1
 mutation_rate = 0.1
+crossover_rate = 0.8
 individual_size = 200
 elite_size = int(elite_percentage * population_size)
 
@@ -50,6 +51,8 @@ def evaluate_individual(individual) -> int:
             count += 1
     if len(path) == 0:
         return -count*n - n*2
+    #return 1/(1 + (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1)) + count ) ) * 10 
+
     #return (path[-1][0] + path[-1][1])*n - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) + is_feasible(individual)*200 - len(individual)
     #return (path[-1][0] + path[-1][1])*n - count*20 - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1)))*5 + is_feasible(individual)*200 - len(individual)
     #return (path[-1][0] + path[-1][1])*n - count*20 + is_feasible(individual)*400
@@ -200,7 +203,10 @@ def sea():
         while len(offspring) < population_size:
             #parent1, parent2 = random.sample(parents, 2)
             parent1, parent2 = tornement_selection(population, fitness_scores)
-            child1, child2 = tow_point_crossover(parent1, parent2)
+            if random.random() < crossover_rate:
+                child1, child2 = tow_point_crossover(parent1, parent2)
+            else:
+                child1, child2 = parent1, parent2
             if random.random() < mutation_rate:
                 child1 = mutate(child1, mutation_rate)
             if random.random() < mutation_rate:
@@ -246,9 +252,10 @@ if __name__ == "__main__":
     #     for _ in range(n):
     #         mmap.append(f.readline()[:-1])
     # sea()
+
     count = 0
     for i in range(30):
-        PATH_MAP = "./data/MAP_4_BY_4/input02.txt"
+        PATH_MAP = "./data/MAP_12_BY_12/input03.txt"
         with open(PATH_MAP, "r") as f:
             n = int(f.readline())
             mmap = []
@@ -257,7 +264,7 @@ if __name__ == "__main__":
         if sea():
             count += 1
     print(count)
-
+    
     # for i in range(10):
     #     PATH_MAP = "./data/MAP_12_BY_12/input0{i}.txt".format(i=i)
     #     print()

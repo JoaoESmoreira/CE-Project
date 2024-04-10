@@ -12,7 +12,7 @@ MAX_ITERATIONS_8_by_8 = 200
 MAX_ITERATIONS_12_by_12 = 500
 
 if __name__ == "__main__":
-    fenotype = [2, 2, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1, 2, 1, 2, 1, 2, 1, 2]
+    fenotype =[2, 1, 2, 2, 2, 1, 1, 1, 2, 2, 1, 1, 2, 1, 2, 2, 2, 1, 1]
     my_map = generate_random_map(size=12, seed=43)
 
     RENDER_MODE = 'human'
