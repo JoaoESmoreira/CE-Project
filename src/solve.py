@@ -46,11 +46,14 @@ def repeted_cells(path) -> int:
 def evaluate_individual(individual) -> int:
     path = mapping(individual)
     count = 0
-    for step in path:
-        if mmap[step[0]][step[1]] == 'H':
-            count += 1
+    for i in range(len(path)):
+        if mmap[path[i][0]][path[i][1]] == 'H':
+            del individual[i:]
+            del path[i:]
+            break
+    
     if len(path) == 0:
-        return -count*n - n*2
+        return -1000000#path.append((0,0))
     #return 1/(1 + (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1)) + count ) ) * 10 
 
     #return (path[-1][0] + path[-1][1])*n - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) + is_feasible(individual)*200 - len(individual)
@@ -255,7 +258,7 @@ if __name__ == "__main__":
 
     count = 0
     for i in range(30):
-        PATH_MAP = "./data/MAP_12_BY_12/input03.txt"
+        PATH_MAP = "./data/MAP_12_BY_12/input02.txt"
         with open(PATH_MAP, "r") as f:
             n = int(f.readline())
             mmap = []

@@ -12,8 +12,8 @@ MAX_ITERATIONS_8_by_8 = 200
 MAX_ITERATIONS_12_by_12 = 500
 
 if __name__ == "__main__":
-    fenotype =[2, 1, 2, 2, 2, 1, 1, 1, 2, 2, 1, 1, 2, 1, 2, 2, 2, 1, 1]
-    my_map = generate_random_map(size=12, seed=43)
+    fenotype = [1, 1, 2, 2, 1, 3]
+    my_map = generate_random_map(size=4, seed=42)
 
     RENDER_MODE = 'human'
     env = gym.make('FrozenLake-v1', desc=my_map, is_slippery=False, render_mode=RENDER_MODE)

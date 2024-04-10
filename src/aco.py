@@ -79,8 +79,7 @@ class ACO:
         p_xy = (pheromones_xy) / sum( pheromones_xy )
         Note: the distance from any x to any adjecent cell is 1.
         """
-        pheromones = [self.pheromones[current_state][state] for state in possible_states]
-        #print(pheromones)
+        pheromones = [self.pheromones[current_state][state]**self.alpha for state in possible_states]
         total_pheromones = sum(pheromones)
         return [pheromone/(total_pheromones) for pheromone in pheromones]
 
@@ -92,7 +91,7 @@ if __name__ == "__main__":
         ['F', 'F', 'F', 'H'],
         ['H', 'F', 'F', 'G']
     ]
-    PATH_MAP = "./data/MAP_12_BY_12/input02.txt"
+    PATH_MAP = "./data/MAP_12_BY_12/input03.txt"
     with open(PATH_MAP, "r") as f:
         n = int(f.readline())
         mmap = []
