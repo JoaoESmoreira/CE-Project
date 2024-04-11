@@ -127,24 +127,58 @@ def tow_point_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
     child2 = parent2[:point1] + parent1[point1:point2] + parent2[point2:]
     return child1, child2
 
+def uniforme_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
+    child1 = []
+    child2 = []
+    size = min(len(parent1), len(parent2))
+    for i in range(size):
+        if random.random() < 0.5:
+            child1.append(parent1[i])
+            child2.append(parent2[i])
+        else:
+            child1.append(parent2[i])
+            child2.append(parent1[i])
+    if len(parent1) > len(parent2):
+        child1.append(parent1[size-1:])
+        child2.append(parent1[size-1:])
+    else:
+        child1.append(parent2[size-1:])
+        child2.append(parent2[size-1:])
+    return child1, child2
+
+# def mutate(individual, mutation_rate) -> list[int]:
+#     for i in range(len(individual)):
+#         if random.random() < mutation_rate:
+#             individual[i] = random.randint(0, 3)
+#     #while random.random() < 0.5 and len(individual) < individual_size:
+#     #    individual.append(random.randint(0, 3))
+#     if random.random() < mutation_rate and len(individual) > 0:
+#         #individual.pop(random.randint(0, len(individual)-1))
+#         individual = individual[:int(len(individual)//2)]
+#     if random.random() < 0.5 and len(individual) < individual_size:
+#         path = mapping(individual)
+#         if len(path) > 0:
+#             number_steps = min(abs(path[-1][0] - n), abs(path[-1][1] - n))
+#             for i in range(random.randint(1, number_steps)):
+#                 individual.append(random.randint(0, 3))
+#         else:
+#             for i in range(n):
+#                 individual.append(random.randint(0, 3))
+#     return individual
+
 def mutate(individual, mutation_rate) -> list[int]:
     for i in range(len(individual)):
         if random.random() < mutation_rate:
-            individual[i] = random.randint(0, 3)
-    #while random.random() < 0.5 and len(individual) < individual_size:
-    #    individual.append(random.randint(0, 3))
-    if random.random() < mutation_rate and len(individual) > 0:
-        #individual.pop(random.randint(0, len(individual)-1))
-        individual = individual[:int(len(individual)//2)]
-    if random.random() < 0.5 and len(individual) < individual_size:
+            individual[i] = random.randint(1, 2)
+    if random.random() < 0.8 and len(individual) < individual_size:
         path = mapping(individual)
         if len(path) > 0:
             number_steps = min(abs(path[-1][0] - n), abs(path[-1][1] - n))
             for i in range(random.randint(1, number_steps)):
-                individual.append(random.randint(0, 3))
+                individual.append(random.randint(1, 2))
         else:
             for i in range(n):
-                individual.append(random.randint(0, 3))
+                individual.append(random.randint(1, 2))
     return individual
 
 ## import matplotlib.pyplot as plt 
@@ -207,7 +241,7 @@ def sea():
             #parent1, parent2 = random.sample(parents, 2)
             parent1, parent2 = tornement_selection(population, fitness_scores)
             if random.random() < crossover_rate:
-                child1, child2 = tow_point_crossover(parent1, parent2)
+                child1, child2 = uniforme_crossover(parent1, parent2)
             else:
                 child1, child2 = parent1, parent2
             if random.random() < mutation_rate:
@@ -257,13 +291,13 @@ if __name__ == "__main__":
     # sea()
 
     count = 0
-    for i in range(30):
-        PATH_MAP = "./data/MAP_12_BY_12/input02.txt"
-        with open(PATH_MAP, "r") as f:
-            n = int(f.readline())
-            mmap = []
-            for _ in range(n):
-                mmap.append(f.readline()[:-1])
+    PATH_MAP = "./data/MAP_12_BY_12/input03.txt"
+    with open(PATH_MAP, "r") as f:
+        n = int(f.readline())
+        mmap = []
+        for _ in range(n):
+            mmap.append(f.readline()[:-1])
+    for i in range(60):
         if sea():
             count += 1
     print(count)

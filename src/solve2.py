@@ -86,7 +86,7 @@ def crossover(parent1, parent2) -> tuple[list[int], list[int]]:
     child2 = parent2[:crossover_point] + parent1[crossover_point:]
     return child1, child2
 
-def tow_point_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
+def two_point_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
     length = min(len(parent1), len(parent2))
     point1 = random.randint(0, length)
     point2 = random.randint(0, length)
@@ -94,6 +94,26 @@ def tow_point_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
         point1, point2 = point2, point1
     child1 = parent1[:point1] + parent2[point1:point2] + parent1[point2:]
     child2 = parent2[:point1] + parent1[point1:point2] + parent2[point2:]
+    return child1, child2
+
+def uniforme_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
+    # worse results
+    child1 = []
+    child2 = []
+    size = min(len(parent1), len(parent2))
+    for i in range(size):
+        if random.random() < 0.5:
+            child1.append(parent1[i])
+            child2.append(parent2[i])
+        else:
+            child1.append(parent2[i])
+            child2.append(parent1[i])
+    #if len(parent1) > len(parent2):
+    #    child1.append(parent1[size-1:])
+    #    child2.append(parent1[size-1:])
+    #else:
+    #    child1.append(parent2[size-1:])
+    #    child2.append(parent2[size-1:])
     return child1, child2
 
 def mutate(individual, mutation_rate) -> list[int]:
@@ -123,7 +143,7 @@ def sea():
         while len(offspring) < population_size:
             parent1, parent2 = tornement_selection(population, fitness_scores)
             if random.random() < crossover_rate:
-                child1, child2 = tow_point_crossover(parent1, parent2)
+                child1, child2 = two_point_crossover(parent1, parent2)
             else:
                 child1, child2 = parent1, parent2
             if random.random() < mutation_rate:
@@ -171,28 +191,28 @@ if __name__ == "__main__":
     #         mmap.append(f.readline()[:-1])
     # sea()
 
-    # count = 0
-    # for i in range(30):
-    #     PATH_MAP = "./data/MAP_12_BY_12/input03.txt"
+    count = 0
+    PATH_MAP = "./data/MAP_12_BY_12/input03.txt"
+    with open(PATH_MAP, "r") as f:
+        n = int(f.readline())
+        mmap = []
+        for _ in range(n):
+            mmap.append(f.readline()[:-1])
+    for i in range(60):
+        if sea():
+            count += 1
+    print(count)
+    
+    # for i in range(10):
+    #     PATH_MAP = "./data/MAP_4_BY_4/input0{i}.txt".format(i=i)
+    #     print()
+    #     print(PATH_MAP)
+    #     print()
     #     with open(PATH_MAP, "r") as f:
     #         n = int(f.readline())
     #         mmap = []
     #         for _ in range(n):
     #             mmap.append(f.readline()[:-1])
-    #     if sea():
-    #         count += 1
-    # print(count)
-    # 
-    for i in range(10):
-        PATH_MAP = "./data/MAP_4_BY_4/input0{i}.txt".format(i=i)
-        print()
-        print(PATH_MAP)
-        print()
-        with open(PATH_MAP, "r") as f:
-            n = int(f.readline())
-            mmap = []
-            for _ in range(n):
-                mmap.append(f.readline()[:-1])
-        for _ in range(30):
-            sea()
+    #     for _ in range(30):
+    #         sea()
     
