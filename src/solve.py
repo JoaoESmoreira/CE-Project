@@ -117,7 +117,7 @@ def crossover(parent1, parent2) -> tuple[list[int], list[int]]:
     child2 = parent2[:crossover_point] + parent1[crossover_point:]
     return child1, child2
 
-def tow_point_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
+def two_point_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
     length = min(len(parent1), len(parent2))
     point1 = random.randint(0, length)
     point2 = random.randint(0, length)
@@ -138,12 +138,12 @@ def uniforme_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
         else:
             child1.append(parent2[i])
             child2.append(parent1[i])
-    if len(parent1) > len(parent2):
-        child1.append(parent1[size-1:])
-        child2.append(parent1[size-1:])
-    else:
-        child1.append(parent2[size-1:])
-        child2.append(parent2[size-1:])
+    #if len(parent1) > len(parent2):
+    #    child1.append(parent1[size-1:])
+    #    child2.append(parent1[size-1:])
+    #else:
+    #    child1.append(parent2[size-1:])
+    #    child2.append(parent2[size-1:])
     return child1, child2
 
 # def mutate(individual, mutation_rate) -> list[int]:
@@ -241,7 +241,7 @@ def sea():
             #parent1, parent2 = random.sample(parents, 2)
             parent1, parent2 = tornement_selection(population, fitness_scores)
             if random.random() < crossover_rate:
-                child1, child2 = uniforme_crossover(parent1, parent2)
+                child1, child2 = two_point_crossover(parent1, parent2)
             else:
                 child1, child2 = parent1, parent2
             if random.random() < mutation_rate:
