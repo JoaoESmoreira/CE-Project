@@ -1,0 +1,6 @@
+
+ ./data/MAP_4_BY_4/input00.txt 
+
+--- Feasible Individual Actions: 2 [1, 1, 2, 1, 2, 2]
+--- Feasible Individual Actions: 2 [1, 1, 2, 1, 2, 2]
+--- Feasible Individual Actions: 2 [1, 1, 1, 2, 2, 2]

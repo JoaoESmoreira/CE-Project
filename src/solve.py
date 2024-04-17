@@ -12,7 +12,7 @@ num_generations = 1000
 elite_percentage = 0.1
 mutation_rate = 0.1
 crossover_rate = 0.8
-individual_size = 200
+individual_size = 500
 elite_size = int(elite_percentage * population_size)
 
 
@@ -53,28 +53,11 @@ def evaluate_individual(individual) -> int:
             break
     
     if len(path) == 0:
-        return -1000000#path.append((0,0))
-    #return 1/(1 + (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1)) + count ) ) * 10 
-
-    #return (path[-1][0] + path[-1][1])*n - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) + is_feasible(individual)*200 - len(individual)
-    #return (path[-1][0] + path[-1][1])*n - count*20 - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1)))*5 + is_feasible(individual)*200 - len(individual)
-    #return (path[-1][0] + path[-1][1])*n - count*20 + is_feasible(individual)*400
-    #return (path[-1][0]*2 + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path)
-    return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path)      # best fitness in general
-    #return (path[-1][0] + path[-1][1])*n - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) + is_feasible(individual)*200 - len(individual)
-    #return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path)
-    #return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1)))
-
-    fitness = 0
-    if count == 0 and len(path) > 0:
-        # fitness = len(individual)
-        # fitness = (path[-1][0] + path[-1][1])*10 + len(individual)*3 - repeted_cells(path)*2
-        fitness = path[-1][0] + path[-1][1] + len(individual)
-        if path[-1] == (n-1, n-1):
-            fitness = abs(fitness - len(individual)) * 10 - len(individual)
+        return -1000000
+    if not is_feasible(path):
+        return (path[-1][0] + path[-1][1])*2 
     else:
-        fitness = -count
-    return fitness
+        return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path) + is_feasible(individual)*40     # best fitness in general
 
 def is_feasible(individual) -> bool:
     path = mapping(individual)
@@ -169,16 +152,16 @@ def uniforme_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
 def mutate(individual, mutation_rate) -> list[int]:
     for i in range(len(individual)):
         if random.random() < mutation_rate:
-            individual[i] = random.randint(1, 2)
+            individual[i] = random.randint(0, 3)
     if random.random() < 0.8 and len(individual) < individual_size:
         path = mapping(individual)
         if len(path) > 0:
-            number_steps = min(abs(path[-1][0] - n), abs(path[-1][1] - n))
-            for i in range(random.randint(1, number_steps)):
-                individual.append(random.randint(1, 2))
+            number_steps = min(abs(path[-1][0] - n), abs(path[-1][1] - n))*10
+            for _ in range(random.randint(1, number_steps)):
+                individual.append(random.randint(0, 3))
         else:
-            for i in range(n):
-                individual.append(random.randint(1, 2))
+            for _ in range(n):
+                individual.append(random.randint(0, 3))
     return individual
 
 ## import matplotlib.pyplot as plt 
@@ -297,7 +280,7 @@ if __name__ == "__main__":
         mmap = []
         for _ in range(n):
             mmap.append(f.readline()[:-1])
-    for i in range(60):
+    for i in range(30):
         if sea():
             count += 1
     print(count)
@@ -312,6 +295,6 @@ if __name__ == "__main__":
     #         mmap = []
     #         for _ in range(n):
     #             mmap.append(f.readline()[:-1])
-    #     for _ in range(30):
+    #     for _ in range(10):
     #         sea()
     

@@ -27,5 +27,14 @@ def write_maps() -> None:
                 f.write(str(sizes[i]) + "\n")
                 f.write(maps[i])
 
+def write_maps_22() -> None:
+    PATH_MAP_22_BY_22 = "./data/MAP_22_by_22input0{i}.txt".format(i=2)
+    map_22_by_22 = "\n".join(generate_random_map(size=12, seed=2)) + "\n"
+
+    with open(PATH_MAP_22_BY_22, 'w') as f:
+        f.write(str(22) + "\n")
+        f.write(map_22_by_22)
+
 if __name__ == "__main__":
-    write_maps()
+    write_maps_22()
+

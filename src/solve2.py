@@ -12,7 +12,7 @@ num_generations = 1000
 elite_percentage = 0.1
 mutation_rate = 0.1
 crossover_rate = 0.8
-individual_size = 200
+individual_size = 500
 elite_size = int(elite_percentage * population_size)
 
 
@@ -35,17 +35,8 @@ def mapping(individual) -> list[tuple[int, int]]:
         path.append(last_position)
     return path
 
-def repeted_cells(path) -> int:
-    path = path.copy()
-    repeted = 0
-    for cell in path:
-        repeted += path.count(cell)
-        path = list(filter((cell).__ne__, path))
-    return repeted
-
 def evaluate_individual(individual) -> int:
     path = mapping(individual)
-    count = 0
     for i in range(len(path)):
         if mmap[path[i][0]][path[i][1]] == 'H':
             del individual[i:]
@@ -54,20 +45,19 @@ def evaluate_individual(individual) -> int:
     
     if len(path) == 0:
         return -1000000
-    return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path)      # best fitness in general
+    if not is_feasible(individual):
+        return (path[-1][0] + path[-1][1])*2 
+    else:
+        return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path) + is_feasible(individual)*200     # best fitness in general
 
 def is_feasible(individual) -> bool:
     path = mapping(individual)
-    for step in path:
-        if 0 <= step[0] < n and 0 <= step[1] < n:
-            if mmap[step[0]][step[1]] == 'H':
-                return False
     if path[-1] == (n-1, n-1):
         return True
     return False
 
 def initialize_population() -> list[list[int]]:
-    return [[random.randint(1, 2) for _ in range(random.randint(1, 100))] for _ in range(population_size)]
+    return [[random.randint(0, 3) for _ in range(random.randint(1, 100))] for _ in range(population_size)]
 
 def select_parents(population, fitness_scores) -> list[list[int]]:
     sorted_indices = sorted(range(len(fitness_scores)), key=lambda i: fitness_scores[i], reverse=True)
@@ -96,39 +86,23 @@ def two_point_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
     child2 = parent2[:point1] + parent1[point1:point2] + parent2[point2:]
     return child1, child2
 
-def uniforme_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
-    # worse results
-    child1 = []
-    child2 = []
-    size = min(len(parent1), len(parent2))
-    for i in range(size):
-        if random.random() < 0.5:
-            child1.append(parent1[i])
-            child2.append(parent2[i])
-        else:
-            child1.append(parent2[i])
-            child2.append(parent1[i])
-    #if len(parent1) > len(parent2):
-    #    child1.append(parent1[size-1:])
-    #    child2.append(parent1[size-1:])
-    #else:
-    #    child1.append(parent2[size-1:])
-    #    child2.append(parent2[size-1:])
-    return child1, child2
-
 def mutate(individual, mutation_rate) -> list[int]:
     for i in range(len(individual)):
         if random.random() < mutation_rate:
-            individual[i] = random.randint(1, 2)
+            individual[i] = random.randint(0, 3)
+        #if random.random() < mutation_rate:
+        #    print(individual)
+        #    print(i)
+        #    del individual[i] 
     if random.random() < 0.8 and len(individual) < individual_size:
         path = mapping(individual)
         if len(path) > 0:
-            number_steps = min(abs(path[-1][0] - n), abs(path[-1][1] - n))
-            for i in range(random.randint(1, number_steps)):
-                individual.append(random.randint(1, 2))
+            number_steps = min(abs(path[-1][0] - n), abs(path[-1][1] - n))*10
+            for _ in range(random.randint(1, number_steps)):
+                individual.append(random.randint(0, 3))
         else:
-            for i in range(n):
-                individual.append(random.randint(1, 2))
+            for _ in range(n):
+                individual.append(random.randint(0, 3))
     return individual
 
 def sea():
@@ -159,29 +133,8 @@ def sea():
     else:
         print("Not Feasible Individual Actions: {fitness}".format(fitness=best_individual_fitness), best_individual)
         return False
-
-def random_with_random_restart():
-    best_fitness = -100000
-    best_individual = None
-    for _ in range(num_generations):
-        population = initialize_population()
-        fitness_scores = [evaluate_individual(individual) for individual in population]
-
-        current_best_individual_index = fitness_scores.index(max(fitness_scores))
-        current_best_individual = population[current_best_individual_index]
-        current_best_fitness = fitness_scores[current_best_individual_index]
-
-        if best_fitness < current_best_fitness:
-            best_fitness = current_best_fitness
-            best_individual = current_best_individual
-
-    if is_feasible(best_individual):
-        print("--- Feasible Individual Actions: {fitness}".format(fitness=best_fitness), best_individual)
-        return True
-    else:
-        print("Not feasible Individual Actions: {fitness}".format(fitness=best_fitness), best_individual)
-        return False
         
+
 if __name__ == "__main__":
     # PATH_MAP = "./data/MAP_12_BY_12/input02.txt"
     # with open(PATH_MAP, "r") as f:
@@ -198,13 +151,13 @@ if __name__ == "__main__":
         mmap = []
         for _ in range(n):
             mmap.append(f.readline()[:-1])
-    for i in range(60):
+    for i in range(30):
         if sea():
             count += 1
     print(count)
     
     # for i in range(10):
-    #     PATH_MAP = "./data/MAP_4_BY_4/input0{i}.txt".format(i=i)
+    #     PATH_MAP = "./data/MAP_12_BY_12/input0{i}.txt".format(i=i)
     #     print()
     #     print(PATH_MAP)
     #     print()
@@ -213,6 +166,6 @@ if __name__ == "__main__":
     #         mmap = []
     #         for _ in range(n):
     #             mmap.append(f.readline()[:-1])
-    #     for _ in range(30):
+    #     for _ in range(10):
     #         sea()
     

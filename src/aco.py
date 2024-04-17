@@ -91,21 +91,25 @@ if __name__ == "__main__":
         ['F', 'F', 'F', 'H'],
         ['H', 'F', 'F', 'G']
     ]
-    PATH_MAP = "./data/MAP_12_BY_12/input03.txt"
+    PATH_MAP = "./data/MAP_22_BY_22/input02.txt"
     with open(PATH_MAP, "r") as f:
         n = int(f.readline())
         mmap = []
         for _ in range(n):
             mmap.append(f.readline()[:-1])
 
-    c = 0
-    for _ in range(30):
-        aco = ACO(mmap, num_ants=100, max_iterations=1000)
-        aco.fit()
-        if aco.best_ant[-1] == 143:
-            c +=1
-        print("Best ant: ", aco.best_ant)
-    print(c)
+    aco = ACO(mmap, num_ants=100, max_iterations=1000)
+    aco.fit()
+    print("Best ant: ", aco.best_ant)
+
+    # c = 0
+    # for _ in range(30):
+    #     aco = ACO(mmap, num_ants=100, max_iterations=1000)
+    #     aco.fit()
+    #     if aco.best_ant[-1] == 143:
+    #         c +=1
+    #     print("Best ant: ", aco.best_ant)
+    # print(c)
     #aco = ACO(lake)
     #aco = ACO(lake, num_ants=100, max_iterations=200)
     #aco = ACO(mmap, num_ants=100, max_iterations=1000)

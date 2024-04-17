@@ -16,42 +16,17 @@ individual_size = 200
 elite_size = int(elite_percentage * population_size)
 
 
-def fenotype1(grid) -> list[int]:
-    individual = []
-    visited = set()
-    position = (0,0)
-    component = None
-    print(grid)
-    while True:
-        if grid[position[0]][position[1]] == 0:
-            if position[1] != 0:
-                position = (position[0], position[1]-1)
-                component = 0
-        elif grid[position[0]][position[1]] == 1:
-            if position[0] != n-1:
-                position = (position[0]+1, position[1])
-                component = 1
-        elif grid[position[0]][position[1]] == 2:
-            if position[1] != n-1:
-                position = (position[0], position[1]+1)
-                component = 2
-        elif grid[position[0]][position[1]] == 3:
-            if position[0] != 0:
-                position = (position[0]-1, position[1])
-                component = 3
-        if position == (n-1, n-1) or position in visited:
-            break
-        visited.add(position)
-        individual.append(component)
-    return individual
 
-def fenotype(path):
+def fenotype(path, ind):
     individual = []
     position = (0, 0)
     actions = {(0, -1):0, (1, 0):1, (0,1):2, (-1,0):3}
     for step in path:
         action = (step[0] - position[0], step[1] - position[1])
-        individual.append(actions[action])
+        if action in actions:
+            individual.append(actions[action])
+        else:
+            print("Hit the wall")
         position = step
     return individual
 
@@ -75,6 +50,7 @@ def mapping(grid) -> list[tuple[int, int]]:
         if position == (n-1, n-1) or position in visited:
             individual.append(position)
             break
+        # pay attention, if the agent hit the wall you will append the position twice anyway
         visited.add(position)
         individual.append(position)
     return individual
@@ -87,7 +63,7 @@ def evaluate_individual(path) -> int:
     
     if len(path) == 0:
         return -1000000
-    return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1)))# - len(path)
+    return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path) + is_feasible(path) * 100
 
 def is_feasible(path) -> bool:
     for step in path:
@@ -160,7 +136,7 @@ def mutate(individual, mutation_rate) -> list[int]:
     for i in range(n):
         for j in range(n):
             if random.random() < mutation_rate:
-                individual[i][j] = random.randint(1, 2)
+                individual[i][j] = random.randint(0, 3)
     return individual
 
 def sea():
@@ -190,10 +166,10 @@ def sea():
             offspring.extend([child1, child2])
         population = offspring
     if is_feasible(best_map):
-        print("--- Feasible Individual Actions: {fitness}".format(fitness=best_fitness), fenotype(best_map))
+        print("--- Feasible Individual Actions: {fitness}".format(fitness=best_fitness), fenotype(best_map, best_individual))
         return True
     else:
-        print("Not feasible Individual Actions: {fitness}".format(fitness=best_fitness), fenotype(best_map))
+        print("Not feasible Individual Actions: {fitness}".format(fitness=best_fitness), fenotype(best_map, best_individual))
         return False
 
 def random_with_random_restart():
@@ -228,11 +204,25 @@ def random_with_random_restart():
 
 
 if __name__ == "__main__":
-    for i in range(10):
-        PATH_MAP = "./data/MAP_12_BY_12/input0{i}.txt".format(i=i)
-        with open(PATH_MAP, "r") as f:
-            n = int(f.readline())
-            mmap = []
-            for _ in range(n):
-                mmap.append(f.readline()[:-1])
-        sea()
+    # dd = [4,8,12]
+    # for j in dd:
+    #     for i in range(10):
+    #         PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(i=i, d=j)
+    #         with open(PATH_MAP, "r") as f:
+    #             n = int(f.readline())
+    #             mmap = []
+    #             for _ in range(n):
+    #                 mmap.append(f.readline()[:-1])
+    #         print("\n", PATH_MAP, "\n")
+    #         for _ in range(30):
+    #             sea()
+
+     PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(i=3, d=12)
+     with open(PATH_MAP, "r") as f:
+         n = int(f.readline())
+         mmap = []
+         for _ in range(n):
+             mmap.append(f.readline()[:-1])
+     print("\n", PATH_MAP, "\n")
+     for _ in range(30):
+         sea()
