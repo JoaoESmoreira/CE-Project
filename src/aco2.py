@@ -1,8 +1,8 @@
 
 import random
-import numpy as np
 import matplotlib.pyplot as plt
-
+import matplotlib.cm as cm
+import numpy as np
 
 
 class ACO:
@@ -24,8 +24,6 @@ class ACO:
 
     def fit(self):
         for generation in range(self.max_iterations):
-            print("best ant: ", self.best_ant)
-            # print(self.best_path)
             ants_population = [self.generate_ant() for _ in range(self.num_ants)]
             path_population = [self.mapping(ant) for ant in ants_population]
             obje_population = [self.objective(ant) for ant in path_population]
@@ -44,6 +42,65 @@ class ACO:
             print("--- feasible: ", self.best_objective, " ", self.best_ant)
         else:
             print("Not feasible: ", self.best_objective, " ", self.best_ant)
+
+        min_val = np.min(self.pheromones)
+        max_val = np.max(self.pheromones)
+        #normalized_pheromones = (self.pheromones - min_val) / (max_val - min_val)
+        normalized_pheromones = 2 * (self.pheromones - min_val) / (max_val - min_val) - 1
+
+
+        self.pheromones = normalized_pheromones
+
+        fig, ax = plt.subplots()
+        colormap = cm.ScalarMappable(cmap='viridis')
+        colormap.set_clim(np.min(self.pheromones), np.max(self.pheromones))
+
+        for i in range(self.lake_dimention-1):
+            for j in range(self.lake_dimention):
+                x = [i, i+1]
+                y = [j-0.1, j-0.1]
+                intensity = self.pheromones[i*self.lake_dimention + j][1]
+                color = colormap.to_rgba(intensity)
+                ax.plot(x, y, color=color)
+        for i in range(self.lake_dimention):
+            for j in range(self.lake_dimention-1):
+                x = [i-0.1, i-0.1]
+                y = [j, j+1]
+                intensity = self.pheromones[i*self.lake_dimention + j][2]
+                color = colormap.to_rgba(intensity)
+                ax.plot(x, y, color=color)
+
+        for i in range(self.lake_dimention-1):
+            for j in range(self.lake_dimention):
+                x = [i, i+1]
+                y = [j+0.1, j+0.1]
+                intensity = self.pheromones[i*self.lake_dimention + j][3]
+                color = colormap.to_rgba(intensity)
+                ax.plot(x, y, color=color)
+        for i in range(self.lake_dimention):
+            for j in range(self.lake_dimention-1):
+                x = [i+0.1, i+0.1]
+                y = [j, j+1]
+                intensity = self.pheromones[i*self.lake_dimention + j][0]
+                color = colormap.to_rgba(intensity)
+                ax.plot(x, y, color=color)
+        
+        for i in range(self.lake_dimention):
+            for j in range(self.lake_dimention):
+                ax.scatter(i, j, color='red', zorder=10)
+
+        ax.set_xlim(-0.5, self.lake_dimention)
+        ax.set_ylim(-0.5, self.lake_dimention)
+        ax.set_aspect('equal')
+        ax.set_xticks(np.arange(self.lake_dimention))
+        ax.set_yticks(np.arange(self.lake_dimention))
+        ax.grid(True, linestyle='--', alpha=0.5)
+
+        cbar = plt.colorbar(colormap, ax=ax)
+        cbar.set_label('Intensity of Pheromone')
+        plt.show()
+
+        #print(self.pheromones)
         
         # f = np.array(self.pheromones)
         # f = f.reshape(12, 12,4)
@@ -92,9 +149,13 @@ class ACO:
         return ant[-1] == self.target
     
     def objective(self, ant):
+        if len(ant) == 0:
+            return 0
         return abs(ant[-1][0] + ant[-1][1])  +self.is_feasible(ant)*10 #/ self.num_ants #+ self.is_feasible(ant)*10
     
     def update_pheromones(self, ant, path, objective):
+        if len(path) == 0:
+            return
         self.pheromones[0][ant[0]] += objective
         for i in range(len(path)-1):
             s = path[i][0] * self.lake_dimention + path[i][1]
@@ -168,15 +229,16 @@ class ACO:
 
 
 if __name__ == "__main__":
-    PATH_MAP = "./data/MAP_{d}_BY_{d}/input02.txt".format(d=12)
-    with open(PATH_MAP, "r") as f:
-        n = int(f.readline())
-        mmap = []
-        for _ in range(n):
-            mmap.append(f.readline()[:-1])
+    for i in range(2, 3):
+        PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=12, i=i)
+        with open(PATH_MAP, "r") as f:
+            n = int(f.readline())
+            mmap = []
+            for _ in range(n):
+                mmap.append(f.readline()[:-1])
 
-    aco = ACO(mmap)
-    aco.fit()
+        aco = ACO(mmap)
+        aco.fit()
 
     #c = 0
     #for i in range(30):
