@@ -6,7 +6,7 @@ import numpy as np
 
 
 class ACO:
-    def __init__(self, lake, num_ants=100, evaporation_rate=0.9, alpha=1.0, beta=2.0, max_iterations=100, individual_size=500):
+    def __init__(self, lake, num_ants=100, evaporation_rate=0.9, alpha=1.0, beta=2.0, max_iterations=500, individual_size=500):
         self.lake = lake
         self.num_ants = num_ants
         self.evaporation_rate = evaporation_rate
@@ -50,10 +50,11 @@ class ACO:
 
 
         self.pheromones = normalized_pheromones
+        self.pheromones = -self.pheromones
 
         fig, ax = plt.subplots()
         colormap = cm.ScalarMappable(cmap='viridis')
-        colormap.set_clim(np.min(self.pheromones), np.max(self.pheromones))
+        colormap.set_clim(np.min(-self.pheromones), np.max(-self.pheromones))
 
         for i in range(self.lake_dimention-1):
             for j in range(self.lake_dimention):
@@ -100,31 +101,6 @@ class ACO:
         cbar.set_label('Intensity of Pheromone')
         plt.show()
 
-        #print(self.pheromones)
-        
-        # f = np.array(self.pheromones)
-        # f = f.reshape(12, 12,4)
-        # print(f[0,0])
-
-
-        # min_value = np.min(f)
-        # max_value = np.max(f)
-        # log_norm = lambda x: np.log(x - min_value + 1)  # Adicionando 1 para evitar log de 0
-        # log_normed_data = log_norm(f)
-
-        # # Visualização com escala logarítmica
-        # plt.figure(figsize=(8, 6))
-        # plt.imshow(log_normed_data, cmap='hot')
-        # plt.colorbar(label='Feromônios (log scale)')
-        # plt.title('Mapa de calor das feromônias')
-        # plt.xlabel('Colunas')
-        # plt.ylabel('Linhas')
-        # plt.show()
-        #for i in self.pheromones:
-        #    print(i)
-
-
-
     def select_parents(self, population, fitness_scores):
         sorted_indices = sorted(range(len(fitness_scores)), key=lambda i: fitness_scores[i], reverse=True)
         elite_indices = sorted_indices[:1]
@@ -151,7 +127,7 @@ class ACO:
     def objective(self, ant):
         if len(ant) == 0:
             return 0
-        return abs(ant[-1][0] + ant[-1][1])  +self.is_feasible(ant)*10 #/ self.num_ants #+ self.is_feasible(ant)*10
+        return abs(ant[-1][0] + ant[-1][1])/len(ant) + self.is_feasible(ant)*10    #/ self.num_ants #+ self.is_feasible(ant)*10
     
     def update_pheromones(self, ant, path, objective):
         if len(path) == 0:
@@ -230,6 +206,7 @@ class ACO:
 
 if __name__ == "__main__":
     for i in range(2, 3):
+        print(i)
         PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=12, i=i)
         with open(PATH_MAP, "r") as f:
             n = int(f.readline())

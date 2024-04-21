@@ -57,6 +57,7 @@ def evaluate_individual(individual) -> int:
     if not is_feasible(path):
         return (path[-1][0] + path[-1][1])*2 
     else:
+        return (path[-1][0] + path[-1][1]) / len(path) + is_feasible(individual)*10
         return (path[-1][0] + path[-1][1])*2 - count*n - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path) + is_feasible(individual)*40     # best fitness in general
 
 def is_feasible(individual) -> bool:
