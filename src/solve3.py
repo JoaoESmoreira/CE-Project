@@ -17,7 +17,7 @@ elite_size = int(elite_percentage * population_size)
 
 
 
-def fenotype(path, ind):
+def fenotype(path):
     individual = []
     position = (0, 0)
     actions = {(0, -1):0, (1, 0):1, (0,1):2, (-1,0):3}
@@ -25,8 +25,8 @@ def fenotype(path, ind):
         action = (step[0] - position[0], step[1] - position[1])
         if action in actions:
             individual.append(actions[action])
-        else:
-            print("Hit the wall")
+        #else:
+        #    print("Hit the wall")
         position = step
     return individual
 
@@ -139,6 +139,27 @@ def mutate(individual, mutation_rate) -> list[int]:
                 individual[i][j] = random.randint(0, 3)
     return individual
 
+def final_evaluation(individual):
+    return len(individual), is_feasible(individual)
+
+def hamming_distance(individual1, individual2):
+    min_len = min(len(individual1), len(individual2))
+    max_len = max(len(individual1), len(individual2))
+    
+    distance = max_len - min_len
+    for i in range(min_len):
+        distance += abs(individual1[i] - individual2[i])
+    return distance
+
+def population_diversity(population):
+    total_distance = 0
+    num_pairs = 0
+    for i in range(len(population)):
+        for j in range(i+1, len(population)):
+            total_distance += hamming_distance(population[i], population[j])
+            num_pairs += 1
+    return int(total_distance / num_pairs)
+
 def sea():
     population = initialize_population()
 
@@ -165,11 +186,14 @@ def sea():
             child1, child2 = heuristic_mutation(child1), heuristic_mutation(child2)
             offspring.extend([child1, child2])
         population = offspring
+
+    population_fenotype = [fenotype(individual) for individual in paths]
+    return *final_evaluation(best_map), population_diversity(population_fenotype)
     if is_feasible(best_map):
-        print("--- Feasible Individual Actions: {fitness}".format(fitness=best_fitness), fenotype(best_map, best_individual))
+        print("--- Feasible Individual Actions: {fitness}".format(fitness=best_fitness), fenotype(best_map))
         return True
     else:
-        print("Not feasible Individual Actions: {fitness}".format(fitness=best_fitness), fenotype(best_map, best_individual))
+        print("Not feasible Individual Actions: {fitness}".format(fitness=best_fitness), fenotype(best_map))
         return False
 
 def random_with_random_restart():
@@ -217,12 +241,14 @@ if __name__ == "__main__":
     #         for _ in range(30):
     #             sea()
 
-     PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(i=3, d=12)
-     with open(PATH_MAP, "r") as f:
-         n = int(f.readline())
-         mmap = []
-         for _ in range(n):
-             mmap.append(f.readline()[:-1])
-     print("\n", PATH_MAP, "\n")
-     for _ in range(30):
-         sea()
+    PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(i=2, d=12)
+    with open(PATH_MAP, "r") as f:
+        n = int(f.readline())
+        mmap = []
+        for _ in range(n):
+            mmap.append(f.readline()[:-1])
+    print("\n", PATH_MAP, "\n")
+    results = []
+    for _ in range(30):
+        results.append(sea())
+    print(results)

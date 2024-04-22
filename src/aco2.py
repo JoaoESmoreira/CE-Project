@@ -1,8 +1,24 @@
 
 import random
-import matplotlib.pyplot as plt
-import matplotlib.cm as cm
-import numpy as np
+
+
+def hamming_distance(individual1, individual2):
+    min_len = min(len(individual1), len(individual2))
+    max_len = max(len(individual1), len(individual2))
+    
+    distance = max_len - min_len
+    for i in range(min_len):
+        distance += abs(individual1[i] - individual2[i])
+    return distance
+
+def population_diversity(population):
+    total_distance = 0
+    num_pairs = 0
+    for i in range(len(population)):
+        for j in range(i+1, len(population)):
+            total_distance += hamming_distance(population[i], population[j])
+            num_pairs += 1
+    return int(total_distance / num_pairs)
 
 
 class ACO:
@@ -38,11 +54,17 @@ class ACO:
                     self.best_objective = obj
                     self.best_path = path
             self.evaporate()
+        return len(self.best_ant), self.is_feasible(self.best_path), population_diversity(ants_population)
         if self.is_feasible(self.best_path):
             print("--- feasible: ", self.best_objective, " ", self.best_ant)
         else:
             print("Not feasible: ", self.best_objective, " ", self.best_ant)
 
+    # For visualization of pheromones
+    def visualization(self):
+        import matplotlib.pyplot as plt
+        import matplotlib.cm as cm
+        import numpy as np
         min_val = np.min(self.pheromones)
         max_val = np.max(self.pheromones)
         #normalized_pheromones = (self.pheromones - min_val) / (max_val - min_val)
@@ -214,8 +236,11 @@ if __name__ == "__main__":
             for _ in range(n):
                 mmap.append(f.readline()[:-1])
 
-        aco = ACO(mmap)
-        aco.fit()
+        results = []
+        for _ in range(10):
+            aco = ACO(mmap)
+            results.append(aco.fit())
+        print(results)
 
     #c = 0
     #for i in range(30):

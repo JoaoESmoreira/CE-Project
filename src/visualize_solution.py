@@ -18,11 +18,16 @@ if __name__ == "__main__":
     #fenotype = [1, 1, 1, 1, 1, 1, 2, 2, 1, 0, 1, 2, 2, 2, 1, 0, 3, 2, 2, 3, 3, 2, 3, 2, 1, 1, 2, 3, 2, 3, 2, 3, 3, 2, 3, 0, 1, 2, 3, 3, 3, 0, 0, 0, 1, 0, 3, 2, 1, 1, 1, 2, 1, 2, 1, 0, 0, 3, 2, 2, 3, 3, 2, 3, 3, 0, 0, 0, 1, 1, 1, 2, 1, 2, 3, 3, 2, 3, 3, 0, 0, 1, 0, 1, 1, 2, 1, 2, 1, 0, 0, 1, 0, 1, 2, 2, 2, 1, 2, 1, 1, 1]
     #fenotype = [1, 2, 2, 1, 2, 3, 3, 2, 2, 2, 2, 1, 2, 1, 1, 1, 1, 2, 3, 0, 1, 2, 3, 0, 1, 1, 2, 1, 2, 1, 2, 3, 0, 1, 2, 1, 1, 1]
     fenotype = [1, 2, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2]
-    my_map = generate_random_map(size=12, seed=42)
+    fenotype = [2, 0, 0, 0, 1, 0, 1, 1, 2, 2, 1, 1, 3, 1, 1, 1, 2, 1, 0, 1, 2, 1, 2, 2, 2, 1, 1, 3, 1, 0, 1, 2, 0, 1, 3, 2, 2, 0, 1, 1, 2, 1, 2, 3, 1, 2, 1, 1, 1, 0, 2, 2, 2, 2, 1, 1, 1, 1, 3, 1, 1, 2, 1, 3, 3, 3, 1, 2, 1, 1, 2, 2, 1, 1, 0, 1, 2, 2]
+    fenotype = [2, 2, 1, 1, 1, 2, 2, 1, 2, 2, 1, 1, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2]
+    fenotype = [2, 1, 2, 2, 1, 2, 2, 2, 3, 2, 2, 1, 1, 2, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1]
+    SEED = 2
+    SIZE = 12
+    my_map = generate_random_map(size=SIZE, seed=SEED)
 
     RENDER_MODE = 'human'
     env = gym.make('FrozenLake-v1', desc=my_map, is_slippery=False, render_mode=RENDER_MODE)
-    observation, info = env.reset(seed=42)
+    observation, info = env.reset(seed=SEED)
     if RENDER_MODE is not None:
         env.render()
 
