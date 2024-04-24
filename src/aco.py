@@ -1,77 +1,217 @@
 
 import random
+import csv
 
+
+def hamming_distance(individual1, individual2):
+    min_len = min(len(individual1), len(individual2))
+    max_len = max(len(individual1), len(individual2))
+    
+    distance = max_len - min_len
+    for i in range(min_len):
+        distance += abs(individual1[i] - individual2[i])
+    return distance
+
+def population_diversity(population):
+    total_distance = 0
+    num_pairs = 0
+    for i in range(len(population)):
+        for j in range(i+1, len(population)):
+            total_distance += hamming_distance(population[i], population[j])
+            num_pairs += 1
+    return int(total_distance / num_pairs)
 
 
 class ACO:
-    def __init__(self, lake, num_ants=10, evaporation_rate=0.5, alpha=1.0, beta=2.0, max_iterations=100):
+    def __init__(self, lake, num_ants=100, evaporation_rate=0.9, alpha=1.0, max_iterations=500, individual_size=500):
         self.lake = lake
         self.num_ants = num_ants
         self.evaporation_rate = evaporation_rate
         self.alpha = alpha
-        self.beta = beta
         self.max_iterations = max_iterations
-        self.pheromones = [[1.00 for _ in range(len(self.lake)**2)] for _ in range(len(self.lake)**2)]
+        self.individual_size = individual_size
+        self.pheromones = [[1.00 for _ in range(4)] for _ in range(len(self.lake)**2)]
         self.target = (len(lake)-1, len(lake[0])-1)
         self.lake_dimention = len(lake)
         self.best_ant = None
         self.best_objective = None
+        self.best_path = None
 
     def fit(self):
         for generation in range(self.max_iterations):
-            ants_population = []
-            for ant in range(self.num_ants):
-                ants_population.append(self.generate_ant())
-            for ant in ants_population:
-                if self.is_feasible(ant):
-                    objective_value = self.objective(ant)
-                    self.update_pheromones(ant, objective_value)
-                    if self.best_ant is None or objective_value < self.best_objective:
-                        self.best_ant = ant
-                        self.best_objective = objective_value
-            #print("Generation: ", generation, " Best: ", self.best_ant)
-            for i in range(len(self.pheromones)):
-                for j in range(len(self.pheromones[i])):
-                    if self.pheromones[i][j] > 0.0000000001:
-                        self.pheromones[i][j] *= self.evaporation_rate
+            ants_population = [self.generate_ant() for _ in range(self.num_ants)]
+            path_population = [self.mapping(ant) for ant in ants_population]
+            obje_population = [self.objective(ant) for ant in path_population]
+
+            for i in range(len(ants_population)):
+                ant = ants_population[i]
+                obj = obje_population[i]
+                path = path_population[i]
+                self.update_pheromones(ant, path, obj)
+                if self.best_ant is None or self.best_objective < obj:
+                    self.best_ant = ant
+                    self.best_objective = obj
+                    self.best_path = path
+            self.evaporate()
+        return len(self.best_ant), self.is_feasible(self.best_path), population_diversity(ants_population), tuple(self.best_ant)
+        # if self.is_feasible(self.best_path):
+        #     print("--- feasible: ", self.best_objective, " ", self.best_ant)
+        # else:
+        #     print("Not feasible: ", self.best_objective, " ", self.best_ant)
+
+    # For visualization of pheromones
+    def visualization(self):
+        import matplotlib.pyplot as plt
+        import matplotlib.cm as cm
+        import numpy as np
+        min_val = np.min(self.pheromones)
+        max_val = np.max(self.pheromones)
+        #normalized_pheromones = (self.pheromones - min_val) / (max_val - min_val)
+        normalized_pheromones = 2 * (self.pheromones - min_val) / (max_val - min_val) - 1
+
+
+        self.pheromones = normalized_pheromones
+        self.pheromones = -self.pheromones
+
+        fig, ax = plt.subplots()
+        colormap = cm.ScalarMappable(cmap='viridis')
+        colormap.set_clim(np.min(-self.pheromones), np.max(-self.pheromones))
+
+        for i in range(self.lake_dimention-1):
+            for j in range(self.lake_dimention):
+                x = [i, i+1]
+                y = [j-0.1, j-0.1]
+                intensity = self.pheromones[i*self.lake_dimention + j][1]
+                color = colormap.to_rgba(intensity)
+                ax.plot(x, y, color=color)
+        for i in range(self.lake_dimention):
+            for j in range(self.lake_dimention-1):
+                x = [i-0.1, i-0.1]
+                y = [j, j+1]
+                intensity = self.pheromones[i*self.lake_dimention + j][2]
+                color = colormap.to_rgba(intensity)
+                ax.plot(x, y, color=color)
+
+        for i in range(self.lake_dimention-1):
+            for j in range(self.lake_dimention):
+                x = [i, i+1]
+                y = [j+0.1, j+0.1]
+                intensity = self.pheromones[i*self.lake_dimention + j][3]
+                color = colormap.to_rgba(intensity)
+                ax.plot(x, y, color=color)
+        for i in range(self.lake_dimention):
+            for j in range(self.lake_dimention-1):
+                x = [i+0.1, i+0.1]
+                y = [j, j+1]
+                intensity = self.pheromones[i*self.lake_dimention + j][0]
+                color = colormap.to_rgba(intensity)
+                ax.plot(x, y, color=color)
+        
+        for i in range(self.lake_dimention):
+            for j in range(self.lake_dimention):
+                ax.scatter(i, j, color='red', zorder=10)
+
+        ax.set_xlim(-0.5, self.lake_dimention)
+        ax.set_ylim(-0.5, self.lake_dimention)
+        ax.set_aspect('equal')
+        ax.set_xticks(np.arange(self.lake_dimention))
+        ax.set_yticks(np.arange(self.lake_dimention))
+        ax.grid(True, linestyle='--', alpha=0.5)
+
+        cbar = plt.colorbar(colormap, ax=ax)
+        cbar.set_label('Intensity of Pheromone')
+        plt.show()
+
+    def select_parents(self, population, fitness_scores):
+        sorted_indices = sorted(range(len(fitness_scores)), key=lambda i: fitness_scores[i], reverse=True)
+        elite_indices = sorted_indices[:1]
+        return elite_indices
+
+    def mapping(self, individual) -> list[tuple[int, int]]:
+        last_position = (0, 0)
+        path = []
+        for component in individual:
+            if component == 0:
+                last_position = (last_position[0], last_position[1]-1)
+            elif component == 1:
+                last_position = (last_position[0]+1, last_position[1])
+            elif component == 2:
+                last_position = (last_position[0], last_position[1]+1)
+            elif component == 3:
+                last_position = (last_position[0]-1, last_position[1])
+            path.append(last_position)
+        return path
 
     def is_feasible(self, ant):
-        for i in range(len(ant)):
-            cell = (ant[i] // self.lake_dimention, ant[i] % self.lake_dimention)
-            if self.lake[cell[0]][cell[1]] == 'H':
-                del ant[i:]
-                return True
-        return True
+        return ant[-1] == self.target
     
     def objective(self, ant):
-        return 1.0 / len(ant) * 4
+        if len(ant) == 0:
+            return 0
+        return abs(ant[-1][0] + ant[-1][1])/len(ant) + self.is_feasible(ant)*10    #/ self.num_ants #+ self.is_feasible(ant)*10
     
-    def update_pheromones(self, ant, objective):
-        for i in range(len(ant)):
-            cell = (ant[i] // self.lake_dimention, ant[i] % self.lake_dimention)
-            self.pheromones[cell[0]][cell[1]] += objective
-            self.pheromones[cell[1]][cell[0]] += objective
+    def update_pheromones(self, ant, path, objective):
+        if len(path) == 0:
+            return
+        self.pheromones[0][ant[0]] += objective
+        for i in range(len(path)-1):
+            s = path[i][0] * self.lake_dimention + path[i][1]
+            a = ant[i+1]
+            self.pheromones[s][a] += objective
+
+    def evaporate(self):
+        for i in range(len(self.pheromones)):
+            for j in range(len(self.pheromones[i])):
+                if self.pheromones[i][j] > 1:
+                    self.pheromones[i][j] *= self.evaporation_rate
+                #if self.pheromones[i][j] > 1:
+                #    self.pheromones[i][j] = 1
 
     def generate_ant(self):
         solution = []
-        source = 0
+        current_state = (0,0)
+        previous_component = -10
         while True:
-            components = list(self.make_moves(source))
-            if len(components) == 0:
+            components = list(self.make_moves(current_state, previous_component))
+            if len(solution) >= self.individual_size or len(components) == 0:
                 break
-            probabilities = self.calculate_probabilities(components, source)
-            source = random.choices(components, weights=probabilities, k=1)[0]
-            solution.append(source)
-        return solution
+            
+            probabilities = self.calculate_probabilities(components, current_state)
+            action = random.choices(components, weights=probabilities, k=1)[0]
+            previous_component = action
+            current_state = self._component_plus_state(action, current_state)
 
-    def make_moves(self, state):
-        cell = (state // self.lake_dimention, state % self.lake_dimention)
-        # actions = [(0,1), (1,0), (0,-1), (-1,0)]
-        actions = [(0,1), (1,0)] # just move foward or down
-        for action in actions:
-            new_state = (cell[0] + action[0], cell[1] + action[1])
-            if 0 <= new_state[0] < self.lake_dimention and 0 <= new_state[1] < self.lake_dimention:
-                yield new_state[0] * self.lake_dimention + new_state[1]
+            if self.lake[current_state[0]][current_state[1]] == 'H':
+                break
+            if current_state == self.target:
+                solution.append(action)
+                break
+            solution.append(action)
+        return solution
+    
+    def _component_plus_state(self, component, state):
+        if component == 0:
+            return (state[0], state[1] - 1)
+        if component == 1:
+            return (state[0] + 1, state[1])
+        if component == 2:
+            return (state[0], state[1] + 1)
+        if component == 3:
+            return (state[0] - 1, state[1])
+
+    def make_moves(self, state, previous_component):
+        unused = set(range(0,4))
+        if state[0] == 0:
+            unused.remove(3)
+        if state[1] == 0:
+            unused.remove(0)
+        if state[0] == self.target[0]:
+            unused.remove(1)
+        if state[1] == self.target[1]:
+            unused.remove(2)
+        for move in unused:
+            if abs(move - previous_component) != 2:
+                yield move
 
     def calculate_probabilities(self, possible_states, current_state):
         """
@@ -79,58 +219,31 @@ class ACO:
         p_xy = (pheromones_xy) / sum( pheromones_xy )
         Note: the distance from any x to any adjecent cell is 1.
         """
-        pheromones = [self.pheromones[current_state][state]**self.alpha for state in possible_states]
+        cell_state = current_state[0] * len(self.lake) + current_state[1]
+        pheromones = [self.pheromones[cell_state][action]**self.alpha for action in possible_states]
         total_pheromones = sum(pheromones)
         return [pheromone/(total_pheromones) for pheromone in pheromones]
 
 
 if __name__ == "__main__":
-    lake = [
-        ['S', 'F', 'F', 'F'],
-        ['F', 'H', 'F', 'H'],
-        ['F', 'F', 'F', 'H'],
-        ['H', 'F', 'F', 'G']
-    ]
-    PATH_MAP = "./data/MAP_22_BY_22/input02.txt"
-    with open(PATH_MAP, "r") as f:
-        n = int(f.readline())
-        mmap = []
-        for _ in range(n):
-            mmap.append(f.readline()[:-1])
+    for i in range(2, 3):
+        print(i)
+        PATH_MAP = "./../data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=12, i=i)
+        with open(PATH_MAP, "r") as f:
+            n = int(f.readline())
+            mmap = []
+            for _ in range(n):
+                mmap.append(f.readline()[:-1])
 
-    aco = ACO(mmap, num_ants=100, max_iterations=1000)
-    aco.fit()
-    print("Best ant: ", aco.best_ant)
-
-    # c = 0
-    # for _ in range(30):
-    #     aco = ACO(mmap, num_ants=100, max_iterations=1000)
-    #     aco.fit()
-    #     if aco.best_ant[-1] == 143:
-    #         c +=1
-    #     print("Best ant: ", aco.best_ant)
-    # print(c)
-    #aco = ACO(lake)
-    #aco = ACO(lake, num_ants=100, max_iterations=200)
-    #aco = ACO(mmap, num_ants=100, max_iterations=1000)
-    # aco.fit()
-    # print("Best ant: ", aco.best_ant)
-    # print(aco.pheromones[13][14])
-    #for nn in aco.pheromones:
-    #    print(nn)
-    #print()
-
-    # lake = np.array([
-    #     ['S', 'F', 'F', 'H', 'F', 'F', 'F', 'F', 'F', 'F', 'H', 'H'],
-    #     ['F', 'F', 'F', 'F', 'F', 'H', 'H', 'F', 'F', 'H', 'F', 'H'],
-    #     ['H', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F'],
-    #     ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'F', 'H'],
-    #     ['F', 'F', 'F', 'F', 'F', 'F', 'F', 'H', 'F', 'F', 'H', 'F'],
-    #     ['H', 'F', 'F', 'F', 'F', 'F', 'F', 'H', 'H', 'F', 'F', 'F'],
-    #     ['H', 'H', 'F', 'F', 'H', 'F', 'F', 'F', 'F', 'F', 'H', 'F'],
-    #     ['H', 'F', 'F', 'F', 'F', 'F', 'H', 'F', 'F', 'F', 'F', 'H'],
-    #     ['F', 'F', 'F', 'F', 'F', 'H', 'H', 'F', 'F', 'F', 'F', 'F'],
-    #     ['H', 'F', 'F', 'F', 'F', 'F', 'H', 'F', 'H', 'F', 'F', 'H'],
-    #     ['F', 'F', 'F', 'F', 'F', 'F', 'H', 'F', 'F', 'H', 'H', 'F'],
-    #     ['F', 'F', 'F', 'F', 'F', 'H', 'F', 'F', 'F', 'F', 'F', 'G']
-    # ])
+        results = set()
+        for _ in range(30):
+            aco = ACO(mmap)
+            results.add(aco.fit())
+        print("end")
+        print(results)
+        OUTPUT_PATH = "./../output/MAP_{d}_BY_{d}_MAP_{i}.csv".format(d=12, i=i)
+        with open(OUTPUT_PATH, 'w', newline='') as csvfile:
+            spamwriter = csv.writer(csvfile, delimiter=',')
+            spamwriter.writerow(("fitness", "finished", "diversity", "individual"))
+            for result in results:
+                spamwriter.writerow((result[0], result[1], result[2], result[3]))

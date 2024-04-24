@@ -2,170 +2,189 @@
 import random
 
 
-mmap = []
-n = None
-num_actions = list(range(4))
+class SEA:
+    def __init__(self, lake, population_size=100, 
+                 num_generations=1000, 
+                 elite_percentage=0.1, 
+                 mutation_rate=0.1, 
+                 crossover_rate=0.8, 
+                 individual_size=500) -> None:
+        self.lake = lake
+        self.population_size = population_size
+        self.elite_precentage = elite_percentage
+        self.num_generations = num_generations
+        self.mutation_rate = mutation_rate
+        self.crossover_rate = crossover_rate
+        self.individual_size = individual_size
+        self.elite_size = int(self.elite_precentage * self.population_size)
+        self.lake_dimention = len(self.lake)
 
+    def fit(self):
+        population = self.initialize_population()
 
-population_size = 100
-num_generations = 1000
-elite_percentage = 0.1
-mutation_rate = 0.1
-crossover_rate = 0.8
-individual_size = 500
-elite_size = int(elite_percentage * population_size)
+        for generation in range(self.num_generations):
+            paths          = [self.mapping(individual) for individual in population]
+            fitness_scores = [self.evaluate_individual(path) for path in paths]
 
+            best_individual_index = fitness_scores.index(max(fitness_scores))
+            best_individual = population[best_individual_index]
 
-def mapping(individual) -> list[tuple[int, int]]:
-    last_position = (0, 0)
-    path = []
-    for component in individual:
-        if component == 0:
-            if last_position[1] != 0:
-                last_position = (last_position[0], last_position[1]-1)
-        elif component == 1:
-            if last_position[0] != n-1:
-                last_position = (last_position[0]+1, last_position[1])
-        elif component == 2:
-            if last_position[1] != n-1:
-                last_position = (last_position[0], last_position[1]+1)
-        elif component == 3:
-            if last_position[0] != 0:
-                last_position = (last_position[0]-1, last_position[1])
-        path.append(last_position)
-    return path
+            offspring = [best_individual]
+            while len(offspring) < self.population_size:
+                parent1, parent2 = self.tornement_selection(population, fitness_scores)
+                if random.random() < self.crossover_rate:
+                    child1, child2 = self.uniform_crossover(parent1, parent2)
+                else:
+                    child1, child2 = parent1, parent2
+                if random.random() < self.mutation_rate:
+                    child1 = self.mutate(child1)
+                if random.random() < self.mutation_rate:
+                    child2 = self.mutate(child2)
+                child1, child2 = self.heuristic_mutation(child1), self.heuristic_mutation(child2)
+                offspring.extend([child1, child2])
+            population = offspring
 
-def evaluate_individual(individual) -> int:
-    path = mapping(individual)
-    for i in range(len(path)):
-        if mmap[path[i][0]][path[i][1]] == 'H':
-            del individual[i:]
-            del path[i:]
-            break
-    
-    if len(path) == 0:
-        return -1000000
-    if not is_feasible(individual):
-        return (path[-1][0] + path[-1][1])*2 
-    else:
-        return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (n+1)) + abs(path[-1][1] - (n+1))) - len(path) + is_feasible(individual)*200     # best fitness in general
-
-def is_feasible(individual) -> bool:
-    path = mapping(individual)
-    if path[-1] == (n-1, n-1):
-        return True
-    return False
-
-def initialize_population() -> list[list[int]]:
-    return [[random.randint(0, 3) for _ in range(random.randint(1, 100))] for _ in range(population_size)]
-
-def select_parents(population, fitness_scores) -> list[list[int]]:
-    sorted_indices = sorted(range(len(fitness_scores)), key=lambda i: fitness_scores[i], reverse=True)
-    elite_indices = sorted_indices[:elite_size]
-    return [population[idx] for idx in elite_indices]
-
-def tornement_selection(population, fitness_scores) -> list[list[int]]:
-    pop_fit = [(population[i], fitness_scores[i]) for i in range(len(population))]
-    parents = random.sample(pop_fit, elite_size)
-    parents.sort(key=lambda element: element[1], reverse=True)
-    return [parents[0][0], parents[1][0]]
-
-def crossover(parent1, parent2) -> tuple[list[int], list[int]]:
-    crossover_point = random.randint(0, min(len(parent1), len(parent2)))
-    child1 = parent1[:crossover_point] + parent2[crossover_point:]
-    child2 = parent2[:crossover_point] + parent1[crossover_point:]
-    return child1, child2
-
-def two_point_crossover(parent1, parent2) -> tuple[list[int], list[int]]:
-    length = min(len(parent1), len(parent2))
-    point1 = random.randint(0, length)
-    point2 = random.randint(0, length)
-    if point1 > point2:
-        point1, point2 = point2, point1
-    child1 = parent1[:point1] + parent2[point1:point2] + parent1[point2:]
-    child2 = parent2[:point1] + parent1[point1:point2] + parent2[point2:]
-    return child1, child2
-
-def mutate(individual, mutation_rate) -> list[int]:
-    for i in range(len(individual)):
-        if random.random() < mutation_rate:
-            individual[i] = random.randint(0, 3)
-        #if random.random() < mutation_rate:
-        #    print(individual)
-        #    print(i)
-        #    del individual[i] 
-    if random.random() < 0.8 and len(individual) < individual_size:
-        path = mapping(individual)
-        if len(path) > 0:
-            number_steps = min(abs(path[-1][0] - n), abs(path[-1][1] - n))*10
-            for _ in range(random.randint(1, number_steps)):
-                individual.append(random.randint(0, 3))
-        else:
-            for _ in range(n):
-                individual.append(random.randint(0, 3))
-    return individual
-
-def sea():
-    population = initialize_population()
-    for generation in range(num_generations):
-        fitness_scores = [evaluate_individual(individual) for individual in population]
         best_individual_index = fitness_scores.index(max(fitness_scores))
-        best_individual = population[best_individual_index]
-        best_fitness = fitness_scores[best_individual_index]
+        best_map              = paths[best_individual_index]
+        population_fenotype   = [self.fenotype(individual) for individual in paths]
+        return len(best_map), self.is_feasible(best_map), self.population_diversity(population_fenotype)
+    
+    def fenotype(self, path):
+        individual = []
+        position = (0, 0)
+        actions = {(0, -1):0, (1, 0):1, (0,1):2, (-1,0):3}
+        for step in path:
+            action = (step[0] - position[0], step[1] - position[1])
+            if action in actions:
+                individual.append(actions[action])
+            #else:
+            #    print("Hit the wall")
+            position = step
+        return individual
 
-        offspring = [[random.randint(0, 3) for _ in range(random.randint(1, 100))] for _ in range(10)]
-        while len(offspring) < population_size:
-            parent1, parent2 = tornement_selection(population, fitness_scores)
-            if random.random() < crossover_rate:
-                child1, child2 = two_point_crossover(parent1, parent2)
-            else:
-                child1, child2 = parent1, parent2
-            if random.random() < mutation_rate:
-                child1 = mutate(child1, mutation_rate)
-            if random.random() < mutation_rate:
-                child2 = mutate(child2, mutation_rate)
-            offspring.extend([child1, child2])
-        population = offspring
-    best_individual_fitness = evaluate_individual(best_individual)
-    if is_feasible(best_individual):
-        print("--- Feasible Individual Actions: {fitness}".format(fitness=best_individual_fitness), best_individual)
-        return True
-    else:
-        print("Not Feasible Individual Actions: {fitness}".format(fitness=best_individual_fitness), best_individual)
-        return False
+    def mapping(self, grid) -> list[tuple[int, int]]:
+        individual = []
+        visited = set()
+        position = (0,0)
+        while True:
+            if grid[position[0]][position[1]] == 0:
+                if position[1] != 0:
+                    position = (position[0], position[1]-1)
+            elif grid[position[0]][position[1]] == 1:
+                if position[0] != n-1:
+                    position = (position[0]+1, position[1])
+            elif grid[position[0]][position[1]] == 2:
+                if position[1] != n-1:
+                    position = (position[0], position[1]+1)
+            elif grid[position[0]][position[1]] == 3:
+                if position[0] != 0:
+                    position = (position[0]-1, position[1])
+            if position == (n-1, n-1) or position in visited:
+                individual.append(position)
+                break
+            # pay attention, if the agent hit the wall you will append the position twice anyway
+            visited.add(position)
+            individual.append(position)
+        return individual
+
+    def evaluate_individual(self, path) -> int:
+        for i in range(len(path)):
+            if mmap[path[i][0]][path[i][1]] == 'H':
+                del path[i:]
+                break
         
+        if len(path) == 0:
+            return -1000000
+        return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (self.lake_dimention+1)) + abs(path[-1][1] - (self.lake_dimention+1))) - len(path) + self.is_feasible(path) * 100
+
+    def is_feasible(self, path) -> bool:
+        for step in path:
+            if 0 <= step[0] < self.lake_dimention and 0 <= step[1] < self.lake_dimention:
+                if mmap[step[0]][step[1]] == 'H':
+                    return False
+        if path[-1] != (self.lake_dimention-1, self.lake_dimention-1):
+            return False
+        return True
+
+    def make_moves(self, cell):
+        actions = [(0, -1), (1, 0), (0,1), (-1,0)]
+        for i in range(len(actions)):
+            new_state = (cell[0] + actions[i][0], cell[1] + actions[i][1])
+            if 0 <= new_state[0] < self.lake_dimention and 0 <= new_state[1] < self.lake_dimention:
+                yield i
+
+    def init_solution(self) -> list[list[int]]:
+        return [[random.choice(list(self.make_moves((i, j)))) for j in range(self.lake_dimention)] for i in range(self.lake_dimention)]
+
+    def initialize_population(self) -> list[list[int]]:
+        return [self.init_solution() for _ in range(self.population_size)]
+
+    def select_parents(self, population, fitness_scores) -> list[list[int]]:
+        sorted_indices = sorted(range(len(fitness_scores)), key=lambda i: fitness_scores[i], reverse=True)
+        elite_indices = sorted_indices[:self.elite_size]
+        return [population[idx] for idx in elite_indices]
+
+    def tornement_selection(self, population, fitness_scores) -> list[list[int]]:
+        pop_fit = [(population[i], fitness_scores[i]) for i in range(len(population))]
+        parents = random.sample(pop_fit, self.elite_size)
+        parents.sort(key=lambda element: element[1], reverse=True)
+        return [parents[0][0], parents[1][0]]
+
+    def uniform_crossover(self, parent1, parent2) -> tuple[list[list[int]], list[list[int]]]:
+        child1 = [[0 for _ in range(self.lake_dimention)] for _ in range(self.lake_dimention)]
+        child2 = [[0 for _ in range(self.lake_dimention)] for _ in range(self.lake_dimention)]
+        for i in range(self.lake_dimention):
+            for j in range(self.lake_dimention):
+                if random.random() < 0.5:
+                    child1[i][j] = parent1[i][j]
+                    child2[i][j] = parent2[i][j]
+                else:
+                    child1[i][j] = parent2[i][j]
+                    child2[i][j] = parent1[i][j]
+        return child1, child2
+
+    def heuristic_mutation(self, individual) -> list[list[int]]:
+        individual[self.lake_dimention-1][self.lake_dimention-2] = 2
+        individual[self.lake_dimention-2][self.lake_dimention-1] = 1
+        return individual
+
+    def mutate(self, individual) -> list[int]:
+        for i in range(self.lake_dimention):
+            for j in range(self.lake_dimention):
+                if random.random() < self.mutation_rate:
+                    individual[i][j] = random.randint(0, 3)
+        return individual
+
+    def hamming_distance(self, individual1, individual2):
+        min_len = min(len(individual1), len(individual2))
+        max_len = max(len(individual1), len(individual2))
+        
+        distance = max_len - min_len
+        for i in range(min_len):
+            distance += abs(individual1[i] - individual2[i])
+        return distance
+
+    def population_diversity(self, population):
+        total_distance = 0
+        num_pairs = 0
+        for i in range(len(population)):
+            for j in range(i+1, len(population)):
+                total_distance += self.hamming_distance(population[i], population[j])
+                num_pairs += 1
+        return int(total_distance / num_pairs)
+    
 
 if __name__ == "__main__":
-    # PATH_MAP = "./data/MAP_12_BY_12/input02.txt"
-    # with open(PATH_MAP, "r") as f:
-    #     n = int(f.readline())
-    #     mmap = []
-    #     for _ in range(n):
-    #         mmap.append(f.readline()[:-1])
-    # sea()
+    for i in range(2, 3):
+        PATH_MAP = "./../data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=12, i=i)
+        with open(PATH_MAP, "r") as f:
+            n = int(f.readline())
+            mmap = []
+            for _ in range(n):
+                mmap.append(f.readline()[:-1])
 
-    count = 0
-    PATH_MAP = "./data/MAP_12_BY_12/input03.txt"
-    with open(PATH_MAP, "r") as f:
-        n = int(f.readline())
-        mmap = []
-        for _ in range(n):
-            mmap.append(f.readline()[:-1])
-    for i in range(30):
-        if sea():
-            count += 1
-    print(count)
-    
-    # for i in range(10):
-    #     PATH_MAP = "./data/MAP_12_BY_12/input0{i}.txt".format(i=i)
-    #     print()
-    #     print(PATH_MAP)
-    #     print()
-    #     with open(PATH_MAP, "r") as f:
-    #         n = int(f.readline())
-    #         mmap = []
-    #         for _ in range(n):
-    #             mmap.append(f.readline()[:-1])
-    #     for _ in range(10):
-    #         sea()
-    
+        results = []
+        for _ in range(30):
+            sea = SEA(mmap)
+            results.append(sea.fit())
+        print(results)
