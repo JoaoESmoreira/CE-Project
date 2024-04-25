@@ -1,22 +1,28 @@
 
 import random
+import csv
 
 
 class SEA:
-    def __init__(self, lake, population_size=100, 
-                 num_generations=1000, 
-                 elite_percentage=0.1, 
+    def __init__(self, lake, 
+                 #elite_percentage=0.1, 
+                 pool_percentage=0.1,
                  mutation_rate=0.1, 
                  crossover_rate=0.8, 
-                 individual_size=500) -> None:
+                 population_size=100, 
+                 individual_size=500,
+                 num_generations=1000 
+                 ) -> None:
         self.lake = lake
         self.population_size = population_size
-        self.elite_precentage = elite_percentage
+        #self.elite_percentage = elite_percentage
+        self.pool_percentage = pool_percentage
         self.num_generations = num_generations
         self.mutation_rate = mutation_rate
         self.crossover_rate = crossover_rate
         self.individual_size = individual_size
-        self.elite_size = int(self.elite_precentage * self.population_size)
+        #self.elite_size = max(int(self.elite_percentage * self.population_size), 1)
+        self.pool_size = max(int(self.pool_percentage * self.population_size), 1)
         self.lake_dimention = len(self.lake)
 
     def fit(self):
@@ -28,7 +34,10 @@ class SEA:
             #update_graph(generation, best_fitness, *f1)
             #update_graph(generation, sum(fitness_scores) / len(fitness_scores), *f2)
 
-            offspring = [[random.randint(0, 3) for _ in range(random.randint(1, 100))] for _ in range(10)]
+            #offspring = [[random.randint(0, 3) for _ in range(random.randint(1, 100))] for _ in range(10)]
+            best_individual_index = fitness_scores.index(max(fitness_scores))
+            best_individual = population[best_individual_index]
+            offspring = [best_individual]
             while len(offspring) < self.population_size:
                 #parent1, parent2 = random.sample(parents, 2)
                 parent1, parent2 = self.tornement_selection(population, fitness_scores)
@@ -46,7 +55,7 @@ class SEA:
         best_individual_index = fitness_scores.index(max(fitness_scores))
         best_individual = population[best_individual_index]
         #best_fitness = fitness_scores[best_individual_index]
-        return len(best_individual), self.is_feasible(best_individual), self.population_diversity(population)
+        return len(best_individual), self.is_feasible(best_individual), self.population_diversity(population), tuple(best_individual)
     
     def mapping(self, individual) -> list[tuple[int, int]]:
         last_position = (0, 0)
@@ -97,11 +106,11 @@ class SEA:
 
     def tornement_selection(self, population, fitness_scores) -> list[list[int]]:
         pop_fit = [(population[i], fitness_scores[i]) for i in range(len(population))]
-        parents = random.sample(pop_fit, self.elite_size)
-        parents.sort(key=lambda element: element[1], reverse=True)
-        return [parents[0][0], parents[1][0]]
+        pool = random.sample(pop_fit, self.pool_size)
+        pool.sort(key=lambda element: element[1], reverse=True)
+        return [pool[0][0], pool[1][0]]
 
-    def crossover(self, parent1, parent2) -> tuple[list[int], list[int]]:
+    def one_point_crossover(self, parent1, parent2) -> tuple[list[int], list[int]]:
         crossover_point = random.randint(0, min(len(parent1), len(parent2)))
         child1 = parent1[:crossover_point] + parent2[crossover_point:]
         child2 = parent2[:crossover_point] + parent1[crossover_point:]
@@ -155,25 +164,35 @@ class SEA:
     
 
 if __name__ == "__main__":
-    for i in range(2, 3):
-        PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=12, i=i)
-        with open(PATH_MAP, "r") as f:
+    pool_percentages = [0.05, 0.1, 0.15, 0.2]
+    mutation_rates = [0.01, 0.05, 0.1, 0.15]
+    crossover_rates = [0.7, 0.8, 0.9]
+    individual_size = [100, 200, 500]
+    dimentions = [4, 8, 12]
+    m = 2
+
+    for i in range(len(dimentions)):
+        PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=dimentions[i], i=m)
+        with open(PATH_MAP, "r", encoding='utf-8') as f:
             n = int(f.readline())
             mmap = []
             for _ in range(n):
                 mmap.append(f.readline()[:-1])
 
-        mutations = [0.01, 0.05, 0.1, 0.15, 0.2, 0.25]
-        mutations = [0.2, 0.25, 0.3, 0.35]
-        for mutation in mutations:
-            results = []
-            for _ in range(30):
-                sea = SEA(mmap, mutation_rate=mutation)
-                results.append(sea.fit())
-            c = 0
-            t = 0
-            for result in results:
-                if result[1] is True:
-                    c += result[0]
-                    t += 1
-            print(mutation, c/len(results), t)
+        for pool in pool_percentages:
+            for mutation in mutation_rates:
+                for crossover in crossover_rates:
+
+                    results = []
+                    for _ in range(30):
+                        sea = SEA(mmap, pool_percentage=pool, mutation_rate=mutation, crossover_rate=crossover, individual_size=individual_size[i])
+                        results.append(sea.fit())
+
+                    OUTPUT_PATH = f"./output/sea/dim{dimentions[i]}/map_0{m}_pool_{pool}_cross_{crossover}_mut_{mutation}.csv"
+                    print(OUTPUT_PATH)
+                    with open(OUTPUT_PATH, 'w', newline='', encoding='utf-8') as csvfile:
+                        spamwriter = csv.writer(csvfile, delimiter=',')
+                        spamwriter.writerow(("fitness", "finished", "diversity", "individual"))
+                        for result in results:
+                            spamwriter.writerow((result[0], result[1], result[2], result[3]))
+

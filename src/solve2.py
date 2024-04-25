@@ -1,22 +1,28 @@
 
+
 import random
+import csv
 
 
 class SEA:
-    def __init__(self, lake, population_size=100, 
-                 num_generations=1000, 
-                 elite_percentage=0.1, 
-                 mutation_rate=0.1, 
-                 crossover_rate=0.8, 
-                 individual_size=500) -> None:
+    def __init__(self, lake, population_size=100,
+                 #elite_percentage=0.1,
+                 pool_percentage=0.1,
+                 mutation_rate=0.1,
+                 crossover_rate=0.8,
+                 individual_size=500,
+                 num_generations=1000
+                 ) -> None:
         self.lake = lake
         self.population_size = population_size
-        self.elite_precentage = elite_percentage
+        #self.elite_precentage = elite_percentage
+        self.pool_percentage=pool_percentage
         self.num_generations = num_generations
         self.mutation_rate = mutation_rate
         self.crossover_rate = crossover_rate
         self.individual_size = individual_size
-        self.elite_size = int(self.elite_precentage * self.population_size)
+        #self.elite_size = int(self.elite_precentage * self.population_size)
+        self.pool_size = max(int(self.pool_percentage * self.population_size), 1)
         self.lake_dimention = len(self.lake)
 
     def fit(self):
@@ -40,15 +46,14 @@ class SEA:
                     child1 = self.mutate(child1)
                 if random.random() < self.mutation_rate:
                     child2 = self.mutate(child2)
-                child1, child2 = self.heuristic_mutation(child1), self.heuristic_mutation(child2)
                 offspring.extend([child1, child2])
             population = offspring
 
         best_individual_index = fitness_scores.index(max(fitness_scores))
         best_map              = paths[best_individual_index]
         population_fenotype   = [self.fenotype(individual) for individual in paths]
-        return len(best_map), self.is_feasible(best_map), self.population_diversity(population_fenotype)
-    
+        return len(best_map), self.is_feasible(best_map), self.population_diversity(population_fenotype), tuple(population_fenotype[best_individual_index])
+
     def fenotype(self, path):
         individual = []
         position = (0, 0)
@@ -92,10 +97,13 @@ class SEA:
             if mmap[path[i][0]][path[i][1]] == 'H':
                 del path[i:]
                 break
-        
+
         if len(path) == 0:
             return -1000000
-        return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (self.lake_dimention+1)) + abs(path[-1][1] - (self.lake_dimention+1))) - len(path) + self.is_feasible(path) * 100
+        return (path[-1][0] + path[-1][1])*2 \
+           - (abs(path[-1][0] - (self.lake_dimention+1)) + \
+           abs(path[-1][1] - (self.lake_dimention+1))) - \
+           len(path) + self.is_feasible(path) * 100
 
     def is_feasible(self, path) -> bool:
         for step in path:
@@ -119,14 +127,14 @@ class SEA:
     def initialize_population(self) -> list[list[int]]:
         return [self.init_solution() for _ in range(self.population_size)]
 
-    def select_parents(self, population, fitness_scores) -> list[list[int]]:
+    def select_survivors(self, population, fitness_scores) -> list[list[int]]:
         sorted_indices = sorted(range(len(fitness_scores)), key=lambda i: fitness_scores[i], reverse=True)
         elite_indices = sorted_indices[:self.elite_size]
         return [population[idx] for idx in elite_indices]
 
     def tornement_selection(self, population, fitness_scores) -> list[list[int]]:
         pop_fit = [(population[i], fitness_scores[i]) for i in range(len(population))]
-        parents = random.sample(pop_fit, self.elite_size)
+        parents = random.sample(pop_fit, self.pool_size)
         parents.sort(key=lambda element: element[1], reverse=True)
         return [parents[0][0], parents[1][0]]
 
@@ -158,7 +166,7 @@ class SEA:
     def hamming_distance(self, individual1, individual2):
         min_len = min(len(individual1), len(individual2))
         max_len = max(len(individual1), len(individual2))
-        
+
         distance = max_len - min_len
         for i in range(min_len):
             distance += abs(individual1[i] - individual2[i])
@@ -172,19 +180,37 @@ class SEA:
                 total_distance += self.hamming_distance(population[i], population[j])
                 num_pairs += 1
         return int(total_distance / num_pairs)
-    
+
 
 if __name__ == "__main__":
-    for i in range(2, 3):
-        PATH_MAP = "./../data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=12, i=i)
-        with open(PATH_MAP, "r") as f:
+    pool_percentages = [0.05, 0.1, 0.15, 0.2]
+    mutation_rates = [0.01, 0.05, 0.1, 0.15]
+    crossover_rates = [0.7, 0.8, 0.9]
+    dimentions = [4, 8, 12]
+    individual_size = [100, 200, 500]
+    m = 2
+
+    for i in range(len(dimentions)):
+        PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=dimentions[i], i=m)
+        with open(PATH_MAP, "r", encoding='utf-8') as f:
             n = int(f.readline())
             mmap = []
             for _ in range(n):
                 mmap.append(f.readline()[:-1])
 
-        results = []
-        for _ in range(30):
-            sea = SEA(mmap)
-            results.append(sea.fit())
-        print(results)
+        for pool in pool_percentages:
+            for mutation in mutation_rates:
+                for crossover in crossover_rates:
+
+                    results = []
+                    for _ in range(1):
+                        sea = SEA(mmap, pool_percentage=pool, mutation_rate=mutation, crossover_rate=crossover, individual_size=individual_size[i])
+                        results.append(sea.fit())
+
+                    OUTPUT_PATH = f"./output/qtable/dim{dimentions[i]}/map_0{m}_pool_{pool}_cross_{crossover}_mut_{mutation}.csv"
+                    print(OUTPUT_PATH)
+                    with open(OUTPUT_PATH, 'w', newline='', encoding='utf-8') as csvfile:
+                        spamwriter = csv.writer(csvfile, delimiter=',')
+                        spamwriter.writerow(("fitness", "finished", "diversity", "individual"))
+                        for result in results:
+                            spamwriter.writerow((result[0], result[1], result[2], result[3]))

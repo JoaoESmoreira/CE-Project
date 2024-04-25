@@ -6,7 +6,7 @@ import csv
 def hamming_distance(individual1, individual2):
     min_len = min(len(individual1), len(individual2))
     max_len = max(len(individual1), len(individual2))
-    
+
     distance = max_len - min_len
     for i in range(min_len):
         distance += abs(individual1[i] - individual2[i])
@@ -226,24 +226,32 @@ class ACO:
 
 
 if __name__ == "__main__":
-    for i in range(2, 3):
-        print(i)
-        PATH_MAP = "./../data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=12, i=i)
-        with open(PATH_MAP, "r") as f:
+    m = 2
+    dimentions = [4, 8, 12]
+    individual_size = [100, 200, 500]
+
+    for i in range(len(dimentions)):
+        PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=dimentions[i], i=m)
+        with open(PATH_MAP, "r", encoding='utf-8') as f:
             n = int(f.readline())
             mmap = []
             for _ in range(n):
                 mmap.append(f.readline()[:-1])
 
-        results = set()
-        for _ in range(30):
-            aco = ACO(mmap)
-            results.add(aco.fit())
-        print("end")
-        print(results)
-        OUTPUT_PATH = "./../output/MAP_{d}_BY_{d}_MAP_{i}.csv".format(d=12, i=i)
-        with open(OUTPUT_PATH, 'w', newline='') as csvfile:
-            spamwriter = csv.writer(csvfile, delimiter=',')
-            spamwriter.writerow(("fitness", "finished", "diversity", "individual"))
-            for result in results:
-                spamwriter.writerow((result[0], result[1], result[2], result[3]))
+        evapuration_rates = [0.8, 0.9, 1]
+        alpha_rates = [0.8, 0.9, 1]
+        for evapuration in evapuration_rates:
+            for alpha in alpha_rates:
+
+                results = set()
+                for _ in range(1):
+                    aco = ACO(mmap, alpha=alpha, evaporation_rate=evapuration, individual_size=individual_size[i])
+                    results.add(aco.fit())
+
+                OUTPUT_PATH = f"./output/aco/dim{dimentions[i]}/map_0{m}_alpha_{alpha}_evap{evapuration}.csv"
+                print(OUTPUT_PATH)
+                with open(OUTPUT_PATH, 'w', newline='', encoding='utf-8') as csvfile:
+                    spamwriter = csv.writer(csvfile, delimiter=',')
+                    spamwriter.writerow(("fitness", "finished", "diversity", "individual"))
+                    for result in results:
+                        spamwriter.writerow((result[0], result[1], result[2], result[3]))
