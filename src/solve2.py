@@ -52,7 +52,7 @@ class SEA:
         best_individual_index = fitness_scores.index(max(fitness_scores))
         best_map              = paths[best_individual_index]
         population_fenotype   = [self.fenotype(individual) for individual in paths]
-        return len(best_map), self.is_feasible(best_map), self.population_diversity(population_fenotype), tuple(population_fenotype[best_individual_index])
+        return len(best_map), self.is_feasible(best_map), self.population_diversity(population), tuple(population_fenotype[best_individual_index])
 
     def fenotype(self, path):
         individual = []
@@ -103,7 +103,7 @@ class SEA:
         return (path[-1][0] + path[-1][1])*2 \
            - (abs(path[-1][0] - (self.lake_dimention+1)) + \
            abs(path[-1][1] - (self.lake_dimention+1))) - \
-           len(path) + self.is_feasible(path) * 100
+           len(path) + self.is_feasible(path) * 40
 
     def is_feasible(self, path) -> bool:
         for step in path:
@@ -151,26 +151,21 @@ class SEA:
                     child2[i][j] = parent1[i][j]
         return child1, child2
 
-    def heuristic_mutation(self, individual) -> list[list[int]]:
-        individual[self.lake_dimention-1][self.lake_dimention-2] = 2
-        individual[self.lake_dimention-2][self.lake_dimention-1] = 1
-        return individual
-
     def mutate(self, individual) -> list[int]:
         for i in range(self.lake_dimention):
             for j in range(self.lake_dimention):
                 if random.random() < self.mutation_rate:
-                    individual[i][j] = random.randint(0, 3)
+                    #individual[i][j] = random.choice(list(self.make_moves((i, j))))
+                    individual[i][j] = random.randint(0,3)
         return individual
 
     def hamming_distance(self, individual1, individual2):
-        min_len = min(len(individual1), len(individual2))
-        max_len = max(len(individual1), len(individual2))
-
-        distance = max_len - min_len
-        for i in range(min_len):
-            distance += abs(individual1[i] - individual2[i])
+        distance = 0
+        for i in range(len(individual1)):
+            for j in range(len(individual1)):
+                distance += abs(individual1[i][j] - individual2[i][j])
         return distance
+        return sum(abs(cell1 - cell2) for row1, row2 in zip(individual1, individual2) for cell1, cell2 in zip(row1, row2))
 
     def population_diversity(self, population):
         total_distance = 0
@@ -183,6 +178,7 @@ class SEA:
 
 
 if __name__ == "__main__":
+    seeds = [7123, 1287, 6372, 2651, 199, 9147, 6836, 9289, 8469, 4572, 2977, 7939, 3336, 6871, 182, 7840, 7325, 6427, 3349, 7321, 2930, 9756, 8457, 5584, 4797, 4613, 7269, 7247, 8908, 4259]
     pool_percentages = [0.05, 0.1, 0.15, 0.2]
     mutation_rates = [0.01, 0.05, 0.1, 0.15]
     crossover_rates = [0.7, 0.8, 0.9]
@@ -203,7 +199,8 @@ if __name__ == "__main__":
                 for crossover in crossover_rates:
 
                     results = []
-                    for _ in range(1):
+                    for seed in seeds:
+                        random.seed(seed)
                         sea = SEA(mmap, pool_percentage=pool, mutation_rate=mutation, crossover_rate=crossover, individual_size=individual_size[i])
                         results.append(sea.fit())
 

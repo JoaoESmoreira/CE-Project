@@ -229,6 +229,7 @@ if __name__ == "__main__":
     m = 2
     dimentions = [4, 8, 12]
     individual_size = [100, 200, 500]
+    seeds = [7123, 1287, 6372, 2651, 199, 9147, 6836, 9289, 8469, 4572, 2977, 7939, 3336, 6871, 182, 7840, 7325, 6427, 3349, 7321, 2930, 9756, 8457, 5584, 4797, 4613, 7269, 7247, 8908, 4259]
 
     for i in range(len(dimentions)):
         PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=dimentions[i], i=m)
@@ -244,7 +245,8 @@ if __name__ == "__main__":
             for alpha in alpha_rates:
 
                 results = set()
-                for _ in range(1):
+                for seed in seeds:
+                    random.seed(seed)
                     aco = ACO(mmap, alpha=alpha, evaporation_rate=evapuration, individual_size=individual_size[i])
                     results.add(aco.fit())
 

@@ -86,10 +86,7 @@ class SEA:
         
         if len(path) == 0:
             return -1000000
-        if not self.is_feasible(path):
-            return (path[-1][0] + path[-1][1])*2 
-        else:
-            return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (self.lake_dimention+1)) + abs(path[-1][1] - (self.lake_dimention+1))) - len(path) + self.is_feasible(individual)*40     # best fitness in general
+        return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (self.lake_dimention+1)) + abs(path[-1][1] - (self.lake_dimention+1))) - len(path) + self.is_feasible(individual)*40     # best fitness in general
 
     def is_feasible(self, individual) -> bool:
         path = self.mapping(individual)
@@ -102,7 +99,7 @@ class SEA:
         return False
 
     def initialize_population(self) -> list[list[int]]:
-        return [[random.randint(0, 3) for _ in range(random.randint(1, 100))] for _ in range(self.population_size)]
+        return [[random.randint(0, 3) for _ in range(random.randint(1, self.individual_size))] for _ in range(self.population_size)]
 
     def tornement_selection(self, population, fitness_scores) -> list[list[int]]:
         pop_fit = [(population[i], fitness_scores[i]) for i in range(len(population))]
@@ -164,6 +161,7 @@ class SEA:
     
 
 if __name__ == "__main__":
+    seeds = [7123, 1287, 6372, 2651, 199, 9147, 6836, 9289, 8469, 4572, 2977, 7939, 3336, 6871, 182, 7840, 7325, 6427, 3349, 7321, 2930, 9756, 8457, 5584, 4797, 4613, 7269, 7247, 8908, 4259]
     pool_percentages = [0.05, 0.1, 0.15, 0.2]
     mutation_rates = [0.01, 0.05, 0.1, 0.15]
     crossover_rates = [0.7, 0.8, 0.9]
@@ -184,7 +182,8 @@ if __name__ == "__main__":
                 for crossover in crossover_rates:
 
                     results = []
-                    for _ in range(30):
+                    for seed in seeds:
+                        random.seed(seed)
                         sea = SEA(mmap, pool_percentage=pool, mutation_rate=mutation, crossover_rate=crossover, individual_size=individual_size[i])
                         results.append(sea.fit())
 
