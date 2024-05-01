@@ -52,7 +52,11 @@ class SEA:
         best_individual_index = fitness_scores.index(max(fitness_scores))
         best_map              = paths[best_individual_index]
         population_fenotype   = [self.fenotype(individual) for individual in paths]
-        return len(best_map), self.is_feasible(best_map), self.population_diversity(population), tuple(population_fenotype[best_individual_index])
+
+        if self.is_feasible(best_map):
+            return (self.individual_size * (best_map[-1][0] + best_map[-1][1])) / len(best_map), True, self.population_diversity(population), tuple(population_fenotype[best_individual_index])
+        return (best_map[-1][0] + best_map[-1][1]) / len(best_map), False, self.population_diversity(population), tuple(population_fenotype[best_individual_index])
+        #return len(best_map), self.is_feasible(best_map), self.population_diversity(population), tuple(population_fenotype[best_individual_index])
 
     def fenotype(self, path):
         individual = []

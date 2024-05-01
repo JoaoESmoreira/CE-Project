@@ -53,6 +53,11 @@ class ACO:
                     self.best_objective = obj
                     self.best_path = path
             self.evaporate()
+
+        if self.is_feasible(self.best_path):
+            return (self.individual_size * (self.best_path[-1][0] + self.best_path[-1][1])) / len(self.best_path), True, self.population_diversity(ants_population), tuple(self.best_ant)
+        return (self.best_path[-1][0] + self.best_path[-1][1]) / len(self.best_path), False, self.population_diversity(ants_population), tuple(self.best_ant)
+
         return len(self.best_ant), self.is_feasible(self.best_path), population_diversity(ants_population), tuple(self.best_ant)
         # if self.is_feasible(self.best_path):
         #     print("--- feasible: ", self.best_objective, " ", self.best_ant)

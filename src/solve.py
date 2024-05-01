@@ -55,7 +55,11 @@ class SEA:
         best_individual_index = fitness_scores.index(max(fitness_scores))
         best_individual = population[best_individual_index]
         #best_fitness = fitness_scores[best_individual_index]
-        return len(best_individual), self.is_feasible(best_individual), self.population_diversity(population), tuple(best_individual)
+
+        path = self.mapping(best_individual)
+        if self.is_feasible(best_individual):
+            return (self.individual_size * (path[-1][0] + path[-1][1])) / len(best_individual), True, self.population_diversity(population), tuple(best_individual)
+        return (path[-1][0] + path[-1][1]) / len(best_individual), False, self.population_diversity(population), tuple(best_individual)
     
     def mapping(self, individual) -> list[tuple[int, int]]:
         last_position = (0, 0)
@@ -86,6 +90,9 @@ class SEA:
         
         if len(path) == 0:
             return -1000000
+        #if not self.is_feasible(individual):
+        #    return (path[-1][0] + path[-1][1])*2 + len(path) - (abs(path[-1][0] - (self.lake_dimention+1)) + abs(path[-1][1] - (self.lake_dimention+1)))
+        #return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (self.lake_dimention+1)) + abs(path[-1][1] - (self.lake_dimention+1))) - len(path) + self.is_feasible(individual)*800     # best fitness in general
         return (path[-1][0] + path[-1][1])*2 - (abs(path[-1][0] - (self.lake_dimention+1)) + abs(path[-1][1] - (self.lake_dimention+1))) - len(path) + self.is_feasible(individual)*40     # best fitness in general
 
     def is_feasible(self, individual) -> bool:
@@ -168,6 +175,18 @@ if __name__ == "__main__":
     individual_size = [100, 200, 500]
     dimentions = [4, 8, 12]
     m = 2
+
+    #PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=12, i=3)
+    #with open(PATH_MAP, "r", encoding='utf-8') as f:
+    #    n = int(f.readline())
+    #    mmap = []
+    #    for _ in range(n):
+    #        mmap.append(f.readline()[:-1])
+
+    #for seed in seeds:
+    #    random.seed(seed)
+    #    sea = SEA(mmap, individual_size=500)
+    #    print(sea.fit())
 
     for i in range(len(dimentions)):
         PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=dimentions[i], i=m)
