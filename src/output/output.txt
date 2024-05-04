@@ -1,0 +1,4 @@
+
+ ./output/sea/dim4 
+
+['./output/sea/dim4/map_02_pool_0.15_cross_0.7_mut_0.01.csv']

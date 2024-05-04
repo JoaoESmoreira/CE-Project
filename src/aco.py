@@ -55,8 +55,8 @@ class ACO:
             self.evaporate()
 
         if self.is_feasible(self.best_path):
-            return (self.individual_size * (self.best_path[-1][0] + self.best_path[-1][1])) / len(self.best_path), True, self.population_diversity(ants_population), tuple(self.best_ant)
-        return (self.best_path[-1][0] + self.best_path[-1][1]) / len(self.best_path), False, self.population_diversity(ants_population), tuple(self.best_ant)
+            return (self.individual_size * (self.best_path[-1][0] + self.best_path[-1][1])) / len(self.best_path), True, population_diversity(ants_population), tuple(self.best_ant)
+        return (self.best_path[-1][0] + self.best_path[-1][1]) / len(self.best_path), False, population_diversity(ants_population), tuple(self.best_ant)
 
         return len(self.best_ant), self.is_feasible(self.best_path), population_diversity(ants_population), tuple(self.best_ant)
         # if self.is_feasible(self.best_path):
@@ -249,11 +249,11 @@ if __name__ == "__main__":
         for evapuration in evapuration_rates:
             for alpha in alpha_rates:
 
-                results = set()
+                results = []
                 for seed in seeds:
                     random.seed(seed)
                     aco = ACO(mmap, alpha=alpha, evaporation_rate=evapuration, individual_size=individual_size[i])
-                    results.add(aco.fit())
+                    results.append(aco.fit())
 
                 OUTPUT_PATH = f"./output/aco/dim{dimentions[i]}/map_0{m}_alpha_{alpha}_evap{evapuration}.csv"
                 print(OUTPUT_PATH)
