@@ -1,4 +1,54 @@
 
+ ./output/aco/dim4 
+
+None
+None
+None
+
+ ./output/aco/dim8 
+
+None
+['./output/aco/dim8/map_02_alpha_0.9_evap0.8.csv']
+None
+
+ ./output/aco/dim12 
+
+None
+['./output/aco/dim12/map_02_alpha_0.9_evap0.8.csv']
+[30, 30, 30, 30, 30, 30, 30, 30]
+
  ./output/sea/dim4 
 
 ['./output/sea/dim4/map_02_pool_0.15_cross_0.7_mut_0.01.csv']
+['./output/sea/dim4/map_02_pool_0.1_cross_0.7_mut_0.15.csv']
+[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+
+ ./output/sea/dim8 
+
+['./output/sea/dim8/map_02_pool_0.15_cross_0.7_mut_0.01.csv']
+['./output/sea/dim8/map_02_pool_0.2_cross_0.7_mut_0.15.csv']
+[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+
+ ./output/sea/dim12 
+
+['./output/sea/dim12/map_02_pool_0.15_cross_0.8_mut_0.15.csv']
+['./output/sea/dim12/map_02_pool_0.1_cross_0.7_mut_0.15.csv']
+[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+
+ ./output/qtable/dim4 
+
+None
+['./output/qtable/dim4/map_02_pool_0.15_cross_0.7_mut_0.15.csv']
+[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+
+ ./output/qtable/dim8 
+
+['./output/qtable/dim8/map_02_pool_0.05_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.7_mut_0.01.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.7_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.01.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.9_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.01.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.9_mut_0.15.csv']
+['./output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.15.csv']
+[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+
+ ./output/qtable/dim12 
+
+['./output/qtable/dim12/map_02_pool_0.15_cross_0.7_mut_0.15.csv', './output/qtable/dim12/map_02_pool_0.1_cross_0.8_mut_0.1.csv']
+['./output/qtable/dim12/map_02_pool_0.2_cross_0.7_mut_0.15.csv']
+[30, 30]
