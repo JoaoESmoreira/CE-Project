@@ -65,8 +65,12 @@ class Stats:
             return df[feature].mean()
 
         if len(diff_index) > 0:
-            mean = {i: cc(path) for i, path in zip(diff_index, self.all_paths)}
+            #mean = {i: cc(path) for i, path in zip(diff_index, self.all_paths)}
+            mean = {}
+            for i in diff_index:
+                mean[i] = cc(self.all_paths[i])
             max_count = max(mean.values())
+            print(mean)
             return [self.all_paths[i] for i, value in mean.items() if value == max_count]
         return None
     
@@ -122,53 +126,42 @@ class Stats:
         if len(diff_index) > 0:
             mean = {i: cc(path) for i, path in zip(diff_index, self.all_paths)}
             max_count = max(mean.values())
-            return [value for i, value in mean.items() if value == max_count]
+            return [self.all_paths[i] for i, value in mean.items() if value == max_count]
         return None
 
     def avg_std(self, path: str, feature: str) -> tuple[float, float]:
         df = pd.read_csv(path)
         return df[feature].mean() , df[feature].std()
 
-                
-if __name__ == "__main__":
-    # folders = ['./output/sea/dim4']
-    # for folder in folders:
-    #     print("\n", folder, "\n")
-    #     stats = Stats(folder)
-    #     stats.set_file_names()
-    #     print(stats.test('fitness', 0.05))
-    # folders = ['./output/aco/dim4', './output/aco/dim8', './output/aco/dim12']
-    # for folder in folders:
-    #    # print("\n", folder, "\n")
-    #    stats = Stats(folder)
-    #    stats.set_file_names()
-    #    stats.shapiro_test()
-    #    # print(stats.test('fitness', 0.05))
-    #    # print(stats.test('diversity', 0.05))
-    #    # print(stats.test2('finished', 0.05))
-    # folders = ['./output/sea/dim4', './output/sea/dim8', './output/sea/dim12']
-    # for folder in folders:
-    #     # print("\n", folder, "\n")
-    #     stats = Stats(folder)
-    #     stats.set_file_names()
-    #     stats.shapiro_test()
-    #     # print(stats.test('fitness', 0.05))
-    #     # print(stats.test('diversity', 0.05))
-    #     # print(stats.test2('finished', 0.05))
-    # folders = ['./output/qtable/dim4', './output/qtable/dim8', './output/qtable/dim12']
-    # for folder in folders:
-    #     # print("\n", folder, "\n")
-    #     stats = Stats(folder)
-    #     stats.set_file_names()
-    #     stats.shapiro_test()
-    #     # print(stats.test('fitness', 0.05))
-    #     # print(stats.test('diversity', 0.05))
-    #     # print(stats.test2('finished', 0.05))
 
-    folder = ['./output/sea/dim4/map_02_pool_0.15_cross_0.7_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.9_mut_0.05.csv', './output/aco/dim4/map_02_alpha_0.8_evap0.8.csv']
+def exp(folders):
+    for folder in folders:
+        print("\n", folder)
+        stats = Stats(folder)
+        stats.set_file_names()
+        print("fitness", stats.test('fitness', 0.05))
+        print("diversity", stats.test('diversity', 0.05))
+        print("finished", stats.test2('finished', 0.05))
+
+
+if __name__ == "__main__":
+    # folders = ['./output/sea/dim4', './output/sea/dim8', './output/sea/dim12']
+    # exp(folders)
+
+    # folders = ['./output/qtable/dim4', './output/qtable/dim8', './output/qtable/dim12']
+    # exp(folders)
+
+    # folders = ['./output/aco/dim4', './output/aco/dim8', './output/aco/dim12']
+    # exp(folders)
+
+
+    folder = ['./output/sea/dim12/map_02_pool_0.1_cross_0.7_mut_0.15.csv', 
+              './output/qtable/dim12/map_02_pool_0.2_cross_0.7_mut_0.15.csv', 
+              './output/aco/dim12/map_02_alpha_0.9_evap0.8.csv']
+
     for path in folder:
-        print("\n", path, "\n")
+        print("\n", path)
         stats = Stats(path)
-        print(stats.avg_std(path, "fitness"))
-        # print(stats.avg_std(path, "finished"))
-        # print(stats.avg_std(path, "diversity"))
+        #print(stats.avg_std(path, "fitness"))
+        print(stats.avg_std(path, "diversity"))
+        #print(stats.avg_std(path, "finished"))

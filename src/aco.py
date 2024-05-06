@@ -53,7 +53,6 @@ class ACO:
                     self.best_objective = obj
                     self.best_path = path
             self.evaporate()
-
         if self.is_feasible(self.best_path):
             return (self.individual_size * (self.best_path[-1][0] + self.best_path[-1][1])) / len(self.best_path), True, population_diversity(ants_population), tuple(self.best_ant)
         return (self.best_path[-1][0] + self.best_path[-1][1]) / len(self.best_path), False, population_diversity(ants_population), tuple(self.best_ant)
@@ -68,6 +67,7 @@ class ACO:
     def visualization(self):
         import matplotlib.pyplot as plt
         import matplotlib.cm as cm
+        from matplotlib.colors import Normalize
         import numpy as np
         min_val = np.min(self.pheromones)
         max_val = np.max(self.pheromones)
@@ -79,8 +79,11 @@ class ACO:
         self.pheromones = -self.pheromones
 
         fig, ax = plt.subplots()
-        colormap = cm.ScalarMappable(cmap='viridis')
-        colormap.set_clim(np.min(-self.pheromones), np.max(-self.pheromones))
+        #colormap = cm.ScalarMappable(cmap='viridis')
+        #colormap.set_clim(np.min(-self.pheromones), np.max(-self.pheromones))
+        colormap = cm.ScalarMappable(cmap='viridis', norm=Normalize(vmin=-1, vmax=1))
+        colormap.set_clim(-1, 1)
+
 
         for i in range(self.lake_dimention-1):
             for j in range(self.lake_dimention):
@@ -123,8 +126,12 @@ class ACO:
         ax.set_yticks(np.arange(self.lake_dimention))
         ax.grid(True, linestyle='--', alpha=0.5)
 
+        colormap = cm.ScalarMappable(cmap='viridis')
+        colormap.set_clim(np.min(-self.pheromones), np.max(-self.pheromones))
         cbar = plt.colorbar(colormap, ax=ax)
-        cbar.set_label('Intensity of Pheromone')
+        cbar.ax.invert_yaxis()
+        cbar.ax.set_yticklabels(['1', '0.75', '0.5', '0.25', '0', '-0.25', '-0.5', '-0.75', '-1'])
+        cbar.set_label('Intencidade da feromona')
         plt.show()
 
     def select_parents(self, population, fitness_scores):
@@ -231,34 +238,70 @@ class ACO:
 
 
 if __name__ == "__main__":
-    m = 2
-    dimentions = [4, 8, 12]
-    individual_size = [100, 200, 500]
-    seeds = [7123, 1287, 6372, 2651, 199, 9147, 6836, 9289, 8469, 4572, 2977, 7939, 3336, 6871, 182, 7840, 7325, 6427, 3349, 7321, 2930, 9756, 8457, 5584, 4797, 4613, 7269, 7247, 8908, 4259]
 
-    for i in range(len(dimentions)):
-        PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=dimentions[i], i=m)
-        with open(PATH_MAP, "r", encoding='utf-8') as f:
-            n = int(f.readline())
-            mmap = []
-            for _ in range(n):
-                mmap.append(f.readline()[:-1])
+    PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=22, i=2)
+    with open(PATH_MAP, "r", encoding='utf-8') as f:
+        n = int(f.readline())
+        mmap = []
+        for _ in range(n):
+            mmap.append(f.readline()[:-1])
 
-        evapuration_rates = [0.8, 0.9, 1]
-        alpha_rates = [0.8, 0.9, 1]
-        for evapuration in evapuration_rates:
-            for alpha in alpha_rates:
+    aco = ACO(mmap, alpha=0.9, evaporation_rate=0.8, individual_size=500)
+    print(aco.fit())
+    #for i in range(10):
+    #    PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=12, i=i)
+    #    with open(PATH_MAP, "r", encoding='utf-8') as f:
+    #        n = int(f.readline())
+    #        mmap = []
+    #        for _ in range(n):
+    #            mmap.append(f.readline()[:-1])
 
-                results = []
-                for seed in seeds:
-                    random.seed(seed)
-                    aco = ACO(mmap, alpha=alpha, evaporation_rate=evapuration, individual_size=individual_size[i])
-                    results.append(aco.fit())
+    #    aco = ACO(mmap, alpha=0.9, evaporation_rate=0.8, individual_size=500)
+    #    print(aco.fit())
 
-                OUTPUT_PATH = f"./output/aco/dim{dimentions[i]}/map_0{m}_alpha_{alpha}_evap{evapuration}.csv"
-                print(OUTPUT_PATH)
-                with open(OUTPUT_PATH, 'w', newline='', encoding='utf-8') as csvfile:
-                    spamwriter = csv.writer(csvfile, delimiter=',')
-                    spamwriter.writerow(("fitness", "finished", "diversity", "individual"))
-                    for result in results:
-                        spamwriter.writerow((result[0], result[1], result[2], result[3]))
+    # PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=22, i=2)
+    # with open(PATH_MAP, "r", encoding='utf-8') as f:
+    #     n = int(f.readline())
+    #     mmap = []
+    #     for _ in range(n):
+    #         mmap.append(f.readline()[:-1])
+    # count = 0
+    # for i in range(30):
+    #     aco = ACO(mmap, alpha=0.9, evaporation_rate=0.8, individual_size=500)
+    #     out = aco.fit()
+    #     print(out)
+    #     if out[1]:
+    #         count += 1
+    # print("total: ", count)
+
+    # m = 2
+    # dimentions = [4, 8, 12]
+    # individual_size = [100, 200, 500]
+    # seeds = [7123, 1287, 6372, 2651, 199, 9147, 6836, 9289, 8469, 4572, 2977, 7939, 3336, 6871, 182, 7840, 7325, 6427, 3349, 7321, 2930, 9756, 8457, 5584, 4797, 4613, 7269, 7247, 8908, 4259]
+
+    # for i in range(len(dimentions)):
+    #     PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=dimentions[i], i=m)
+    #     with open(PATH_MAP, "r", encoding='utf-8') as f:
+    #         n = int(f.readline())
+    #         mmap = []
+    #         for _ in range(n):
+    #             mmap.append(f.readline()[:-1])
+
+    #     evapuration_rates = [0.8, 0.9, 1]
+    #     alpha_rates = [0.8, 0.9, 1]
+    #     for evapuration in evapuration_rates:
+    #         for alpha in alpha_rates:
+
+    #             results = []
+    #             for seed in seeds:
+    #                 random.seed(seed)
+    #                 aco = ACO(mmap, alpha=alpha, evaporation_rate=evapuration, individual_size=individual_size[i])
+    #                 results.append(aco.fit())
+
+    #             OUTPUT_PATH = f"./output/aco/dim{dimentions[i]}/map_0{m}_alpha_{alpha}_evap{evapuration}.csv"
+    #             print(OUTPUT_PATH)
+    #             with open(OUTPUT_PATH, 'w', newline='', encoding='utf-8') as csvfile:
+    #                 spamwriter = csv.writer(csvfile, delimiter=',')
+    #                 spamwriter.writerow(("fitness", "finished", "diversity", "individual"))
+    #                 for result in results:
+    #                     spamwriter.writerow((result[0], result[1], result[2], result[3]))

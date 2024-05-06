@@ -182,36 +182,53 @@ class SEA:
 
 
 if __name__ == "__main__":
-    seeds = [7123, 1287, 6372, 2651, 199, 9147, 6836, 9289, 8469, 4572, 2977, 7939, 3336, 6871, 182, 7840, 7325, 6427, 3349, 7321, 2930, 9756, 8457, 5584, 4797, 4613, 7269, 7247, 8908, 4259]
-    pool_percentages = [0.05, 0.1, 0.15, 0.2]
-    mutation_rates = [0.01, 0.05, 0.1, 0.15]
-    crossover_rates = [0.7, 0.8, 0.9]
-    dimentions = [4, 8, 12]
-    individual_size = [100, 200, 500]
-    m = 2
 
-    for i in range(len(dimentions)):
-        PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=dimentions[i], i=m)
-        with open(PATH_MAP, "r", encoding='utf-8') as f:
-            n = int(f.readline())
-            mmap = []
-            for _ in range(n):
-                mmap.append(f.readline()[:-1])
+    PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=22, i=2)
+    with open(PATH_MAP, "r", encoding='utf-8') as f:
+        n = int(f.readline())
+        mmap = []
+        for _ in range(n):
+            mmap.append(f.readline()[:-1])
 
-        for pool in pool_percentages:
-            for mutation in mutation_rates:
-                for crossover in crossover_rates:
+    count = 0
+    for i in range(30):
+        sea = SEA(mmap, pool_percentage=0.15, crossover_rate=0.7, mutation_rate=0.15, individual_size=500)
+        out = sea.fit()
+        print(out)
+        if out[1]:
+            count += 1
+    print("total: ", count)
 
-                    results = []
-                    for seed in seeds:
-                        random.seed(seed)
-                        sea = SEA(mmap, pool_percentage=pool, mutation_rate=mutation, crossover_rate=crossover, individual_size=individual_size[i])
-                        results.append(sea.fit())
+    # seeds = [7123, 1287, 6372, 2651, 199, 9147, 6836, 9289, 8469, 4572, 2977, 7939, 3336, 6871, 182, 7840, 7325, 6427, 3349, 7321, 2930, 9756, 8457, 5584, 4797, 4613, 7269, 7247, 8908, 4259]
+    # pool_percentages = [0.05, 0.1, 0.15, 0.2]
+    # mutation_rates = [0.01, 0.05, 0.1, 0.15]
+    # crossover_rates = [0.7, 0.8, 0.9]
+    # dimentions = [4, 8, 12]
+    # individual_size = [100, 200, 500]
+    # m = 2
 
-                    OUTPUT_PATH = f"./output/qtable/dim{dimentions[i]}/map_0{m}_pool_{pool}_cross_{crossover}_mut_{mutation}.csv"
-                    print(OUTPUT_PATH)
-                    with open(OUTPUT_PATH, 'w', newline='', encoding='utf-8') as csvfile:
-                        spamwriter = csv.writer(csvfile, delimiter=',')
-                        spamwriter.writerow(("fitness", "finished", "diversity", "individual"))
-                        for result in results:
-                            spamwriter.writerow((result[0], result[1], result[2], result[3]))
+    # for i in range(len(dimentions)):
+    #     PATH_MAP = "./data/MAP_{d}_BY_{d}/input0{i}.txt".format(d=dimentions[i], i=m)
+    #     with open(PATH_MAP, "r", encoding='utf-8') as f:
+    #         n = int(f.readline())
+    #         mmap = []
+    #         for _ in range(n):
+    #             mmap.append(f.readline()[:-1])
+
+    #     for pool in pool_percentages:
+    #         for mutation in mutation_rates:
+    #             for crossover in crossover_rates:
+
+    #                 results = []
+    #                 for seed in seeds:
+    #                     random.seed(seed)
+    #                     sea = SEA(mmap, pool_percentage=pool, mutation_rate=mutation, crossover_rate=crossover, individual_size=individual_size[i])
+    #                     results.append(sea.fit())
+
+    #                 OUTPUT_PATH = f"./output/qtable/dim{dimentions[i]}/map_0{m}_pool_{pool}_cross_{crossover}_mut_{mutation}.csv"
+    #                 print(OUTPUT_PATH)
+    #                 with open(OUTPUT_PATH, 'w', newline='', encoding='utf-8') as csvfile:
+    #                     spamwriter = csv.writer(csvfile, delimiter=',')
+    #                     spamwriter.writerow(("fitness", "finished", "diversity", "individual"))
+    #                     for result in results:
+    #                         spamwriter.writerow((result[0], result[1], result[2], result[3]))

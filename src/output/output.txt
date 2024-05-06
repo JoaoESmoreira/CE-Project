@@ -1,54 +1,55 @@
 
- ./output/aco/dim4 
+ ./output/sea/dim4
+fitness ['./output/sea/dim4/map_02_pool_0.05_cross_0.8_mut_0.15.csv']
+diversity ['./output/sea/dim4/map_02_pool_0.1_cross_0.7_mut_0.15.csv']
+finished ['./output/sea/dim4/map_02_pool_0.05_cross_0.7_mut_0.01.csv', './output/sea/dim4/map_02_pool_0.05_cross_0.8_mut_0.01.csv', './output/sea/dim4/map_02_pool_0.05_cross_0.8_mut_0.1.csv', './output/sea/dim4/map_02_pool_0.05_cross_0.8_mut_0.15.csv', './output/sea/dim4/map_02_pool_0.05_cross_0.9_mut_0.01.csv', './output/sea/dim4/map_02_pool_0.05_cross_0.9_mut_0.1.csv', './output/sea/dim4/map_02_pool_0.15_cross_0.8_mut_0.05.csv', './output/sea/dim4/map_02_pool_0.15_cross_0.8_mut_0.15.csv', './output/sea/dim4/map_02_pool_0.1_cross_0.8_mut_0.1.csv', './output/sea/dim4/map_02_pool_0.1_cross_0.9_mut_0.01.csv', './output/sea/dim4/map_02_pool_0.2_cross_0.7_mut_0.01.csv', './output/sea/dim4/map_02_pool_0.2_cross_0.7_mut_0.1.csv', './output/sea/dim4/map_02_pool_0.2_cross_0.7_mut_0.15.csv', './output/sea/dim4/map_02_pool_0.2_cross_0.9_mut_0.05.csv', './output/sea/dim4/map_02_pool_0.2_cross_0.9_mut_0.1.csv']
 
-None
-None
-None
+ ./output/sea/dim8
+fitness ['./output/sea/dim8/map_02_pool_0.05_cross_0.9_mut_0.15.csv']
+diversity ['./output/sea/dim8/map_02_pool_0.2_cross_0.7_mut_0.15.csv']
+finished ['./output/sea/dim8/map_02_pool_0.05_cross_0.7_mut_0.01.csv', './output/sea/dim8/map_02_pool_0.05_cross_0.7_mut_0.05.csv', './output/sea/dim8/map_02_pool_0.05_cross_0.8_mut_0.05.csv', './output/sea/dim8/map_02_pool_0.05_cross_0.8_mut_0.1.csv', './output/sea/dim8/map_02_pool_0.05_cross_0.9_mut_0.01.csv', './output/sea/dim8/map_02_pool_0.05_cross_0.9_mut_0.1.csv', './output/sea/dim8/map_02_pool_0.15_cross_0.7_mut_0.01.csv', './output/sea/dim8/map_02_pool_0.15_cross_0.7_mut_0.05.csv', './output/sea/dim8/map_02_pool_0.15_cross_0.8_mut_0.05.csv', './output/sea/dim8/map_02_pool_0.15_cross_0.8_mut_0.1.csv', './output/sea/dim8/map_02_pool_0.15_cross_0.9_mut_0.1.csv', './output/sea/dim8/map_02_pool_0.1_cross_0.7_mut_0.01.csv', './output/sea/dim8/map_02_pool_0.1_cross_0.7_mut_0.05.csv', './output/sea/dim8/map_02_pool_0.1_cross_0.8_mut_0.1.csv', './output/sea/dim8/map_02_pool_0.1_cross_0.9_mut_0.01.csv', './output/sea/dim8/map_02_pool_0.1_cross_0.9_mut_0.05.csv', './output/sea/dim8/map_02_pool_0.1_cross_0.9_mut_0.15.csv', './output/sea/dim8/map_02_pool_0.2_cross_0.7_mut_0.01.csv', './output/sea/dim8/map_02_pool_0.2_cross_0.8_mut_0.01.csv', './output/sea/dim8/map_02_pool_0.2_cross_0.8_mut_0.05.csv', './output/sea/dim8/map_02_pool_0.2_cross_0.8_mut_0.15.csv', './output/sea/dim8/map_02_pool_0.2_cross_0.9_mut_0.01.csv', './output/sea/dim8/map_02_pool_0.2_cross_0.9_mut_0.1.csv', './output/sea/dim8/map_02_pool_0.2_cross_0.9_mut_0.15.csv']
 
- ./output/aco/dim8 
+ ./output/sea/dim12
+fitness ['./output/sea/dim12/map_02_pool_0.1_cross_0.8_mut_0.15.csv']
+diversity ['./output/sea/dim12/map_02_pool_0.1_cross_0.7_mut_0.15.csv']
+finished ['./output/sea/dim12/map_02_pool_0.05_cross_0.8_mut_0.1.csv', './output/sea/dim12/map_02_pool_0.05_cross_0.9_mut_0.05.csv', './output/sea/dim12/map_02_pool_0.15_cross_0.8_mut_0.15.csv', './output/sea/dim12/map_02_pool_0.15_cross_0.9_mut_0.1.csv', './output/sea/dim12/map_02_pool_0.1_cross_0.8_mut_0.1.csv', './output/sea/dim12/map_02_pool_0.1_cross_0.8_mut_0.15.csv', './output/sea/dim12/map_02_pool_0.1_cross_0.9_mut_0.05.csv', './output/sea/dim12/map_02_pool_0.1_cross_0.9_mut_0.1.csv', './output/sea/dim12/map_02_pool_0.1_cross_0.9_mut_0.15.csv', './output/sea/dim12/map_02_pool_0.2_cross_0.8_mut_0.05.csv', './output/sea/dim12/map_02_pool_0.2_cross_0.8_mut_0.15.csv', './output/sea/dim12/map_02_pool_0.2_cross_0.9_mut_0.05.csv', './output/sea/dim12/map_02_pool_0.2_cross_0.9_mut_0.1.csv', './output/sea/dim12/map_02_pool_0.2_cross_0.9_mut_0.15.csv']
 
-None
-['./output/aco/dim8/map_02_alpha_0.9_evap0.8.csv']
-None
 
- ./output/aco/dim12 
 
-None
-['./output/aco/dim12/map_02_alpha_0.9_evap0.8.csv']
-[30, 30, 30, 30, 30, 30, 30, 30]
 
- ./output/sea/dim4 
 
-['./output/sea/dim4/map_02_pool_0.15_cross_0.7_mut_0.01.csv']
-['./output/sea/dim4/map_02_pool_0.1_cross_0.7_mut_0.15.csv']
-[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
 
- ./output/sea/dim8 
+ ./output/qtable/dim4
+fitness None
+diversity ['./output/qtable/dim4/map_02_pool_0.15_cross_0.7_mut_0.15.csv']
+finished ['./output/qtable/dim4/map_02_pool_0.05_cross_0.7_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.05_cross_0.7_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.05_cross_0.7_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.05_cross_0.8_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.05_cross_0.8_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.05_cross_0.8_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.05_cross_0.9_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.05_cross_0.9_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.05_cross_0.9_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.15_cross_0.7_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.15_cross_0.7_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.15_cross_0.7_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.15_cross_0.8_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.15_cross_0.8_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.15_cross_0.8_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.15_cross_0.9_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.15_cross_0.9_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.15_cross_0.9_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.1_cross_0.7_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.1_cross_0.7_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.1_cross_0.7_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.1_cross_0.8_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.1_cross_0.8_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.1_cross_0.8_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.1_cross_0.9_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.1_cross_0.9_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.1_cross_0.9_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.7_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.7_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.7_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.8_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.8_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.8_mut_0.15.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.9_mut_0.05.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.9_mut_0.1.csv', './output/qtable/dim4/map_02_pool_0.2_cross_0.9_mut_0.15.csv']
 
-['./output/sea/dim8/map_02_pool_0.15_cross_0.7_mut_0.01.csv']
-['./output/sea/dim8/map_02_pool_0.2_cross_0.7_mut_0.15.csv']
-[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
+ ./output/qtable/dim8
+fitness ['./output/qtable/dim8/map_02_pool_0.05_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.9_mut_0.15.csv']
+diversity ['./output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.15.csv']
+finished ['./output/qtable/dim8/map_02_pool_0.05_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.7_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.9_mut_0.15.csv']
 
- ./output/sea/dim12 
+ ./output/qtable/dim12
+fitness ['./output/qtable/dim12/map_02_pool_0.15_cross_0.7_mut_0.15.csv', './output/qtable/dim12/map_02_pool_0.1_cross_0.8_mut_0.1.csv']
+diversity ['./output/qtable/dim12/map_02_pool_0.2_cross_0.7_mut_0.15.csv']
+finished ['./output/qtable/dim12/map_02_pool_0.15_cross_0.7_mut_0.15.csv', './output/qtable/dim12/map_02_pool_0.1_cross_0.8_mut_0.1.csv']
 
-['./output/sea/dim12/map_02_pool_0.15_cross_0.8_mut_0.15.csv']
-['./output/sea/dim12/map_02_pool_0.1_cross_0.7_mut_0.15.csv']
-[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
 
- ./output/qtable/dim4 
 
-None
-['./output/qtable/dim4/map_02_pool_0.15_cross_0.7_mut_0.15.csv']
-[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
 
- ./output/qtable/dim8 
 
-['./output/qtable/dim8/map_02_pool_0.05_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.05_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.7_mut_0.01.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.7_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.01.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.9_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.15_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.01.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.05.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.9_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.1_cross_0.9_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.7_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.7_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.8_mut_0.1.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.8_mut_0.15.csv', './output/qtable/dim8/map_02_pool_0.2_cross_0.9_mut_0.15.csv']
-['./output/qtable/dim8/map_02_pool_0.1_cross_0.7_mut_0.15.csv']
-[30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30]
 
- ./output/qtable/dim12 
+ ./output/aco/dim4
+fitness None
+diversity None
+finished None
 
-['./output/qtable/dim12/map_02_pool_0.15_cross_0.7_mut_0.15.csv', './output/qtable/dim12/map_02_pool_0.1_cross_0.8_mut_0.1.csv']
-['./output/qtable/dim12/map_02_pool_0.2_cross_0.7_mut_0.15.csv']
-[30, 30]
+ ./output/aco/dim8
+fitness None
+diversity ['./output/aco/dim8/map_02_alpha_0.9_evap0.8.csv']
+finished None
+
+ ./output/aco/dim12
+fitness None
+diversity ['./output/aco/dim12/map_02_alpha_0.9_evap0.8.csv']
+finished ['./output/aco/dim12/map_02_alpha_0.8_evap0.8.csv', './output/aco/dim12/map_02_alpha_0.8_evap0.9.csv', './output/aco/dim12/map_02_alpha_0.8_evap1.csv', './output/aco/dim12/map_02_alpha_0.9_evap0.8.csv', './output/aco/dim12/map_02_alpha_0.9_evap0.9.csv', './output/aco/dim12/map_02_alpha_0.9_evap1.csv', './output/aco/dim12/map_02_alpha_1_evap0.9.csv', './output/aco/dim12/map_02_alpha_1_evap1.csv']
