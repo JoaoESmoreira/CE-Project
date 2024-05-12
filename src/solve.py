@@ -1,4 +1,12 @@
 
+# Copyright (C) 2024 João ES Moreira
+#  ___  ___  __ _ 
+# / __|/ _ \/ _` |
+# \__ \  __/ (_| |
+# |___/\___|\__,_|
+
+
+
 import random
 import csv
 

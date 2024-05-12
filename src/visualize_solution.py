@@ -1,4 +1,13 @@
 
+# Copyright (C) 2024 João ES Moreira
+#                                        _                 
+#   __ _ _   _ _ __ ___  _ __   __ _ ___(_)_   _ _ __ ___  
+#  / _` | | | | '_ ` _ \| '_ \ / _` / __| | | | | '_ ` _ \ 
+# | (_| | |_| | | | | | | | | | (_| \__ \ | |_| | | | | | |
+#  \__, |\__, |_| |_| |_|_| |_|\__,_|___/_|\__,_|_| |_| |_|
+#  |___/ |___/                                             
+
+
 import gymnasium as gym
 from gymnasium.envs.toy_text.frozen_lake import generate_random_map
 import random

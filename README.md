@@ -37,18 +37,29 @@ Neste projeto tentarei resolver o problema com recurso a técnicas de computaç�
 Contribuições são sempre bem-vindas! Se você tem ideias ou melhorias para o projeto, por favor, sinta-se à vontade para contribuir.
 
 Este README fornece uma visão geral básica do problema do Frozen Lake e um ponto de partida para a implementação de soluções. Claro, cada projeto é único, então sinta-se à vontade para ajustar e expandir este projeto conforme a necessidade do seu.
-
 # Usage
 ## Gerar instâncias
 ```shel
 python3 problem.py --generate-data true
 ```
-
 ## Correr um programa
 ```shel
 pypy3 problem.py --input-file data/MAP_4_BY_4/input01.txt --algorithm random
 ```
-
+## Repository Structure
+- **data**: Contains the dataset file(s).
+- **src**: 
+	- **data**: Ficheiros de input
+	- **output**
+		- **aco** - resultado das execuções do algoritmo *aco*
+		- **qtables** - resultado das execuções do algoritmo *qtables*
+		- **sea** - resultado das execuções do algoritmo *sea*
+		- **stasts.** - analise das experiências
+		- **ouput.txt** - ficheiro com os melhores resultados segunto as estatisticas
+	- Scripts do código usado para resolver os problemas e testes
+- **docs**: Documentos PDF e relatório
+- **README.md**: Visão geral do projeto e instruções para execução do código.
+- **requirements.txt**: Lista das dependencias das librarias de python.
 # 📝 Next Steps
 
 - [x] criar ambiente ✅ 2024-03-10
@@ -82,86 +93,6 @@ pypy3 problem.py --input-file data/MAP_4_BY_4/input01.txt --algorithm random
 - [x] terminar o relatório ✅ 2024-05-06
 # 📋 Notes
 
-> [!danger]
-> É suposto fazer este projeto no sentido de querer publicar um paper.
-> Sendo assim o formato e a estrutura do relatório devem seguir esse formato.
-
-> [!danger]
-> Nao inventes, é para fazer evolucionário!!
-
-Deve ser experimentadas várias fitness functions.
-
 [[Evolutionary Computation]]
 [[Introduction to Evolutionary Computing]]
 [[Essentials of Metaheuristics]]
-
-No canônico temos que:
-```python
-BEGIN
-	INIT POPULATION randomly
-	EVALUATE POPULATION
-	
-	WHILE time < budget or generaiton < number of generation
-		1. SELECT parents
-		2. RECOMBINE parents
-		3. MUTATE
-		4. EVALUATE
-		5. SELECT next generation
-	END
-END
-```
-Eu irei fazer:
-```python
-BEGIN
-	INIT POPULATION randomly
-	WHILE generaiton < number of generation
-		0. EVALUATE POPULATION
-		1. SELECT parents
-		2. RECOMBINE parents
-		3. MUTATE
-		4. SELECT next generation
-	END
-END
-```
-
-Ontem implementei um algoritmo evolucionário com uma estrutura mais simples, sem recurso a uma estrutura mais complexa como a da API.
-Conseguia chegar a soluções que chegavam perto do target, mas nunca terminavam.
-Hoje alterei a probabilidade de mutação e ficou a funcionar muito bem.
-
-Agora preciso de implementar a mesma lógica para a API.
-
-Estive a pensar e talvez usar q-tables, mas na verdade... a string com os movimentos resume-se a uma policy na mesma e com menos redundância.
-
-Não custa tentar na mesma, permite fazer outro tipo de operadores que podem dar resultados diferentes.
-
-Na verdade, resolver com Q-tables pode ser mais difícil, mas penso que dará os caminhos mais otimizados.
-
-para o 4x4:
-- 04 -> 2
-
-para 8x8:
-- 01 -> 8
-- 04 -> 1
-- 05 -> 4
-- 07 -> 1
-- 08 -> 3
-- 09 -> 9
-
-
-- reconheço que os algoritmos que estou a construir não são robustos o suficiente, mas pelo que parece para os 30 mapas que gerei, não serão criados mapas que têm o comportamento do maze
-
-
-# Avaliação de algoritmos
-- fitness
-- eficacia -> teste de proporção
-- diversidade
-
-como avalio algoritmos diferentes se a função de fitness é diferente?
-
-usar a distancia Hamiltonian para a diversidade pode ser bias, porque se os indivíduos de uma geração forem maiores, podem ter uma distância maior, e a diversidade é a mesma
-
-
-## Notas
-O two point crossover pode não ser muito bom, pois apenas uma parte da solução é trocada.
-
-Dizer para evoluir a representação das Q-Tables e não como policy
